@@ -83,7 +83,56 @@ lightbox.addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-    closeLightbox();
+  if (e.key === 'Escape') {
+    if (lightbox.classList.contains('active')) closeLightbox();
+    if (contactModal.classList.contains('active')) closeContactModal();
   }
 });
+
+// Contact Inquiry Modal Logic
+const contactModal = document.getElementById('contactModal');
+const contactNavBtn = document.getElementById('contactNavBtn');
+const contactClose = document.getElementById('contactClose');
+const copyEmailBtn = document.getElementById('copyEmailBtn');
+const copyBtnLabel = document.getElementById('copyBtnLabel');
+const emailText = document.getElementById('emailText');
+
+function openContactModal(e) {
+  if (e) e.preventDefault();
+  contactModal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeContactModal() {
+  contactModal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+if (contactNavBtn) {
+  contactNavBtn.addEventListener('click', openContactModal);
+}
+
+if (contactClose) {
+  contactClose.addEventListener('click', closeContactModal);
+}
+
+if (contactModal) {
+  contactModal.addEventListener('click', (e) => {
+    if (e.target === contactModal) closeContactModal();
+  });
+}
+
+if (copyEmailBtn) {
+  copyEmailBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(emailText.textContent.trim()).then(() => {
+      copyBtnLabel.textContent = 'Copied!';
+      copyEmailBtn.style.background = '#c5a059';
+      copyEmailBtn.style.color = '#0b0c0e';
+      setTimeout(() => {
+        copyBtnLabel.textContent = 'Copy';
+        copyEmailBtn.style.background = '';
+        copyEmailBtn.style.color = '';
+      }, 2000);
+    });
+  });
+}

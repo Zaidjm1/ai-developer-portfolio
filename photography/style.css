@@ -489,3 +489,130 @@ body {
 .footer-right a:hover {
   color: #fff;
 }
+
+/* Minimalist Contact Modal */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(8, 8, 10, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.contact-modal-card {
+  position: relative;
+  background: #121418;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 44px 38px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.contact-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--transition);
+}
+
+.contact-close-btn:hover {
+  color: #fff;
+}
+
+.contact-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+}
+
+.contact-modal-title {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.contact-modal-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 26px;
+}
+
+.email-copy-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  padding: 12px 18px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.email-address-text {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.copy-email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.copy-email-btn:hover {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #0b0c0e;
+}
+
+.contact-modal-actions a {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color var(--transition);
+}
+
+.contact-modal-actions a:hover {
+  color: #fff;
+}
+

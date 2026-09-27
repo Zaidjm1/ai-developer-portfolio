@@ -20,7 +20,7 @@
     <ul class="nav-menu">
       <li><a href="#gallery" class="active">Selected Works</a></li>
       <li><a href="../#projects">Other Projects</a></li>
-      <li><a href="mailto:michaeljayo.diaz@gmail.com">Contact</a></li>
+      <li><a href="#contact" id="contactNavBtn">Contact</a></li>
     </ul>
   </header>
 
@@ -318,6 +318,30 @@
       <a href="mailto:michaeljayo.diaz@gmail.com">michaeljayo.diaz@gmail.com</a>
     </div>
   </footer>
+
+  <!-- Minimalist Contact Modal -->
+  <div class="contact-modal" id="contactModal">
+    <div class="contact-modal-card">
+      <button class="contact-close-btn" id="contactClose" aria-label="Close modal">&times;</button>
+      <div class="contact-badge">DIRECT INQUIRY</div>
+      <h3 class="contact-modal-title">Let's Create Together</h3>
+      <p class="contact-modal-desc">
+        For visual direction, editorial commissions, exhibition prints, or private sessions, reach out directly:
+      </p>
+
+      <div class="email-copy-box">
+        <span class="email-address-text" id="emailText">michaeljayo.diaz@gmail.com</span>
+        <button class="copy-email-btn" id="copyEmailBtn" title="Copy to clipboard">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span id="copyBtnLabel">Copy</span>
+        </button>
+      </div>
+
+      <div class="contact-modal-actions">
+        <a href="mailto:michaeljayo.diaz@gmail.com" class="action-btn-email">Open in Mail App &rarr;</a>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
