@@ -772,6 +772,43 @@ ${detectedFeatures.map(f => `- **${f}**`).join('\n')}
           <li><strong>Turnaround in 2-3 Days</strong>: Full setup, tone calibration, and initial batch of 10 executive essays delivered within 72 hours.</li>
         </ul>
       `
+    },
+    sheinvogue: {
+      title: "SHEIN VOGUE: Fast-Fashion E-Commerce Architecture",
+      subtitle: "24+ Female Apparel Catalog, Flash Sales, Slide-out Bag & Multi-Currency",
+      diagram:
+`[Shopper Explores 24+ Female Fashion Styles]
+        │
+        ▼
+[High-Conversion Merchandising & Urgency Layer]
+  ├── Live Flash Deal Countdown Clock & Scarcity Tickers
+  ├── Instant Interactive Coupon Wallet (GLAM20, SAVE10, VIP25)
+  └── Multi-Currency Conversion Engine (USD, EUR, GBP, CAD, AUD)
+        │
+        ▼
+[Instant Reactive Filter & Quick-Add Engine]
+  ├── Sub-millisecond Category & Price Range Filter
+  ├── Card Hover Quick-Add Size Drawer (XS / S / M / L / XL)
+  └── Interactive Wishlist Drawer with Instant Sync
+        │
+        ▼
+[Slide-Out Shopping Bag & Checkout Simulator]
+  ├── Real-time Free Shipping Progress Bar ($29 Threshold)
+  ├── Automated Promo Code Discount Calculation
+  └── Multi-Option Secure Checkout Modal with Order Confetti`,
+      details: `
+        <h4 style="color: #ff4757; margin-bottom: 8px;">E-Commerce Engine Highlights:</h4>
+        <ul style="padding-left: 20px; margin-bottom: 12px;">
+          <li><strong>Complete Catalog of 24 Styles</strong>: Covers French floral sundresses, Tokyo streetwear cargo sets, satin cowl evening gowns, and tailored outerwear.</li>
+          <li><strong>Micro-Conversion UX</strong>: Card hover size chips allow customers to add items to bag in one single click without page reloads.</li>
+          <li><strong>Real-Time Cart Drawer</strong>: Includes threshold progress bar for free shipping, coupon auto-apply, and simulated multi-step checkout.</li>
+        </ul>
+        <div style="margin-top: 14px;">
+          <a href="clothing/" target="_blank" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: #fa2c19;">
+            <span>🛍️ Launch Live SHEIN VOGUE Storefront</span>
+          </a>
+        </div>
+      `
     }
   };
 

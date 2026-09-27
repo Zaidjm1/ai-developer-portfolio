@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHEIN VOGUE | Trending Women's Fashion & Flash Sales</title>
+  <meta name="description" content="Shop the hottest women's fashion, viral TikTok styles, dresses, tops, outerwear, and sets at up to 75% off. Daily new drops, express shipping & easy returns.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+</head>
+<body>
+  <!-- TOP PROMO BANNER TICKER -->
+  <div class="top-announcement-bar">
+    <div class="announcement-content">
+      <span class="ticker-badge">⚡ FLASH DEALS</span>
+      <p class="ticker-text">
+        UP TO <strong>75% OFF</strong> SUMMER DROPS &bull; USE CODE: <span class="promo-highlight">GLAM20</span> FOR EXTRA 20% OFF ORDERS $39+
+      </p>
+      <div class="countdown-widget">
+        <span class="timer-label">Ends In:</span>
+        <div class="timer-digits">
+          <span id="hours">04</span>h :
+          <span id="minutes">27</span>m :
+          <span id="seconds">54</span>s
+        </div>
+      </div>
+      <div class="ticker-aux">
+        <span>✈️ Free Express Over $29</span>
+        <span>🔄 45-Day Easy Return</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION HEADER -->
+  <header class="main-header">
+    <div class="header-container">
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Logo -->
+      <a href="index.html" class="brand-logo">
+        <span class="brand-main">SHEIN</span>
+        <span class="brand-sub">GLAMOUR</span>
+      </a>
+
+      <!-- Category Links (Desktop) -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="#catalog" class="nav-item active" data-filter="all">All Trends</a>
+        <a href="#catalog" class="nav-item" data-filter="dresses">Dresses</a>
+        <a href="#catalog" class="nav-item" data-filter="tops">Tops & Blouses</a>
+        <a href="#catalog" class="nav-item" data-filter="pants">Pants & Denim</a>
+        <a href="#catalog" class="nav-item" data-filter="sets">Co-ords & Sets</a>
+        <a href="#catalog" class="nav-item" data-filter="outerwear">Jackets & Coats</a>
+        <a href="#catalog" class="nav-item sale-nav" data-filter="under20">🔥 Under $20</a>
+      </nav>
+
+      <!-- Search & Utility Actions -->
+      <div class="header-actions">
+        <!-- Live Search Bar -->
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search dresses, tops, cargo, blazers..." autocomplete="off">
+          <button class="clear-search-btn" id="clearSearchBtn" aria-label="Clear Search">&times;</button>
+        </div>
+
+        <!-- Currency Selector -->
+        <div class="currency-selector">
+          <select id="currencySelect" aria-label="Select Currency">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="CAD">CAD ($)</option>
+            <option value="AUD">AUD ($)</option>
+          </select>
+        </div>
+
+        <!-- Wishlist Button -->
+        <button class="action-btn wishlist-btn" id="openWishlistBtn" aria-label="Wishlist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge" id="wishlistCount">0</span>
+        </button>
+
+        <!-- Shopping Bag Button -->
+        <button class="action-btn cart-btn" id="openCartBtn" aria-label="Shopping Bag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO PROMO SLIDER & VOUCHER WALLET -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-card">
+        <div class="hero-content">
+          <span class="hero-tag">NEW SEASON DROP &bull; 2026 EDIT</span>
+          <h1 class="hero-title">VIRAL TRENDS & VACAY CHIC</h1>
+          <p class="hero-desc">Discover over 20+ viral aesthetics from romantic cottagecore sundresses to Y2K streetwear and luxury satin eveningwear.</p>
+          <div class="hero-ctas">
+            <button class="btn btn-primary" onclick="filterByCategory('dresses')">Shop Dresses &bull; Up to 70% Off</button>
+            <button class="btn btn-secondary" onclick="filterByCategory('sets')">Explore 2-Piece Sets</button>
+          </div>
+          <div class="hero-perks">
+            <div class="perk-item">
+              <span class="perk-icon">✨</span>
+              <span>1000+ Daily New Drops</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">⚡</span>
+              <span>Fast Track Delivery</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">🏷️</span>
+              <span>Best Price Guaranteed</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image-wrapper">
+            <img src="assets/product_1.jpg" alt="Featured Summer Dress" class="hero-img hero-img-main">
+            <div class="hero-float-badge">
+              <span class="float-discount">-65%</span>
+              <span class="float-title">Ditsy Slit Dress</span>
+              <span class="float-price">$16.99 <del>$48.00</del></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE COUPON WALLET BAR -->
+      <div class="coupon-wallet-bar">
+        <div class="coupon-header">
+          <div class="coupon-icon">🎟️</div>
+          <div>
+            <h4>VOUCHER WALLET</h4>
+            <p>Click to auto-apply coupons to your bag</p>
+          </div>
+        </div>
+        <div class="coupons-grid">
+          <div class="coupon-ticket" onclick="claimCoupon('GLAM20', 20)">
+            <div class="coupon-amount">20% OFF</div>
+            <div class="coupon-info">
+              <span class="code">GLAM20</span>
+              <span class="req">Orders over $39</span>
+            </div>
+            <button class="claim-btn" id="couponBtn-GLAM20">Claim</button>
+          </div>
+          <div class="coupon-ticket" onclick="claimCoupon('SAVE10', 10, 'amount')">
+            <div class="coupon-amount">$10 OFF</div>
+            <div class="coupon-info">
+              <span class="code">SAVE10</span>
+              <span class="req">Orders over $59</span>
+            </div>
+            <button class="claim-btn" id="couponBtn-SAVE10">Claim</button>
+          </div>
+          <div class="coupon-ticket" onclick="claimCoupon('VIP25', 25, 'amount')">
+            <div class="coupon-amount">$25 OFF</div>
+            <div class="coupon-info">
+              <span class="code">VIP25</span>
+              <span class="req">Orders over $100</span>
+            </div>
+            <button class="claim-btn" id="couponBtn-VIP25">Claim</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CATALOG CONTROLS & PRODUCT GRID -->
+  <main class="catalog-section" id="catalog">
+    <div class="container">
+      <!-- Section Title & Filter Bar -->
+      <div class="catalog-header">
+        <div>
+          <h2 class="section-title">TRENDING NOW &bull; 20+ EXCLUSIVE PIECES</h2>
+          <p class="section-subtitle">Real-time inventory of runway-inspired silhouettes at everyday prices.</p>
+        </div>
+        <div class="catalog-stats">
+          <span id="resultsCount">Showing 24 Styles</span>
+        </div>
+      </div>
+
+      <!-- FILTER AND SORT TOOLBAR -->
+      <div class="catalog-toolbar">
+        <!-- Category Filter Pills -->
+        <div class="category-pills" id="categoryPills">
+          <button class="pill active" data-category="all">All Styles (24)</button>
+          <button class="pill" data-category="dresses">Dresses (7)</button>
+          <button class="pill" data-category="tops">Tops & Blouses (5)</button>
+          <button class="pill" data-category="pants">Pants & Denim (4)</button>
+          <button class="pill" data-category="sets">Sets & Co-ords (4)</button>
+          <button class="pill" data-category="outerwear">Jackets & Outerwear (4)</button>
+          <button class="pill sale-pill" data-category="flash">⚡ Flash Sale (-60%+)</button>
+        </div>
+
+        <!-- Sorting & Price Filters -->
+        <div class="sort-controls">
+          <div class="filter-group">
+            <label for="priceFilter">Price:</label>
+            <select id="priceFilter">
+              <option value="all">All Prices</option>
+              <option value="under15">Under $15</option>
+              <option value="15-25">$15 - $25</option>
+              <option value="over25">$25 and above</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="sortBy">Sort By:</label>
+            <select id="sortBy">
+              <option value="trending">Trending / Most Popular</option>
+              <option value="discount">Biggest Discount %</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Top Customer Rated</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT GRID (24 FEMALE CLOTHING ITEMS) -->
+      <div class="product-grid" id="productGrid">
+        <!-- Dynamically rendered via app.js -->
+      </div>
+
+      <!-- NO RESULTS PLACEHOLDER -->
+      <div class="no-results hidden" id="noResults">
+        <div class="no-results-icon">🔍</div>
+        <h3>No matching fashion items found</h3>
+        <p>Try clearing your search filters or check out our best-selling dresses.</p>
+        <button class="btn btn-primary" onclick="resetFilters()">Reset All Filters</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- TIKTOK VIRAL & SOCIAL PROOF SECTION -->
+  <section class="social-proof-section">
+    <div class="container">
+      <div class="proof-header">
+        <span class="proof-tag">#SHEINhaul &bull; VIRAL REVIEWS</span>
+        <h2>Loved By 10 Million+ Fashion Lovers</h2>
+        <p>Tag @shein_glamour on Instagram & TikTok to be featured on our front page!</p>
+      </div>
+
+      <div class="social-grid">
+        <div class="social-card">
+          <div class="social-img-box">
+            <img src="assets/product_3.jpg" alt="Satin Slip Look">
+            <span class="tiktok-badge">TikTok Viral</span>
+          </div>
+          <div class="social-body">
+            <div class="social-user">
+              <strong>@sophia.fits</strong>
+              <span class="verified">✓</span>
+            </div>
+            <p>"The emerald satin dress fit like a $400 designer slip! Wore it to my best friend's engagement party and got 50+ compliments."</p>
+            <div class="social-item-tag">👗 Emerald Satin Cowl Gown &bull; $21.49</div>
+          </div>
+        </div>
+
+        <div class="social-card">
+          <div class="social-img-box">
+            <img src="assets/product_4.jpg" alt="Ribbed Knit Co-ord">
+            <span class="tiktok-badge">TikTok Viral</span>
+          </div>
+          <div class="social-body">
+            <div class="social-user">
+              <strong>@claire_style</strong>
+              <span class="verified">✓</span>
+            </div>
+            <p>"The vanilla 2-piece set is thick, cozy, and not see-through at all. Super buttery soft material. Definitely ordering in black too!"</p>
+            <div class="social-item-tag">✨ Vanilla Ribbed 2-Piece Set &bull; $22.99</div>
+          </div>
+        </div>
+
+        <div class="social-card">
+          <div class="social-img-box">
+            <img src="assets/product_5.jpg" alt="Faux Leather Blazer">
+            <span class="tiktok-badge">TikTok Viral</span>
+          </div>
+          <div class="social-body">
+            <div class="social-user">
+              <strong>@mia_trendz</strong>
+              <span class="verified">✓</span>
+            </div>
+            <p>"Clean oversized shoulder pads, smooth lining, high quality faux leather. It elevated every single basic outfit I own!"</p>
+            <div class="social-item-tag">🧥 Faux-Leather Tailored Blazer &bull; $28.99</div>
+          </div>
+        </div>
+
+        <div class="social-card">
+          <div class="social-img-box">
+            <img src="assets/product_2.jpg" alt="Streetwear Hoodie">
+            <span class="tiktok-badge">TikTok Viral</span>
+          </div>
+          <div class="social-body">
+            <div class="social-user">
+              <strong>@chloe.streets</strong>
+              <span class="verified">✓</span>
+            </div>
+            <p>"The cargo pants and hoodie combo is my daily university uniform now. High waist fits snug and cargo pockets are actually deep."</p>
+            <div class="social-item-tag">👖 Streetwear Cargo & Hoodie Set &bull; $24.99</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST GUARANTEES FOOTER -->
+  <section class="trust-bar">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon">✈️</div>
+        <div class="trust-text">
+          <h4>FREE EXPRESS SHIPPING</h4>
+          <p>On all US & Global orders over $29</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🔄</div>
+        <div class="trust-text">
+          <h4>45-DAY FREE RETURNS</h4>
+          <p>Hassle-free pre-paid return label</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <div class="trust-text">
+          <h4>SECURE 256-BIT CHECKOUT</h4>
+          <p>SSL Encryption, PayPal, Apple Pay</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">💬</div>
+        <div class="trust-text">
+          <h4>24/7 CUSTOMER CARE</h4>
+          <p>Real-time live styling assistance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">SHEIN <span>GLAMOUR</span></div>
+        <p>Your ultimate destination for runway trends, fast fashion, and high-street chic at affordable everyday prices.</p>
+        <div class="payment-badges">
+          <span class="badge-chip">VISA</span>
+          <span class="badge-chip">MC</span>
+          <span class="badge-chip">AMEX</span>
+          <span class="badge-chip">PayPal</span>
+          <span class="badge-chip">Apple Pay</span>
+          <span class="badge-chip">Klarna</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>SHOPPING GUIDE</h4>
+        <ul>
+          <li><a href="#catalog" onclick="filterByCategory('dresses')">Dresses</a></li>
+          <li><a href="#catalog" onclick="filterByCategory('tops')">Tops & Blouses</a></li>
+          <li><a href="#catalog" onclick="filterByCategory('pants')">Pants & Bottoms</a></li>
+          <li><a href="#catalog" onclick="filterByCategory('outerwear')">Jackets & Coats</a></li>
+          <li><a href="#catalog" onclick="filterByCategory('sets')">Sets & Co-ords</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CUSTOMER CARE</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="openSizeGuideModal()">Size Guide & Measurements</a></li>
+          <li><a href="javascript:void(0)" onclick="showToast('Track Order: Enter your tracking code in checkout confirmation.')">Track My Package</a></li>
+          <li><a href="javascript:void(0)" onclick="showToast('Returns: 45 days free returns on all unworn items.')">Return Policy</a></li>
+          <li><a href="javascript:void(0)" onclick="showToast('Shipping: US Standard 3-5 days, Global 6-8 days.')">Shipping Info</a></li>
+          <li><a href="../index.html">Back to Main Portfolio</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter-col">
+        <h4>GET 15% OFF YOUR FIRST ORDER</h4>
+        <p>Subscribe for VIP flash drop notifications and secret coupon codes.</p>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+          <button type="submit" class="btn btn-primary">Join VIP</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 SHEIN GLAMOUR Fashion Showcase. Developed as a high-performance modern e-commerce portfolio demonstration. All images copyrighted to their respective owners.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== INTERACTIVE DRAWERS & MODALS ==================== -->
+
+  <!-- 1. SLIDE-OUT SHOPPING BAG (CART DRAWER) -->
+  <div class="drawer-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <h3>SHOPPING BAG</h3>
+        <span class="drawer-counter" id="cartDrawerCount">(0 items)</span>
+      </div>
+      <button class="close-drawer-btn" onclick="closeCart()" aria-label="Close Bag">&times;</button>
+    </div>
+
+    <!-- Free Shipping Progress -->
+    <div class="shipping-progress-box">
+      <div class="shipping-msg" id="shippingMsg">Add $29.00 more for <strong>FREE EXPRESS SHIPPING</strong>!</div>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="shippingProgressBar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scroll List -->
+    <div class="cart-items-container" id="cartItemsList">
+      <!-- Populated via app.js -->
+    </div>
+
+    <!-- Cart Empty State -->
+    <div class="cart-empty-state" id="cartEmptyState">
+      <div class="empty-icon">🛍️</div>
+      <h4>Your shopping bag is empty</h4>
+      <p>Explore our trending dresses and grab up to 70% off with daily flash deals!</p>
+      <button class="btn btn-primary" onclick="closeCart(); document.getElementById('catalog').scrollIntoView({behavior:'smooth'});">Start Shopping</button>
+    </div>
+
+    <!-- Cart Footer with Totals and Coupon -->
+    <div class="drawer-footer" id="cartFooter">
+      <div class="coupon-input-box">
+        <input type="text" id="couponInput" placeholder="Promo code (e.g. GLAM20)">
+        <button class="btn-apply-coupon" onclick="applyEnteredCoupon()">Apply</button>
+      </div>
+      <div class="coupon-applied-tag hidden" id="couponAppliedTag">
+        <span>Coupon <strong id="appliedCouponName">GLAM20</strong> (-<span id="couponDiscountRate">20%</span>)</span>
+        <button onclick="removeCoupon()" title="Remove coupon">&times;</button>
+      </div>
+
+      <div class="cart-totals">
+        <div class="total-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="total-row discount-row hidden" id="cartDiscountRow">
+          <span>Coupon Discount</span>
+          <span id="cartDiscount">-$0.00</span>
+        </div>
+        <div class="total-row">
+          <span>Estimated Shipping</span>
+          <span id="cartShipping">FREE</span>
+        </div>
+        <div class="total-row total-highlight">
+          <span>Estimated Total</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+      </div>
+
+      <button class="btn btn-checkout" id="checkoutBtn" onclick="openCheckoutModal()">
+        <span>PROCEED TO SECURE CHECKOUT</span>
+        <span class="btn-arrow">&rarr;</span>
+      </button>
+
+      <div class="drawer-security-badges">
+        <span>🔒 256-Bit SSL Encrypted</span>
+        <span>• 45-Day Returns</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. WISHLIST DRAWER -->
+  <div class="drawer-overlay" id="wishlistOverlay" onclick="closeWishlist()"></div>
+  <aside class="cart-drawer wishlist-drawer" id="wishlistDrawer" aria-label="My Wishlist">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <h3>MY WISHLIST</h3>
+        <span class="drawer-counter" id="wishlistDrawerCount">(0 items)</span>
+      </div>
+      <button class="close-drawer-btn" onclick="closeWishlist()" aria-label="Close Wishlist">&times;</button>
+    </div>
+    <div class="cart-items-container" id="wishlistItemsList">
+      <!-- Populated via app.js -->
+    </div>
+    <div class="cart-empty-state" id="wishlistEmptyState">
+      <div class="empty-icon">🤍</div>
+      <h4>Your wishlist is empty</h4>
+      <p>Save items you love by tapping the heart icon on any product.</p>
+    </div>
+  </aside>
+
+  <!-- 3. QUICK VIEW PRODUCT MODAL -->
+  <div class="modal-overlay" id="quickViewOverlay" onclick="closeQuickView(event)">
+    <div class="quick-view-modal" id="quickViewModel">
+      <button class="close-modal-btn" onclick="closeQuickView()">&times;</button>
+      <div class="quick-view-grid" id="quickViewContent">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CHECKOUT SIMULATION MODAL -->
+  <div class="modal-overlay" id="checkoutModalOverlay" onclick="closeCheckoutModal(event)">
+    <div class="checkout-modal" id="checkoutModal">
+      <button class="close-modal-btn" onclick="closeCheckoutModal()">&times;</button>
+      <div class="checkout-header">
+        <span class="checkout-logo">SHEIN <span>CHECKOUT</span></span>
+        <span class="safe-badge">🔒 100% Encrypted Checkout</span>
+      </div>
+
+      <div class="checkout-container" id="checkoutBody">
+        <form class="checkout-form" id="checkoutForm" onsubmit="handlePlaceOrder(event)">
+          <div class="checkout-section">
+            <h4>1. SHIPPING ADDRESS</h4>
+            <div class="form-row">
+              <input type="text" placeholder="First Name" value="Jessica" required>
+              <input type="text" placeholder="Last Name" value="Miller" required>
+            </div>
+            <div class="form-row full">
+              <input type="text" placeholder="Street Address" value="742 Evergreen Terrace" required>
+            </div>
+            <div class="form-row">
+              <input type="text" placeholder="City" value="Los Angeles" required>
+              <input type="text" placeholder="State / Province" value="CA" required>
+              <input type="text" placeholder="Zip Code" value="90210" required>
+            </div>
+            <div class="form-row full">
+              <input type="email" placeholder="Email Address for Receipt" value="jessica.m@example.com" required>
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <h4>2. PAYMENT METHOD</h4>
+            <div class="payment-tabs">
+              <label class="pay-option selected">
+                <input type="radio" name="paymentMethod" value="card" checked>
+                <span>Credit / Debit Card</span>
+              </label>
+              <label class="pay-option">
+                <input type="radio" name="paymentMethod" value="applepay">
+                <span>Apple Pay</span>
+              </label>
+              <label class="pay-option">
+                <input type="radio" name="paymentMethod" value="paypal">
+                <span>PayPal</span>
+              </label>
+              <label class="pay-option">
+                <input type="radio" name="paymentMethod" value="klarna">
+                <span>Klarna (4x $0-interest)</span>
+              </label>
+            </div>
+
+            <div class="card-details-box" id="cardDetailsBox">
+              <div class="form-row full">
+                <input type="text" placeholder="Card Number" value="4532 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 8921" required>
+              </div>
+              <div class="form-row">
+                <input type="text" placeholder="MM / YY" value="08/28" required>
+                <input type="text" placeholder="CVV" value="384" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-summary-box">
+            <div class="summary-line">
+              <span>Order Subtotal:</span>
+              <strong id="modalSubtotal">$0.00</strong>
+            </div>
+            <div class="summary-line">
+              <span>Promo Savings:</span>
+              <strong class="discount-color" id="modalDiscount">-$0.00</strong>
+            </div>
+            <div class="summary-line">
+              <span>Express Shipping:</span>
+              <strong class="free-text">FREE</strong>
+            </div>
+            <div class="summary-line grand-total">
+              <span>Final Total:</span>
+              <strong id="modalTotal">$0.00</strong>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-order" id="placeOrderBtn">
+            <span>COMPLETE PURCHASE</span>
+            <span class="lock-icon">🔒</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- SUCCESS CONFIRMATION STATE -->
+      <div class="order-success-state hidden" id="orderSuccessState">
+        <div class="success-icon">🎉</div>
+        <h2>THANK YOU FOR YOUR ORDER!</h2>
+        <p class="order-id">Order Reference: <strong id="orderRefNumber">#SH-8492019</strong></p>
+        <p class="success-msg">A confirmation email and real-time tracking link have been dispatched to your email. Estimated arrival: <strong>3-5 Business Days</strong>.</p>
+        <div class="order-perks-summary">
+          <div class="order-perk">✨ 45-Day Easy Returns Guaranteed</div>
+          <div class="order-perk">📦 100% Package Insurance Included</div>
+        </div>
+        <button class="btn btn-primary" onclick="closeCheckoutModal(); resetCart();">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. SIZE GUIDE MODAL -->
+  <div class="modal-overlay" id="sizeGuideOverlay" onclick="closeSizeGuide(event)">
+    <div class="size-guide-modal">
+      <button class="close-modal-btn" onclick="closeSizeGuide()">&times;</button>
+      <h3>SHEIN WOMEN'S SIZE GUIDE</h3>
+      <p class="modal-intro">Measurements are in inches (in) and centimeters (cm). All items are true to size with moderate stretch unless noted.</p>
+      <div class="size-table-wrapper">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>US / CA</th>
+              <th>Bust (in)</th>
+              <th>Waist (in)</th>
+              <th>Hips (in)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>XS</strong></td>
+              <td>0 - 2</td>
+              <td>32 - 33"</td>
+              <td>24 - 25"</td>
+              <td>34 - 35"</td>
+            </tr>
+            <tr>
+              <td><strong>S</strong></td>
+              <td>4 - 6</td>
+              <td>34 - 35"</td>
+              <td>26 - 27"</td>
+              <td>36 - 37"</td>
+            </tr>
+            <tr>
+              <td><strong>M</strong></td>
+              <td>8 - 10</td>
+              <td>36 - 37"</td>
+              <td>28 - 29"</td>
+              <td>38 - 39"</td>
+            </tr>
+            <tr>
+              <td><strong>L</strong></td>
+              <td>12 - 14</td>
+              <td>38.5 - 40"</td>
+              <td>30.5 - 32"</td>
+              <td>40.5 - 42"</td>
+            </tr>
+            <tr>
+              <td><strong>XL</strong></td>
+              <td>16 - 18</td>
+              <td>41.5 - 43"</td>
+              <td>33.5 - 35"</td>
+              <td>43.5 - 45"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-primary full-width" onclick="closeSizeGuide()">Got It</button>
+    </div>
+  </div>
+
+  <!-- FLOATING TOAST NOTIFICATION -->
+  <div class="toast-notification" id="toastNotification">
+    <div class="toast-content" id="toastMessage">Item added to bag!</div>
+  </div>
+
+  <!-- BACK TO MAIN PORTFOLIO FLOATING PILL -->
+  <a href="../index.html" class="floating-portfolio-pill" title="Return to Portfolio">
+    <span class="pill-dot"></span>
+    <span>&larr; Portfolio Main</span>
+  </a>
+
+  <!-- SCRIPTS -->
+  <script src="app.js"></script>
+</body>
+</html>
