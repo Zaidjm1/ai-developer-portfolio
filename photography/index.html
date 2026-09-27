@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MICHAEL JAY DIAZ — Visual Anthology & Photography Showcase</title>
-  <meta name="description" content="A curated visual anthology and fine-art photography showcase capturing landscapes, human narratives, architecture, and quiet moments.">
+  <title>MICHAEL JAY DIAZ — Photography Archive</title>
+  <meta name="description" content="Fine-art photography archive capturing landscapes, human narratives, architecture, and quiet moments.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎞️</text></svg>">
 </head>
 <body>
 
-  <!-- Minimalist Editorial Header -->
-  <header class="site-header">
+  <!-- Floating Transparent Editorial Header -->
+  <header class="site-header" id="siteHeader">
     <a href="#" class="brand-title">
       <h1>MICHAEL JAY DIAZ</h1>
       <span>VISUAL ARCHIVE &bull; SELECTED WORKS</span>
@@ -24,10 +24,28 @@
     </ul>
   </header>
 
+  <!-- Mara Mapes-Style Full-Bleed Hero Landing Cover -->
+  <section class="full-hero">
+    <div class="hero-backdrop">
+      <img src="assets/hero_ocean_coast.jpg" alt="Pacific coastal sunset fine-art landscape" loading="eager">
+    </div>
+    <div class="hero-vignette"></div>
+
+    <div class="hero-center-content">
+      <div class="hero-subtitle">VISUAL ARCHIVE &bull; VOL. I</div>
+      <h2 class="hero-heading">Where Light Meets the Quiet World.</h2>
+    </div>
+
+    <a href="#gallery" class="hero-scroll-cue">
+      <span>Explore Works</span>
+      <div class="scroll-indicator-line"></div>
+    </a>
+  </section>
+
   <!-- Curated Category Bar -->
   <div class="curation-bar" id="gallery">
     <div class="filter-group">
-      <button class="filter-btn active" data-filter="all">All Plates (10)</button>
+      <button class="filter-btn active" data-filter="all">All Works (11)</button>
       <button class="filter-btn" data-filter="landscape">Nature & Landscapes</button>
       <button class="filter-btn" data-filter="portrait">Portraits & Human Spirit</button>
       <button class="filter-btn" data-filter="architecture">Architecture & Spaces</button>
@@ -35,7 +53,7 @@
     </div>
 
     <div class="gallery-count" id="itemCount">
-      SHOWING 10 PLATES
+      SHOWING 11 PLATES
     </div>
   </div>
 
@@ -43,7 +61,28 @@
   <main class="masonry-container">
     <div class="masonry-grid" id="masonryGrid">
 
-      <!-- Item 1: Alpine Sunrise -->
+      <!-- Item 1: Pacific Coast Flare -->
+      <article class="collage-item" data-category="landscape" 
+               data-src="assets/hero_ocean_coast.jpg" 
+               data-title="Pacific Breakers at Golden Twilight" 
+               data-desc="Crashing swell over rugged coastal sea stacks as amber sunlight breaks through coastal Pacific fog. Ethereal atmospheric haze and rich contrast."
+               data-specs="35mm Medium Format &bull; f/8.0 &bull; 1/320s &bull; ISO 100">
+        <div class="collage-media">
+          <img src="assets/hero_ocean_coast.jpg" alt="Pacific coastal sea stacks at sunset" loading="lazy">
+        </div>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>Pacific Breakers at Golden Twilight</h3>
+            <p>Crashing sea stacks illuminated by breaking rays through coastal fog.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Landscape</span>
+            <div class="shot-details">35mm &bull; f/8.0</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 2: Alpine Sunrise -->
       <article class="collage-item" data-category="landscape" 
                data-src="assets/misty_mountain.jpg" 
                data-title="Alpine Solitude at First Light" 
@@ -64,7 +103,7 @@
         </div>
       </article>
 
-      <!-- Item 2: Scandinavian Pavilion -->
+      <!-- Item 3: Scandinavian Pavilion -->
       <article class="collage-item" data-category="architecture" 
                data-src="assets/minimal_architecture.jpg" 
                data-title="Pavilion Over Still Water" 
@@ -85,7 +124,7 @@
         </div>
       </article>
 
-      <!-- Item 3: Street Jazz Musician (B&W) -->
+      <!-- Item 4: Street Jazz Musician (B&W) -->
       <article class="collage-item" data-category="portrait" 
                data-src="assets/street_jazz_bw.jpg" 
                data-title="The Soul of Royal Street" 
@@ -106,7 +145,7 @@
         </div>
       </article>
 
-      <!-- Item 4: Icelandic Horses -->
+      <!-- Item 5: Icelandic Horses -->
       <article class="collage-item" data-category="landscape" 
                data-src="assets/iceland_horses.jpg" 
                data-title="Wind-Swept Highlands" 
@@ -127,7 +166,7 @@
         </div>
       </article>
 
-      <!-- Item 5: Coastal Wedding Golden Hour -->
+      <!-- Item 6: Coastal Wedding Golden Hour -->
       <article class="collage-item" data-category="portrait" 
                data-src="assets/wedding_coastal.jpg" 
                data-title="Ethereal Pacific Vows" 
@@ -148,7 +187,7 @@
         </div>
       </article>
 
-      <!-- Item 6: Haute Couture Editorial -->
+      <!-- Item 7: Haute Couture Editorial -->
       <article class="collage-item" data-category="editorial" 
                data-src="assets/fashion_editorial.jpg" 
                data-title="Tactile Autumn Lookbook" 
@@ -169,7 +208,7 @@
         </div>
       </article>
 
-      <!-- Item 7: Executive Thought Leadership -->
+      <!-- Item 8: Executive Thought Leadership -->
       <article class="collage-item" data-category="portrait" 
                data-src="assets/executive_portrait.jpg" 
                data-title="The Quiet Strategist" 
@@ -190,7 +229,7 @@
         </div>
       </article>
 
-      <!-- Item 8: Botanical Cosmetics Still Life -->
+      <!-- Item 9: Botanical Cosmetics Still Life -->
       <article class="collage-item" data-category="editorial" 
                data-src="assets/commercial_product.jpg" 
                data-title="Flora & Amber Glass" 
@@ -211,7 +250,7 @@
         </div>
       </article>
 
-      <!-- Item 9: Santorini Sunset Suite -->
+      <!-- Item 10: Santorini Sunset Suite -->
       <article class="collage-item" data-category="architecture" 
                data-src="assets/hospitality_ad.jpg" 
                data-title="Santorini Caldera Haven" 
@@ -232,7 +271,7 @@
         </div>
       </article>
 
-      <!-- Item 10: Morning Patisserie & Coffee -->
+      <!-- Item 11: Morning Patisserie & Coffee -->
       <article class="collage-item" data-category="editorial" 
                data-src="assets/cafe_food_lifestyle.jpg" 
                data-title="Morning Ritual" 

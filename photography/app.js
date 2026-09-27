@@ -1,3 +1,14 @@
+// Header background shift on scroll
+const siteHeader = document.getElementById('siteHeader');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    siteHeader.classList.add('scrolled');
+  } else {
+    siteHeader.classList.remove('scrolled');
+  }
+});
+
 // Category Filtering
 const filterBtns = document.querySelectorAll('.filter-btn');
 const collageItems = document.querySelectorAll('.collage-item');
