@@ -12,47 +12,267 @@ document.addEventListener('DOMContentLoaded', () => {
   const terminalInput = document.getElementById('terminal-input');
   const promptChips = document.querySelectorAll('.prompt-chip');
 
-  const partnerKnowledge = [
-    {
-      keywords: ['quality', 'bugs', 'ensure', 'hallucination', 'code review', 'broken'],
-      reasoning: 'Tool Call: review_code_quality_workflow()\nRetrieving testing protocols, linting gates, and human verification checkpoints...',
-      response: `We guarantee production-grade code through a strict **Two-Tier Verification Workflow**:
-      
-1. **Human Architecture & Oversight**: My human partner defines the database schemas, API contracts, security constraints, and UX logic before any code is generated.
-2. **Automated Test Scaffolding**: I generate comprehensive unit and integration test suites (PyTest / Jest / Playwright) alongside the features.
-3. **Rigorous Human QA**: Every single pull request and code snippet is manually inspected, tested, and approved by the human lead. You get the speed of AI with the reliability of a senior engineer.`
-    },
-    {
-      keywords: ['agency', 'better', 'traditional', 'cost', 'why hire', 'vs'],
-      reasoning: 'Tool Call: compare_delivery_models(target="Traditional Agency vs Human+AI Studio")\nCalculating turnaround benchmarks and cost efficiencies...',
-      response: `Hiring a Human + AI duo beats a traditional dev agency on three critical fronts:
-      
-1. **5x Faster Turnaround**: Traditional agencies take 6–12 weeks of endless meetings and junior developer handoffs. We build and deploy working MVPs in **48 to 72 hours**.
-2. **Zero Communication Silos**: You talk directly to the lead architect who actually directs the build—no account managers or broken telephone.
-3. **Drastically Lower Cost**: You get the output of a 4-person team (frontend, backend, design, and QA) packaged into one agile, high-velocity partner.`
-    },
-    {
-      keywords: ['turnaround', 'timeline', 'time', 'mvp', 'how fast', 'schedule'],
-      reasoning: 'Tool Call: estimate_velocity_metrics(sprint="MVP Launch")\nLoading historical delivery records across SaaS and automation projects...',
-      response: `Our standard delivery benchmarks:
-      
-- **Interactive Landing Pages & Prototypes**: 24 – 48 Hours
-- **Full-Stack SaaS MVPs (Auth, Database, Payments)**: 3 – 5 Days
-- **Custom Business & Workflow Automations**: 1 – 3 Days
-- **Generative Media & Image Pipelines**: 24 – 48 Hours
+  // --------------------------------------------------------------------------
+  // Intelligent Project Scoping & Conversational Engine
+  // --------------------------------------------------------------------------
+  function generateProjectResponse(query) {
+    const q = query.trim().toLowerCase();
 
-Because we eliminate boilerplate grunt work with AI agents, 90% of our time is spent on product logic, user experience, and testing.`
-    },
-    {
-      keywords: ['automation', 'automate', 'crm', 'webhook', 'slack', 'sheets', 'zapier', 'make'],
-      reasoning: 'Tool Call: list_automation_connectors(status="active")\nIndexing API webhooks, document parsers, and sync engines...',
-      response: `Yes! We build custom, resilient automation pipelines that eliminate manual work:
-      
-1. **Document & Invoice OCR**: Automatically extracting structured JSON data from incoming PDFs and emails using AI vision.
-2. **Cross-Platform Synchronization**: Bi-directional syncing between Google Sheets, Airtable, HubSpot, Salesforce, and PostgreSQL.
-3. **Custom Alerts & Bots**: Real-time Slack, Discord, or WhatsApp triggers for high-priority leads, payment failures, or urgent tickets.`
+    // 1. E-COMMERCE & ONLINE STORES
+    if (/e-?commerce|online store|shop|storefront|cart|selling online|shopify|products catalog/i.test(q)) {
+      return {
+        reasoning: `Analyzing requirement: E-Commerce Web Application\nDetecting sub-modules: Storefront Catalog, Cart State, Stripe Checkout, Merchant Admin\nCalculating sprint timeline with Human+AI velocity...`,
+        response: `### 🛒 E-Commerce Website & Online Store
+        
+Building a modern, high-converting **E-Commerce Platform** typically takes **4 to 6 business days** from kickoff to live deployment.
+
+**📅 Estimated Sprint Milestones**:
+- **Days 1–2 (Storefront & Product Catalog)**: Responsive product grid, category filtering, search, and dynamic inventory database.
+- **Days 3–4 (Cart & Secure Checkout)**: Persistent cart state, Stripe / LemonSqueezy payment gateway, coupon codes, and automated customer order confirmations.
+- **Days 5–6 (Merchant Dashboard & Fulfillment)**: Custom admin portal for tracking orders, managing product stock, updating shipping statuses, and customer accounts.
+- **Final Launch**: Domain configuration, SSL, payment webhook verification, and live testing.
+
+**⚡ Key Tech**: React / Next.js, Stripe API, Supabase / PostgreSQL, Tailwind & Glassmorphism.
+
+*Ready to start selling? Send your product details to Michael at **michaeljayo.diaz@gmail.com**.*`
+      };
     }
-  ];
+
+    // 2. FULL-STACK SAAS & WEB APPS
+    if (/saas|web app|webapp|portal|membership|dashboard|client portal|mvp/i.test(q)) {
+      return {
+        reasoning: `Analyzing requirement: Full-Stack SaaS MVP\nDetecting sub-modules: User Auth, Relational Database, Subscription Billing, Analytics Dashboard\nCalculating agile delivery sprint...`,
+        response: `### 💻 Full-Stack SaaS MVP
+        
+Architecting and deploying a production-ready **SaaS MVP** typically takes **3 to 5 business days**.
+
+**📅 Estimated Sprint Milestones**:
+- **Days 1–2 (Architecture, Auth & Database)**: Supabase / PostgreSQL schema with Row-Level Security (RLS), email/OAuth login, and user roles.
+- **Days 3–4 (Core Product Features & UI)**: Interactive dashboard, real-time analytics graphs, responsive mobile/desktop UI, and CRUD business logic.
+- **Day 5 (Billing, Automated Webhooks & QA)**: Stripe subscription tiers, customer self-service billing portal, unit testing, and cloud deployment.
+
+**⚡ Key Tech**: React 18, Python FastAPI / Node.js, PostgreSQL, Stripe, Vercel / Railway.
+
+*Have a SaaS concept? Let's turn it into a live product: **michaeljayo.diaz@gmail.com**.*`
+      };
+    }
+
+    // 3. WORKFLOW AUTOMATIONS, OCR & BOTS
+    if (/automation|automate|ocr|invoice|receipt|webhook|crm|slack|bot|scraper|scrape|sheets|zapier|make/i.test(q)) {
+      return {
+        reasoning: `Analyzing requirement: Custom Workflow Automation\nDetecting integrations: Webhooks, AI OCR Parsing, Database Sync, Notification Engine\nCalculating automation pipeline timeline...`,
+        response: `### ⚡ Custom Workflow & Operations Automation
+        
+Creating an end-to-end **Automated Workflow Pipeline** typically takes **1 to 3 business days**.
+
+**📅 Estimated Sprint Milestones**:
+- **Day 1 (Data Ingestion & Extraction)**: Webhook endpoints, email listeners, or scrapers paired with Gemini 3.8 Flash OCR to extract structured JSON data.
+- **Day 2 (Business Logic & CRM Sync)**: Data validation rules, duplicate detection, and automated synchronization with PostgreSQL, HubSpot, Airtable, or Google Sheets.
+- **Day 3 (Alerts & Resilience)**: Multi-channel notifications via Slack / WhatsApp with interactive action buttons, retry mechanisms, and error logging.
+
+**⚡ Key Tech**: Python, Gemini 3.8 Flash, REST APIs, Webhooks, Docker, Cloud Cron.
+
+*Want to eliminate repetitive manual work? Reach out at **michaeljayo.diaz@gmail.com**.*`
+      };
+    }
+
+    // 4. GENERATIVE MEDIA & ASSET PIPELINES
+    if (/image|media|generative|visual|comfyui|stable diffusion|midjourney|brand asset|graphic|creative|photorealistic|model|portrait|product ad|business ad/i.test(q)) {
+      return {
+        reasoning: `Analyzing requirement: Generative Media & Commercial Visual Studio\nDetecting modules: Editorial Fashion Modeling, Executive Branding Portraits, Commercial Product Photography, Luxury Spaces\nCalculating commercial synthesis pipeline...`,
+        response: `### 📸 Commercial AI Visual Production & Generative Studio
+        
+Producing a comprehensive package of **Photorealistic Commercial Visuals** (for editorial modeling, executive branding, e-commerce product ads, or luxury hospitality) typically takes **2 to 3 business days**.
+
+**📅 Estimated Sprint Milestones**:
+- **Day 1 (Prompt Matrix & Lighting Setup)**: Calibrating photorealistic textures (authentic skin pores, micro-lighting, studio rim lights, macro product depth of field).
+- **Day 2 (Multi-Angle Batch Synthesis)**: Generating 30+ campaign variations across multi-channel ratios (1:1 feed, 9:16 mobile ads, 16:9 hero banners).
+- **Day 3 (Color Grading & 4K Master Delivery)**: Color calibration for brand hex fidelity, 4K upscaling, and direct commercial delivery.
+
+**⚡ Key Tech**: Midjourney Studio, Stable Diffusion / ComfyUI, Python Pillow, 4K Real-ESRGAN.
+
+*Explore the live interactive sample carousel right above, or email **michaeljayo.diaz@gmail.com**.*`
+      };
+    }
+
+    // 4B. AI SEO / GEO / AEO SEARCH ENGINE OPTIMIZATION
+    if (/geo|aeo|ai seo|seo|search optimization|perplexity|chatgpt search|google ai|citations|answer engine/i.test(q)) {
+      return {
+        reasoning: `Analyzing requirement: AI SEO, Generative Engine Optimization (GEO) & AEO\nDetecting modules: Schema.org Entity Graph, AEO Answer Nodes, LLM Citation Monitoring\nCalculating search sprint timeline...`,
+        response: `### 🌐 AI SEO, GEO & Answer Engine Optimization (AEO)
+        
+Deploying a complete **Generative Engine Optimization (GEO / AEO) Sprint** typically takes **2 to 3 business days**.
+
+**📅 Estimated Sprint Milestones**:
+- **Day 1 (Entity Audit & Competitive Citation Mapping)**: Auditing how your brand is cited inside ChatGPT Search, Perplexity AI, Claude, and Google AI Overviews vs top competitors.
+- **Day 2 (Schema & Direct-Answer Node Engineering)**: Deploying rich JSON-LD semantic entity graphs and formatting high-authority FAQ direct-answer blocks that LLMs cite as truth.
+- **Day 3 (Citation Graph & Monitoring Setup)**: Establishing authority backlinks, submitting search index feeds, and setting up automated 30-day LLM citation tracking.
+
+**⚡ Deliverables**: 4x LLM citation share, structured entity schemas, conversational search dominance.
+
+*Ready to dominate AI search? Contact Michael at **michaeljayo.diaz@gmail.com**.*`
+      };
+    }
+
+    // 4C. AI EXECUTIVE GHOSTWRITING & THOUGHT LEADERSHIP
+    if (/ghostwrit|executive writing|thought leadership|founder post|linkedin essay|substack|op-ed|founder voice|newsletter/i.test(q)) {
+      return {
+        reasoning: `Analyzing requirement: AI Executive Ghostwriting & Thought Leadership\nDetecting modules: Founder Voice Profiling, LinkedIn Viral Framing, Substack Op-Eds\nCalculating editorial velocity...`,
+        response: `### ✍️ AI Executive Ghostwriting & Thought Leadership Pipeline
+        
+Building your personalized **Executive Ghostwriting Pipeline** and delivering the initial high-authority editorial batch takes **2 to 3 business days**.
+
+**📅 Estimated Sprint Milestones**:
+- **Day 1 (Executive Voice Fingerprinting)**: Analyzing your past writing, voice memos, and core perspectives to calibrate tone, cadence, and contrarian thesis angles.
+- **Day 2 (Sprint Content Production)**: Synthesizing 10x viral-hooked LinkedIn B2B essays and 2x long-form Substack / Forbes-caliber industry opinion editorials.
+- **Day 3 (Multi-Format Adaptation & Calendar)**: Converting essays into X/Twitter threads, quotation cards, and a structured 30-day automated publishing schedule.
+
+**⚡ Result**: 100% authentic founder voice match with 12x content velocity.
+
+*Ready to turn your insights into authority? Email Michael at **michaeljayo.diaz@gmail.com**.*`
+      };
+    }
+
+    // 5. MOBILE APPS & CROSS-PLATFORM
+    if (/mobile|ios|android|phone app|react native|flutter|pwa/i.test(q)) {
+      return {
+        reasoning: `Analyzing requirement: Mobile / PWA Application\nDetecting modules: Responsive Shell, Offline Storage, Push Alerts, Native Device APIs\nCalculating mobile sprint...`,
+        response: `### 📱 Mobile / Progressive Web App (PWA)
+        
+Building a fast, installable **Mobile Application or PWA** typically takes **5 to 8 business days**.
+
+**📅 Estimated Sprint Milestones**:
+- **Days 1–3 (App Shell & Navigation)**: Touch-optimized UI, fluid navigation gestures, bottom tab bars, and user profile management.
+- **Days 4–6 (Core Mobile Features)**: Camera / file uploads, push notifications, offline caching, and responsive backend API synchronization.
+- **Days 7–8 (Testing & App Store Ready)**: Cross-device testing on iOS & Android viewports, performance audits, and PWA manifest generation.
+
+*Have a mobile concept? Let's discuss scope at **michaeljayo.diaz@gmail.com**.*`
+      };
+    }
+
+    // 6. LANDING PAGES & CORPORATE WEBSITES
+    if (/landing|landing page|website|portfolio|redesign|homepage|one page/i.test(q)) {
+      return {
+        reasoning: `Analyzing requirement: High-Converting Landing Page\nDetecting modules: Modern Glassmorphic Design, Interactive Micro-Animations, Form Ingestion, SEO\nCalculating frontend sprint...`,
+        response: `### 🌐 High-Converting Landing Page & Website
+        
+Designing, developing, and launching a bespoke **Landing Page** typically takes **1 to 2 business days**.
+
+**📅 Estimated Sprint Milestones**:
+- **Day 1 (Visual Architecture & Layout)**: Ultra-modern dark glassmorphism, responsive mobile-first typography, hero animations, and feature showcases.
+- **Day 2 (Interactivity, SEO & Launch)**: Lead capture forms, custom interactive calculators/widgets, 98+ Google Lighthouse optimization, and custom domain deployment.
+
+*Ready for a stunning web presence? Contact Michael at **michaeljayo.diaz@gmail.com**.*`
+      };
+    }
+
+    // 7. PRICING & RATES INQUIRIES
+    if (/cost|price|pricing|rate|how much|quote|budget|estimate fee/i.test(q)) {
+      return {
+        reasoning: `Analyzing inquiry: Pricing Structure & Rates\nRetrieving sprint pricing guidelines...`,
+        response: `### 💰 Project Pricing & Sprint Structure
+        
+Because we eliminate agency bloat and leverage AI-accelerated workflows, our turnaround times and rates are significantly more competitive than traditional agencies:
+
+- **Quick Automations & Bots**: Typically **$500 – $1,200** (1–3 days delivery)
+- **High-Converting Landing Pages**: Typically **$800 – $1,500** (1–2 days delivery)
+- **Full-Stack SaaS MVPs & E-Commerce Stores**: Typically **$2,000 – $4,500** (3–6 days delivery)
+
+Every project includes clean source code ownership, production cloud deployment, and **30 days of post-launch bug warranty**.
+
+*Want an exact, fixed-price quote? Email Michael directly with your project brief at **michaeljayo.diaz@gmail.com**.*`
+      };
+    }
+
+    // 8. TECH STACK & TOOLS INQUIRIES
+    if (/tech stack|technologies|what tools|framework|languages|stack|what do you use/i.test(q)) {
+      return {
+        reasoning: `Analyzing inquiry: Technical Stack & Architecture\nSynthesizing engineering toolkit...`,
+        response: `### 🛠️ Michael's Core Development Stack
+        
+We use a high-performance, modern toolkit optimized for speed, reliability, and scalability:
+
+- **Frontend**: React 18, Next.js, HTML5/CSS3 Vanilla, Tailwind, Glassmorphism, Framer Motion
+- **Backend & APIs**: Python FastAPI, Node.js / Express, REST & GraphQL, Webhooks
+- **Databases & Auth**: Supabase, PostgreSQL, Firebase, Redis, Prisma
+- **Payments & Cloud**: Stripe API, Vercel, Railway, Docker, AWS S3
+- **AI & Automation**: Antigravity IDE, Claude Fable 5.1, Gemini 3.8 Flash, ComfyUI, Stable Diffusion
+
+*Need a specific tech stack not listed? We adapt quickly: **michaeljayo.diaz@gmail.com**.*`
+      };
+    }
+
+    // 9. GREETINGS & INTRODUCTIONS
+    if (/^(hi|hello|hey|greetings|good morning|good afternoon|good evening|who are you|what can you do)/i.test(q)) {
+      return {
+        reasoning: `Analyzing inquiry: Conversational Greeting\nFormulating introduction to Michael's studio capabilities...`,
+        response: `### 👋 Hello! I'm Michael's AI Project Estimator
+        
+I'm here to help you scope your project and provide accurate delivery timelines. 
+
+**I can estimate timelines for**:
+- 🛒 **E-Commerce Stores** (Product catalogs, cart, Stripe checkout)
+- 💻 **Full-Stack SaaS MVPs** (Auth, databases, billing, user dashboards)
+- ⚡ **Workflow Automations** (API integrations, invoice OCR, CRM syncing)
+- 🎨 **Generative AI Studios** (Image generation, branding assets, ComfyUI pipelines)
+- 🌐 **Modern Landing Pages & Web Apps**
+
+What type of project are you thinking about building? Describe your idea and I'll break it down for you!`
+      };
+    }
+
+    // 10. DYNAMIC CONTEXTUAL ESTIMATOR (For any arbitrary or novel project pitch)
+    let estimatedDaysMin = 2;
+    let estimatedDaysMax = 4;
+    let detectedFeatures = [];
+
+    if (/auth|login|user|signup|account|profile/i.test(q)) {
+      estimatedDaysMin += 1;
+      estimatedDaysMax += 1;
+      detectedFeatures.push("User Authentication & Access Control");
+    }
+    if (/stripe|payment|billing|checkout|subscription|pay/i.test(q)) {
+      estimatedDaysMin += 1;
+      estimatedDaysMax += 1;
+      detectedFeatures.push("Secure Payment Gateway & Webhook Ingestion");
+    }
+    if (/api|webhook|sync|connect|database|sql|postgres|supabase/i.test(q)) {
+      estimatedDaysMin += 1;
+      estimatedDaysMax += 1;
+      detectedFeatures.push("Database Modeling & API Integrations");
+    }
+    if (/ai|llm|chat|agent|ocr|vision|gpt|model/i.test(q)) {
+      estimatedDaysMin += 1;
+      estimatedDaysMax += 2;
+      detectedFeatures.push("Intelligent AI / LLM Feature Integration");
+    }
+    if (/admin|dashboard|analytics|reporting|table|chart/i.test(q)) {
+      estimatedDaysMin += 1;
+      estimatedDaysMax += 1;
+      detectedFeatures.push("Custom Admin Dashboard & Visual Analytics");
+    }
+
+    if (detectedFeatures.length === 0) {
+      detectedFeatures.push("Custom Application Logic & Data Flow", "Responsive Modern UI & Mobile Optimization", "Cloud Deployment & QA Testing");
+    }
+
+    return {
+      reasoning: `Analyzing custom project requirements: "${escapeHtml(query.slice(0, 60))}"\nIdentified Components: [${detectedFeatures.join(', ')}]\nCalculating delivery sprint...`,
+      response: `### 📋 Project Scope & Timeline Estimate
+      
+For your project requirements, estimated delivery is **${estimatedDaysMin} to ${estimatedDaysMax} business days** from design kickoff to deployment.
+
+**🛠️ Identified Technical Modules**:
+${detectedFeatures.map(f => `- **${f}**`).join('\n')}
+
+**📅 Execution Milestones**:
+- **Milestone 1 (Foundations)**: Technical architecture, database schemas, and wireframe approval.
+- **Milestone 2 (Development)**: Fast-paced feature buildout, component styling, and third-party integrations.
+- **Milestone 3 (Verification & Launch)**: End-to-end automated testing, security checks, and live cloud deployment.
+
+*Let's build this together! Send your project details to Michael at **michaeljayo.diaz@gmail.com**.*`
+    };
+  }
 
   let isTyping = false;
 
@@ -70,7 +290,7 @@ Because we eliminate boilerplate grunt work with AI agents, 90% of our time is s
       <div class="reasoning-box">
         <div class="reasoning-title">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
-          AI Co-Developer Processing
+          Sprint Calculation Trace
         </div>
         <div class="reasoning-text">${escapeHtml(match.reasoning)}</div>
       </div>
@@ -104,34 +324,85 @@ Because we eliminate boilerplate grunt work with AI agents, 90% of our time is s
     }, 12);
   }
 
-  function handlePartnerQuery(queryText) {
+  async function handlePartnerQuery(queryText) {
     if (!queryText.trim()) return;
 
-    const lower = queryText.toLowerCase();
-    let selectedMatch = null;
+    // Show initial loading / thinking bubble
+    const userMsgEl = document.createElement('div');
+    userMsgEl.className = 'chat-msg';
+    userMsgEl.innerHTML = `
+      <div class="user-query">
+        <span style="color: var(--accent-cyan);">&gt;</span>
+        <span>${escapeHtml(queryText)}</span>
+      </div>
+      <div class="reasoning-box">
+        <div class="reasoning-title">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <span class="reasoning-label">Contacting Live AI Estimator...</span>
+        </div>
+        <div class="reasoning-text">Analyzing project parameters, feasibility, and technical dependencies...</div>
+      </div>
+      <div class="agent-response">
+        <span class="stream-target">Thinking...</span><span class="cursor-blink"></span>
+      </div>
+    `;
 
-    for (const item of partnerKnowledge) {
-      if (item.keywords.some(kw => lower.includes(kw))) {
-        selectedMatch = item;
-        break;
+    terminalLog.appendChild(userMsgEl);
+    terminalLog.scrollTop = terminalLog.scrollHeight;
+
+    const streamTarget = userMsgEl.querySelector('.stream-target');
+    const reasoningLabel = userMsgEl.querySelector('.reasoning-label');
+    const reasoningText = userMsgEl.querySelector('.reasoning-text');
+    const cursor = userMsgEl.querySelector('.cursor-blink');
+
+    try {
+      const res = await fetch('/api/estimate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: queryText })
+      });
+
+      if (!res.ok) {
+        throw new Error(`HTTP error ${res.status}`);
       }
+
+      const data = await res.json();
+      
+      // Update reasoning box
+      if (data.reasoning) {
+        reasoningLabel.textContent = "AI Sprint Reasoning";
+        reasoningText.textContent = data.reasoning;
+      }
+
+      // Stream the real Gemini response
+      streamTextToElement(streamTarget, cursor, data.response);
+
+    } catch (err) {
+      console.warn("Live API call failed or server offline, using local intelligent engine fallback:", err);
+      const fallback = generateProjectResponse(queryText);
+      reasoningLabel.textContent = "Sprint Calculation Trace";
+      reasoningText.textContent = fallback.reasoning;
+      streamTextToElement(streamTarget, cursor, fallback.response);
     }
+  }
 
-    if (!selectedMatch) {
-      selectedMatch = {
-        reasoning: `Tool Call: general_inquiry_synthesis(topic="${escapeHtml(queryText)}")\nSynthesizing human-in-the-loop developer workflow...`,
-        response: `As a human + AI development team, we combine **strategic direction and rigorous QA** with **lightning-fast AI execution**.
-        
-We build:
-- **Full-Stack Web & Mobile Apps** (React, Next.js, Python, PostgreSQL, Supabase)
-- **Workflow Automations & Custom Bots** (APIs, webhooks, CRMs, document parsers)
-- **Generative Media & Visuals** (High-converting graphics, brand assets, mockups)
-
-Have a specific project in mind? Use our **Scope Estimator** above or drop us an email!`
-      };
-    }
-
-    streamPartnerResponse(queryText, selectedMatch);
+  function streamTextToElement(targetEl, cursorEl, text) {
+    let charIndex = 0;
+    const formatted = formatMarkdown(text);
+    targetEl.textContent = '';
+    
+    const typingInterval = setInterval(() => {
+      charIndex += 4;
+      if (charIndex >= text.length) {
+        clearInterval(typingInterval);
+        targetEl.innerHTML = formatted;
+        if (cursorEl) cursorEl.remove();
+        terminalLog.scrollTop = terminalLog.scrollHeight;
+      } else {
+        targetEl.textContent = text.slice(0, charIndex);
+        terminalLog.scrollTop = terminalLog.scrollHeight;
+      }
+    }, 10);
   }
 
   if (terminalForm) {
@@ -194,13 +465,35 @@ Have a specific project in mind? Use our **Scope Estimator** above or drop us an
       ]
     },
     media: {
-      name: "Generative Media & Asset Studio",
+      name: "Generative Media & Visual Studio",
       baseDays: 2,
       deliverables: [
-        "Curated package of high-resolution AI-generated assets",
+        "Photorealistic commercial imagery (editorial modeling, portraits, product ads)",
         "Prompt engineering playbook & brand style consistency guide",
         "Automated resizing & export pipeline for all web/social dimensions",
-        "Direct Figma / Drive export of all final assets"
+        "Direct 4K master asset delivery with full commercial rights"
+      ]
+    },
+    geo: {
+      name: "AI SEO / GEO / AEO Engine",
+      baseDays: 2,
+      deliverables: [
+        "Complete Generative Engine Optimization (GEO) audit across ChatGPT & Perplexity",
+        "Semantic Schema.org / JSON-LD entity graph deployment",
+        "High-authority direct-answer FAQ nodes for Answer Engine Optimization (AEO)",
+        "Target entity density optimization & knowledge base anchoring",
+        "30-day automated LLM citation tracking dashboard & recommendation report"
+      ]
+    },
+    ghostwriting: {
+      name: "AI Executive Ghostwriting Pipeline",
+      baseDays: 2,
+      deliverables: [
+        "Executive voice profiling & semantic tone calibration",
+        "10x High-impact LinkedIn thought leadership essays with viral hook engineering",
+        "2x Long-form Substack / Forbes-style opinion editorials",
+        "Multi-post X/Twitter thread adaptations with quote graphics",
+        "Editorial content calendar & audience engagement blueprint"
       ]
     },
     internal: {
@@ -282,9 +575,9 @@ Have a specific project in mind? Use our **Scope Estimator** above or drop us an
       const timeEst = estimateTimeVal.textContent;
       const specSummary = `Project Type: ${typeName} | Estimated Timeline: ${timeEst}`;
       
-      const email = 'developer@example.com';
-      const subject = encodeURIComponent(`Project Inquiry: ${typeName}`);
-      const body = encodeURIComponent(`Hi!\n\nI configured a project scope on your portfolio:\n- Type: ${typeName}\n- Estimated Timeline: ${timeEst}\n\nLet's discuss getting this built!`);
+      const email = 'michaeljayo.diaz@gmail.com';
+      const subject = encodeURIComponent(`Project Inquiry for Michael Jay Diaz: ${typeName}`);
+      const body = encodeURIComponent(`Hi Michael,\n\nI configured a project scope on your portfolio:\n- Type: ${typeName}\n- Estimated Timeline: ${timeEst}\n\nLet's discuss getting this built!`);
       
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     });
@@ -422,6 +715,63 @@ Have a specific project in mind? Use our **Scope Estimator** above or drop us an
           <li><strong>Brand Color Fidelity</strong>: Custom color mapping scripts ensured hex code consistency across all generated outputs.</li>
         </ul>
       `
+    },
+    omnirank: {
+      title: "OmniRank AI: Generative Engine Optimization (GEO) & AEO Search Engine",
+      subtitle: "Conversational Search Authority Across Perplexity, ChatGPT Search, Gemini & Claude",
+      diagram:
+`[Brand Content & Entity Knowledge Ingestion]
+        │
+        ▼
+[OmniRank Semantic Entity & Knowledge Graph Builder]
+  ├── Maps Core Topics & Authority Nodes (JSON-LD)
+  └── Identifies Missing Search Entity Relations
+        │
+        ▼
+[AEO Direct-Answer & FAQ Synthesizer]
+  ├── Crafts Conversational Direct-Answer Snippets
+  └── Formats Citeable Fact Tables for LLM Context Windows
+        │
+        ▼
+[Generative Engine Optimization (GEO) Deployment]
+  ├── Continuous Perplexity, ChatGPT & Gemini Citation Tracking
+  └── Dynamic Entity Re-indexing for 4x Higher Citation Share`,
+      details: `
+        <h4 style="color: var(--accent-cyan); margin-bottom: 8px;">Human + AI Synergy Highlights:</h4>
+        <ul style="padding-left: 20px; margin-bottom: 12px;">
+          <li><strong>Conversational First-Mover Advantage</strong>: Optimizes for how LLMs read and cite information, not obsolete 2015 keyword stuffing.</li>
+          <li><strong>Direct Answer Supremacy</strong>: Targets the direct citation snippets displayed at the top of Perplexity and ChatGPT Search.</li>
+          <li><strong>2-3 Day Agile Implementation</strong>: Instant deployment of Schema.org JSON-LD graph nodes and structured Markdown answer repositories.</li>
+        </ul>
+      `
+    },
+    aurawrite: {
+      title: "AuraWrite AI: Executive Thought Leadership & Ghostwriting Pipeline",
+      subtitle: "Founder Voice Profiling & Multi-Channel Thought Leadership Engine",
+      diagram:
+`[Founder Raw Voice Notes / Briefing Memos / Bullet Ideas]
+        │
+        ▼
+[AuraWrite Semantic Voice Fingerprinting]
+  ├── Analyzes Vocabulary, Sentence Rhythm & Contrarian Angles
+  └── Establishes Executive Brand Style & Vocabulary Bounds
+        │
+        ▼
+[Multi-Channel Narrative Engineering]
+  ├── High-Engagement LinkedIn B2B Thought Leadership Essays
+  ├── Long-form Substack & Industry Op-Eds
+  └── Viral Hook-Engineered X/Twitter Threads
+        │
+        ▼
+[1-Click Editorial Review & Automated Publishing Schedule]`,
+      details: `
+        <h4 style="color: var(--accent-cyan); margin-bottom: 8px;">Human + AI Synergy Highlights:</h4>
+        <ul style="padding-left: 20px; margin-bottom: 12px;">
+          <li><strong>Authentic Voice Retention</strong>: Preserves the authentic tone, cadence, and contrarian perspectives of the executive with zero generic AI fluff.</li>
+          <li><strong>12x Editorial Velocity</strong>: Turns a 5-minute raw voice memo into a full week of authoritative LinkedIn and Substack content.</li>
+          <li><strong>Turnaround in 2-3 Days</strong>: Full setup, tone calibration, and initial batch of 10 executive essays delivered within 72 hours.</li>
+        </ul>
+      `
     }
   };
 
@@ -452,6 +802,130 @@ Have a specific project in mind? Use our **Scope Estimator** above or drop us an
   });
 
   // --------------------------------------------------------------------------
+  // 4B. Interactive Autoplay Commercial Visual Carousel
+  // --------------------------------------------------------------------------
+  const visualCarouselTrack = document.getElementById('visualCarouselTrack');
+  const visualCarouselContainer = document.getElementById('visualCarouselContainer');
+  const carouselPrevBtn = document.getElementById('carouselPrevBtn');
+  const carouselNextBtn = document.getElementById('carouselNextBtn');
+  const carouselDots = document.querySelectorAll('.c-dot');
+  const catPills = document.querySelectorAll('.cat-pill');
+  const currentSlideNum = document.getElementById('currentSlideNum');
+  const carouselStatusText = document.getElementById('carouselStatusText');
+
+  if (visualCarouselTrack && visualCarouselContainer) {
+    let currentSlide = 0;
+    const slides = visualCarouselTrack.querySelectorAll('.visual-slide');
+    const totalSlides = slides.length || 6;
+    let autoplayInterval = null;
+    let isHovered = false;
+
+    function goToSlide(index, manual = false) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      visualCarouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+      // Update dots
+      carouselDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+
+      // Update category pills
+      catPills.forEach((pill) => {
+        const slideTarget = parseInt(pill.getAttribute('data-slide'));
+        if (pill.textContent.includes('All')) {
+          pill.classList.toggle('active', !manual && !isHovered);
+        } else {
+          pill.classList.toggle('active', slideTarget === currentSlide);
+        }
+      });
+
+      // Update slide counter
+      const counterEl = document.getElementById('carouselCounter');
+      if (counterEl) {
+        counterEl.innerHTML = `<span id="currentSlideNum">0${currentSlide + 1}</span> / 0${totalSlides}`;
+      } else if (currentSlideNum) {
+        currentSlideNum.textContent = `0${currentSlide + 1}`;
+      }
+
+      if (manual && carouselStatusText) {
+        carouselStatusText.textContent = `Jumped to Slide 0${currentSlide + 1} (Autoplay resumes when cursor leaves)`;
+      }
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      autoplayInterval = setInterval(() => {
+        if (!isHovered) {
+          goToSlide(currentSlide + 1);
+        }
+      }, 3500);
+
+      if (carouselStatusText) {
+        carouselStatusText.textContent = 'Autoplaying (Advances every 3.5s • Hover to pause)';
+      }
+    }
+
+    function stopAutoplay() {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
+    }
+
+    if (carouselPrevBtn) {
+      carouselPrevBtn.addEventListener('click', () => {
+        goToSlide(currentSlide - 1, true);
+      });
+    }
+
+    if (carouselNextBtn) {
+      carouselNextBtn.addEventListener('click', () => {
+        goToSlide(currentSlide + 1, true);
+      });
+    }
+
+    carouselDots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        goToSlide(idx, true);
+      });
+    });
+
+    catPills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const target = parseInt(pill.getAttribute('data-slide'));
+        goToSlide(target, true);
+        catPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      });
+    });
+
+    visualCarouselContainer.addEventListener('mouseenter', () => {
+      isHovered = true;
+      if (carouselStatusText) {
+        carouselStatusText.textContent = 'Paused on hover (Click arrows or pills to explore)';
+      }
+    });
+
+    visualCarouselContainer.addEventListener('mouseleave', () => {
+      isHovered = false;
+      startAutoplay();
+    });
+
+    visualCarouselContainer.addEventListener('touchstart', () => {
+      isHovered = true;
+    }, { passive: true });
+
+    visualCarouselContainer.addEventListener('touchend', () => {
+      setTimeout(() => {
+        isHovered = false;
+      }, 3000);
+    });
+
+    // Start autoplay initially
+    startAutoplay();
+  }
+
+  // --------------------------------------------------------------------------
   // 5. Toast Notification & Copy Email
   // --------------------------------------------------------------------------
   const toast = document.getElementById('toast');
@@ -468,7 +942,7 @@ Have a specific project in mind? Use our **Scope Estimator** above or drop us an
 
   if (btnCopyEmail) {
     btnCopyEmail.addEventListener('click', () => {
-      const email = 'developer@example.com';
+      const email = 'michaeljayo.diaz@gmail.com';
       if (navigator.clipboard) {
         navigator.clipboard.writeText(email).then(() => {
           showToast(`Copied ${email} to clipboard!`);
@@ -478,6 +952,53 @@ Have a specific project in mind? Use our **Scope Estimator** above or drop us an
       }
     });
   }
+
+  // --------------------------------------------------------------------------
+  // 6. Mobile Navigation Drawer Controller
+  // --------------------------------------------------------------------------
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileCloseBtn = document.getElementById('mobile-close-btn');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+  const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+  const mobileLinks = document.querySelectorAll('.mobile-link, #mobile-contact-btn');
+
+  function openMobileNav() {
+    if (mobileNavDrawer) mobileNavDrawer.classList.add('open');
+    if (mobileNavBackdrop) mobileNavBackdrop.classList.add('open');
+    if (mobileToggle) mobileToggle.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    if (mobileNavDrawer) mobileNavDrawer.classList.remove('open');
+    if (mobileNavBackdrop) mobileNavBackdrop.classList.remove('open');
+    if (mobileToggle) mobileToggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', () => {
+      if (mobileNavDrawer && mobileNavDrawer.classList.contains('open')) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
+    });
+  }
+
+  if (mobileCloseBtn) {
+    mobileCloseBtn.addEventListener('click', closeMobileNav);
+  }
+
+  if (mobileNavBackdrop) {
+    mobileNavBackdrop.addEventListener('click', closeMobileNav);
+  }
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileNav();
+    });
+  });
 
   // --------------------------------------------------------------------------
   // Helper Utilities
