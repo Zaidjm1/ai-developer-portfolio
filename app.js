@@ -687,33 +687,34 @@ ${detectedFeatures.map(f => `- **${f}**`).join('\n')}
         </div>
       `
     },
-    autoresolve: {
-      title: "AutoResolve AI: Autonomous Support Ticket Triage & SLA Router",
-      subtitle: "Multi-Channel Ingestion, NLP Sentiment Scoring, Policy Checks & Webhook Dispatches",
+    pulsedesk: {
+      title: "PulseDesk IT: Enterprise Workplace Helpdesk Architecture",
+      subtitle: "Multi-Role Accounts, Hardware Asset Tags, Technician Diagnostics & Admin SLA Telemetry",
       diagram:
-`[Inbound Support Inquiries (Zendesk API / Email / Intercom Webhooks)]
+`[Employee Portal (Sarah Jenkins / Desk Location / Device Asset Tag)]
         │
         ▼
-[NLP Sentiment & Urgency Scoring Engine (Gemini Pro NLP)]
-  ├── Calculates Negative Sentiment & Customer Churn Probability
-  └── Determines SLA Window (P1 Critical 15m vs P4 Low 24h)
+[Workplace Issue Classification & Priority Router]
+  ├── Categories: Network Drops, Peripheral/Dock Failures, PC Freezes, Accounts
+  └── Urgency SLA Calculation: Emergency (<15m) vs Low (<24h)
         │
         ▼
-[Policy Rule Engine & Knowledge Retrieval]
-  ├── Validates Refund & Downsizing Grace Periods (§4.2 SLA)
-  └── Retrieves Technical Diagnostic Playbooks (SAML X.509 / Stripe 500)
+[Technician Diagnostic Workbench (Marcus Vance / Tier-2 IT)]
+  ├── ICMP Subnet Ping & Remote Workstation Telemetry
+  ├── Hardware Specs & Dell ProSupport Warranty Verifier
+  └── AI Resolution Assistant (Driver Rollback / Dock Firmware Flash)
         │
         ▼
-[Autonomous Response Synthesizer & Multi-Channel Dispatch]
-  ├── Drafts Human-Quality Empathetic Resolution Email
-  ├── Pushes Priority Alert to Slack (#prod-incidents / #billing)
-  └── Creates & Assigns Jira Service Desk Incident (INC Key)`,
+[Executive Operations Command (Elena Rostova / VP of IT)]
+  ├── Real-Time SLA Compliance (99.2%) & Staff Load Roster
+  └── Recurring Hardware Fault Telemetry & CSV Audit Export`,
       details: `
-        <h4 style="color: var(--accent-cyan); margin-bottom: 8px;">Human + AI Synergy Highlights:</h4>
+        <h4 style="color: var(--accent-cyan); margin-bottom: 8px;">Workplace System Capabilities:</h4>
         <ul style="padding-left: 20px; margin-bottom: 12px;">
-          <li><strong>Zero Customer Dropoff</strong>: High-churn complaints receive an empathetic, policy-grounded resolution in seconds rather than sitting in a 24-hour queue.</li>
-          <li><strong>Automated War Room Escalation</strong>: Real-time Slack webhooks and Jira tickets ensure on-call engineers are paged before the customer disputes a charge.</li>
-          <li><strong>Interactive Sandbox</strong>: Explore live presets or test custom tickets directly in the <a href="autoresolve/" target="_blank" style="color: #38bdf8;">AutoResolve AI Dashboard</a>.</li>
+          <li><strong>Role-Based Workplace Experience</strong>: Instant 1-click account switching between <strong>Employee</strong> (submit & track), <strong>IT Technician</strong> (diagnose & resolve), and <strong>IT Admin</strong> (analytics & telemetry).</li>
+          <li><strong>Real Office Hardware Context</strong>: Built around authentic workplace headaches — dual monitor dock negotiation drops, PC crashes, internal VLAN packet loss, and Bluetooth interference.</li>
+          <li><strong>Persistent Data Store</strong>: All ticket creations, technician notes, status transitions, and resolution timestamps persist live in real-time across role switches.</li>
+          <li><strong>Live Helpdesk Sandbox</strong>: Experience the multi-role system directly at <a href="helpdesk/" target="_blank" style="color: #38bdf8;">/helpdesk/</a>.</li>
         </ul>
       `
     },

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseDesk IT — Enterprise Workplace Ticketing & Helpdesk System</title>
+  <meta name="description" content="Production-ready workplace IT ticketing and helpdesk system with role-based access for Employees, IT Support Technicians, and System Administrators. Handles network failures, peripheral issues, PC freezes, and automated SLA tracking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation & Role Switcher Bar -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="../" class="back-btn" title="Back to Michael Jay Diaz Portfolio">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span>MJ Portfolio</span>
+      </a>
+      <div class="nav-sep"></div>
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </div>
+        <div>
+          <div class="brand-name">PulseDesk <span class="brand-accent">IT</span></div>
+          <div class="brand-sub">Workplace Helpdesk &amp; Asset Management</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Account & Quick Role Switcher -->
+    <div class="role-selector-bar">
+      <span class="role-label">Active Account:</span>
+      <div class="role-pills" role="radiogroup" aria-label="Switch Workplace Account Role">
+        <button type="button" class="role-btn active" data-role="employee">
+          <span class="role-avatar">👤</span>
+          <span class="role-btn-name">Employee <small>(Sarah Jenkins)</small></span>
+        </button>
+        <button type="button" class="role-btn" data-role="tech">
+          <span class="role-avatar">🛠️</span>
+          <span class="role-btn-name">IT Tech <small>(Marcus Vance)</small></span>
+        </button>
+        <button type="button" class="role-btn" data-role="admin">
+          <span class="role-avatar">🛡️</span>
+          <span class="role-btn-name">IT Admin <small>(Elena Rostova)</small></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <div class="online-indicator">
+        <span class="pulse-dot"></span>
+        <span id="active-queue-count">4 Active Tickets</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Workplace Context Banner -->
+  <div class="sub-banner">
+    <div class="container sub-banner-inner">
+      <div class="sub-banner-left">
+        <div class="role-badge" id="role-badge">VIEWING AS: EMPLOYEE (SUBMIT &amp; TRACK)</div>
+        <h1 id="view-heading">Workplace IT Helpdesk: Report an Issue or Request Assistance</h1>
+        <p id="view-desc">
+          Having computer troubles, Wi-Fi drops, peripheral issues, or broken software? Submit a ticket below for our onsite IT support team.
+        </p>
+      </div>
+      <div class="sub-banner-right">
+        <div class="sla-chip">
+          <span class="sla-num">28m</span>
+          <span class="sla-txt">Avg Onsite Response</span>
+        </div>
+        <div class="sla-chip">
+          <span class="sla-num">Floor 1-5</span>
+          <span class="sla-txt">HQ IT Dispatch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main View Container (Swapped dynamically based on Active Role) -->
+  <main class="main-content container">
+
+    <!-- ====================================================================
+         VIEW 1: EMPLOYEE PORTAL
+         ==================================================================== -->
+    <div id="view-employee" class="role-view active">
+      
+      <!-- Employee Sub-Navigation (Submit vs My Tickets) -->
+      <div class="emp-tabs">
+        <button type="button" class="emp-tab-btn active" data-tab="create">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          <span>Submit New IT Ticket</span>
+        </button>
+        <button type="button" class="emp-tab-btn" data-tab="list">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>My Open Tickets (<span id="emp-open-count">2</span>)</span>
+        </button>
+      </div>
+
+      <!-- Employee Tab 1: Submit Form -->
+      <div id="emp-tab-create" class="emp-pane active">
+        <div class="card form-card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">What type of problem are you experiencing?</h2>
+              <p class="card-sub">Choose a category to automatically assign diagnostic tests and dispatch the right technician.</p>
+            </div>
+            <span class="card-tag">Fast Resolution</span>
+          </div>
+
+          <!-- Quick Category Cards -->
+          <div class="category-selector-grid">
+            <button type="button" class="cat-card active" data-category="network">
+              <div class="cat-icon">🌐</div>
+              <div class="cat-name">Network &amp; Wi-Fi</div>
+              <div class="cat-sub">VPN drops, slow DNS, IP conflict, no internet</div>
+            </button>
+            <button type="button" class="cat-card" data-category="peripherals">
+              <div class="cat-icon">🖱️</div>
+              <div class="cat-name">Peripherals &amp; Docks</div>
+              <div class="cat-sub">Monitors, keyboards, dock stations, printers, USB</div>
+            </button>
+            <button type="button" class="cat-card" data-category="crash">
+              <div class="cat-icon">💻</div>
+              <div class="cat-name">Unresponsive PC / Crash</div>
+              <div class="cat-sub">Frozen screen, spinning wheel, blue screen, RAM spike</div>
+            </button>
+            <button type="button" class="cat-card" data-category="software">
+              <div class="cat-icon">🔑</div>
+              <div class="cat-name">Accounts &amp; Software</div>
+              <div class="cat-sub">Password reset, Okta SSO, license requests, updates</div>
+            </button>
+          </div>
+
+          <!-- Ticket Creation Form -->
+          <form id="new-ticket-form" class="ticket-creation-form" onsubmit="return false;">
+            
+            <div class="form-row-3">
+              <div class="field-group">
+                <label for="f-employee-name" class="field-lbl">Employee Name</label>
+                <input type="text" id="f-employee-name" class="field-input" value="Sarah Jenkins (Marketing Lead)" required>
+              </div>
+              <div class="field-group">
+                <label for="f-desk-loc" class="field-lbl">Desk Location</label>
+                <input type="text" id="f-desk-loc" class="field-input" value="Floor 3 — Desk 3A (Design Pod)" required placeholder="e.g. Floor 2 - Desk 14B">
+              </div>
+              <div class="field-group">
+                <label for="f-asset-tag" class="field-lbl">Device Asset Tag</label>
+                <input type="text" id="f-asset-tag" class="field-input" value="PC-DELL-8821" required placeholder="e.g. PC-DELL-8821 / MAC-491">
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="field-group">
+                <label for="f-urgency" class="field-lbl">Urgency Level</label>
+                <select id="f-urgency" class="field-input">
+                  <option value="low">🟢 Low — Can still work, minor inconvenience</option>
+                  <option value="medium">🟡 Medium — Slowing down normal tasks</option>
+                  <option value="high" selected>🟠 High — Completely blocking a deadline</option>
+                  <option value="emergency">🔴 Emergency — Workstation totally down / Team halted</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="f-os" class="field-lbl">Operating System</label>
+                <select id="f-os" class="field-input">
+                  <option value="Windows 11 Enterprise" selected>Windows 11 Enterprise</option>
+                  <option value="macOS Sonoma (M2 / M3)">macOS Sonoma (M2 / M3)</option>
+                  <option value="Ubuntu Linux 24.04 LTS">Ubuntu Linux 24.04 LTS</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="f-subject" class="field-lbl">Issue Summary</label>
+              <input type="text" id="f-subject" class="field-input" value="Dual 4K Dell monitors not detecting via CalDigit Thunderbolt dock after Windows update" required>
+            </div>
+
+            <div class="field-group">
+              <div class="lbl-flex">
+                <label for="f-desc" class="field-lbl">Describe what happened &amp; steps tried</label>
+                <span class="quick-preset-hint">Tip: Be specific about error messages</span>
+              </div>
+              <textarea id="f-desc" class="field-input field-textarea" rows="4" required>When I plugged in my laptop to my desk dock this morning, neither of my external Dell monitors turn on. Both display 'No Signal'. I tried unplugging the Thunderbolt cable and power-cycling the dock twice, but only my laptop keyboard works. I have an executive design presentation in 1 hour and urgently need my dual displays.</textarea>
+            </div>
+
+            <!-- AI Quick-Check Self-Help Hint -->
+            <div class="ai-hint-box" id="ai-hint-box">
+              <div class="ai-hint-icon">💡</div>
+              <div class="ai-hint-text">
+                <strong>IT Self-Service Quick Check:</strong> For dock peripheral issues, make sure the Thunderbolt cable is connected to the back host port and press <kbd>Win + Ctrl + Shift + B</kbd> to restart your graphics driver. If that fails, click below to dispatch IT.
+              </div>
+            </div>
+
+            <div class="form-bottom-bar">
+              <button type="submit" id="btn-submit-ticket" class="btn-primary-action">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                <span>Submit IT Ticket to Helpdesk</span>
+              </button>
+              <button type="button" id="btn-fill-crash" class="btn-text-preset">Load "PC Frozen Crash" Example</button>
+              <button type="button" id="btn-fill-network" class="btn-text-preset">Load "VPN Network Drop" Example</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Employee Tab 2: My Tickets List -->
+      <div id="emp-tab-list" class="emp-pane">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">My Tickets &amp; Live Tracking</h2>
+            <span class="card-tag">Real-Time Updates</span>
+          </div>
+          <div class="ticket-list" id="emp-ticket-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ====================================================================
+         VIEW 2: IT TECHNICIAN WORKSTATION
+         ==================================================================== -->
+    <div id="view-tech" class="role-view">
+      <div class="tech-layout">
+        
+        <!-- Left: Queue & Filters -->
+        <div class="tech-queue-col">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">IT Dispatch Queue</h2>
+                <div class="card-sub">Assigned to: <strong style="color: #38bdf8;">Marcus Vance (Tier-2 IT Specialist)</strong></div>
+              </div>
+              <div class="filter-pills">
+                <button type="button" class="q-filter-btn active" data-qfilter="all">All (<span id="q-count-all">4</span>)</button>
+                <button type="button" class="q-filter-btn" data-qfilter="network">🌐 Network</button>
+                <button type="button" class="q-filter-btn" data-qfilter="peripherals">🖱️ Hardware</button>
+                <button type="button" class="q-filter-btn" data-qfilter="crash">💻 Crashes</button>
+              </div>
+            </div>
+
+            <div class="ticket-queue-list" id="tech-queue-list">
+              <!-- Dynamically populated queue tickets -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Active Ticket Details & Diagnostic Workspace -->
+        <div class="tech-detail-col">
+          <div class="card detail-card" id="tech-detail-card">
+            <div class="detail-header" id="detail-header">
+              <div class="dh-top">
+                <span class="t-key" id="det-key">IT-1041</span>
+                <span class="t-badge badge-high" id="det-urgency">HIGH URGENCY</span>
+                <span class="t-status status-progress" id="det-status">IN PROGRESS</span>
+              </div>
+              <h3 class="dh-title" id="det-title">Dual 4K Dell monitors not detecting via CalDigit dock after Windows update</h3>
+              <div class="dh-meta" id="det-meta">
+                <span>👤 Sarah Jenkins (Design Pod)</span> • 
+                <span>📍 Floor 3 — Desk 3A</span> • 
+                <span>🏷️ Tag: PC-DELL-8821</span>
+              </div>
+            </div>
+
+            <!-- Technician Fast Diagnostics Bar -->
+            <div class="diag-bar">
+              <div class="diag-title">⚡ Technician Quick Diagnostics:</div>
+              <div class="diag-buttons">
+                <button type="button" class="diag-btn" id="btn-diag-ping">📡 Ping Workstation IP</button>
+                <button type="button" class="diag-btn" id="btn-diag-asset">🔍 Check Warranty &amp; Specs</button>
+                <button type="button" class="diag-btn" id="btn-diag-copilot">🤖 AI Resolution Assistant</button>
+              </div>
+              <div class="diag-output-box" id="diag-output-box" style="display: none;">
+                <div class="diag-out-header">
+                  <span id="diag-out-title">Diagnostic Result</span>
+                  <button type="button" class="close-diag" id="btn-close-diag">✕</button>
+                </div>
+                <pre class="diag-code" id="diag-code"></pre>
+              </div>
+            </div>
+
+            <!-- Ticket Description -->
+            <div class="detail-section">
+              <div class="det-sec-title">Original Problem Description:</div>
+              <div class="det-desc-box" id="det-desc">
+                When I plugged in my laptop to my desk dock this morning, neither of my external Dell monitors turn on. Both display 'No Signal'.
+              </div>
+            </div>
+
+            <!-- Ticket Activity Stream / Communication Thread -->
+            <div class="detail-section">
+              <div class="det-sec-title">Activity Stream &amp; Communications:</div>
+              <div class="activity-thread" id="det-activity">
+                <!-- Dynamically populated thread comments -->
+              </div>
+            </div>
+
+            <!-- Action Form for IT Technician -->
+            <div class="tech-action-box">
+              <div class="action-row">
+                <div class="act-group">
+                  <label for="tech-update-status" class="act-lbl">Update Status:</label>
+                  <select id="tech-update-status" class="act-select">
+                    <option value="In Progress">⚡ In Progress (Investigating)</option>
+                    <option value="Waiting on Parts">📦 Waiting on Peripheral Replacement</option>
+                    <option value="Onsite Dispatched">🚶 Onsite IT Tech Dispatched to Desk</option>
+                    <option value="Resolved">✅ Resolved (Close Ticket)</option>
+                  </select>
+                </div>
+                <div class="act-group">
+                  <label for="tech-assignee" class="act-lbl">Assignee:</label>
+                  <select id="tech-assignee" class="act-select">
+                    <option value="Marcus Vance (Tier-2 IT)" selected>Marcus Vance (Tier-2 IT)</option>
+                    <option value="David Chen (Network Lead)">David Chen (Network Lead)</option>
+                    <option value="Lisa Patel (Desktop Support)">Lisa Patel (Desktop Support)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="act-group" style="margin-top: 10px;">
+                <label for="tech-reply-input" class="act-lbl">Add Note / Public Reply to Employee:</label>
+                <textarea id="tech-reply-input" class="field-input field-textarea" rows="2" placeholder="e.g. Headed over to Desk 3A now with a spare CalDigit TS4 dock and fresh Thunderbolt 4 cable..."></textarea>
+              </div>
+
+              <div class="act-buttons-row">
+                <button type="button" id="btn-save-ticket" class="btn-primary-action">
+                  <span>Save Updates &amp; Notify Employee</span>
+                </button>
+                <button type="button" id="btn-quick-resolve" class="btn-resolve-action">
+                  <span>Mark Resolved &amp; Close</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         VIEW 3: IT ADMINISTRATOR COMMAND CENTER
+         ==================================================================== -->
+    <div id="view-admin" class="role-view">
+      
+      <!-- Top Executive Metrics -->
+      <div class="admin-kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-lbl">Total Tickets (This Month)</span>
+            <span class="kpi-icon">📋</span>
+          </div>
+          <div class="kpi-val" id="admin-total-tickets">684</div>
+          <div class="kpi-sub text-emerald">+12% faster turnaround vs last month</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-lbl">SLA Compliance Rate</span>
+            <span class="kpi-icon">🛡️</span>
+          </div>
+          <div class="kpi-val text-cyan">99.2%</div>
+          <div class="kpi-sub">Target SLA: &gt; 98.0%</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-lbl">Average Resolution Time</span>
+            <span class="kpi-icon">⏱️</span>
+          </div>
+          <div class="kpi-val text-emerald">34 Minutes</div>
+          <div class="kpi-sub">Critical emergencies: &lt; 15m</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-lbl">Top Recurring Issue</span>
+            <span class="kpi-icon">⚠️</span>
+          </div>
+          <div class="kpi-val text-amber" style="font-size: 1.15rem;">Display Docks (Floor 3)</div>
+          <div class="kpi-sub">Firmware update rollout scheduled</div>
+        </div>
+      </div>
+
+      <!-- Admin Breakdown & Staff Roster -->
+      <div class="admin-grid-2">
+        
+        <!-- Category Distribution -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Workplace Incident Breakdown</h2>
+            <span class="card-tag">Department Telemetry</span>
+          </div>
+          <div class="breakdown-list">
+            <div class="bd-item">
+              <div class="bd-info">
+                <span>🖱️ Peripherals &amp; Dual Monitors</span>
+                <strong>38% (260 tickets)</strong>
+              </div>
+              <div class="bd-bar"><div class="bd-fill fill-cyan" style="width: 38%;"></div></div>
+            </div>
+            <div class="bd-item">
+              <div class="bd-info">
+                <span>🌐 Network, Wi-Fi &amp; VPN Drops</span>
+                <strong>28% (192 tickets)</strong>
+              </div>
+              <div class="bd-bar"><div class="bd-fill fill-purple" style="width: 28%;"></div></div>
+            </div>
+            <div class="bd-item">
+              <div class="bd-info">
+                <span>💻 PC Crashes, Freezes &amp; BSOD</span>
+                <strong>21% (144 tickets)</strong>
+              </div>
+              <div class="bd-bar"><div class="bd-fill fill-red" style="width: 21%;"></div></div>
+            </div>
+            <div class="bd-item">
+              <div class="bd-info">
+                <span>🔑 Accounts, Okta SSO &amp; Software</span>
+                <strong>13% (88 tickets)</strong>
+              </div>
+              <div class="bd-bar"><div class="bd-fill fill-emerald" style="width: 13%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IT Staff Load -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">IT Support Staff Utilization</h2>
+            <span class="card-tag">Active Queue Load</span>
+          </div>
+          <div class="staff-table">
+            <div class="staff-row staff-head">
+              <span>Technician</span>
+              <span>Specialty</span>
+              <span>Active</span>
+              <span>Resolved</span>
+              <span>Status</span>
+            </div>
+            <div class="staff-row">
+              <div class="st-tech">
+                <span class="st-avatar">🛠️</span>
+                <strong>Marcus Vance</strong>
+              </div>
+              <span>Tier-2 Hardware</span>
+              <span class="st-badge-num">2</span>
+              <span>18</span>
+              <span class="st-status online">Active Onsite</span>
+            </div>
+            <div class="staff-row">
+              <div class="st-tech">
+                <span class="st-avatar">📡</span>
+                <strong>David Chen</strong>
+              </div>
+              <span>Network &amp; VPN</span>
+              <span class="st-badge-num">1</span>
+              <span>24</span>
+              <span class="st-status online">Active Onsite</span>
+            </div>
+            <div class="staff-row">
+              <div class="st-tech">
+                <span class="st-avatar">💻</span>
+                <strong>Lisa Patel</strong>
+              </div>
+              <span>OS &amp; PC Crashes</span>
+              <span class="st-badge-num">1</span>
+              <span>15</span>
+              <span class="st-status online">Active Onsite</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Master Ticket Audit Log -->
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Enterprise IT Ticket Master Audit Log</h2>
+            <p class="card-sub">Real-time status of all tickets across Floor 1–5.</p>
+          </div>
+          <button type="button" class="btn-export-csv" id="btn-export-csv">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Export CSV Audit</span>
+          </button>
+        </div>
+        <div class="audit-table-wrap">
+          <table class="audit-table" id="audit-table">
+            <thead>
+              <tr>
+                <th>Ticket ID</th>
+                <th>Employee / Desk</th>
+                <th>Category</th>
+                <th>Issue Summary</th>
+                <th>Urgency</th>
+                <th>Status</th>
+                <th>Assigned Tech</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-audit-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Interactive Toast Notification -->
+  <div id="toast" class="toast" role="alert" aria-live="assertive">
+    <span class="toast-icon">✓</span>
+    <span class="toast-msg" id="toast-msg">Ticket submitted successfully!</span>
+  </div>
+
+  <!-- App Footer -->
+  <footer class="app-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <strong>PulseDesk IT</strong> — Designed &amp; Engineered by <strong>Michael Jay Diaz</strong>. Production-grade workplace ticketing and helpdesk operations.
+      </div>
+      <div class="footer-links">
+        <a href="../#projects">View Shipped Projects</a>
+        <a href="../#services">Explore Services</a>
+        <a href="../#contact">Contact &amp; Hire</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
