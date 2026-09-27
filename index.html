@@ -398,6 +398,7 @@
       <div class="projects-filter">
         <button class="filter-btn active" data-filter="all">All Projects</button>
         <button class="filter-btn" data-filter="webapp">Web Apps & MVPs</button>
+        <button class="filter-btn" data-filter="photography">Photography Studios</button>
         <button class="filter-btn" data-filter="automation">Workflow Automations</button>
         <button class="filter-btn" data-filter="media">Generative Media</button>
       </div>
@@ -616,13 +617,57 @@
           </div>
 
           <div class="project-links">
-            <a href="#estimator" class="link-btn" style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.25)); border-color: rgba(251, 191, 36, 0.5); color: #fbbf24; font-weight: 600;">
+            <a href="#estimator" class="card-btn card-btn-primary amber-theme">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-              Estimate Ghostwriting
+              <span>Estimate Scope</span>
             </a>
-            <button class="link-btn btn-view-arch" data-project="aurawrite">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 14 14"></polyline></svg>
-              View Ghostwriting Specs
+            <button type="button" class="card-btn card-btn-secondary btn-view-arch" data-project="aurawrite">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <span>View Specs</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 6: LUMINA Photography & Visual Production Studio -->
+        <div class="project-card" data-category="photography">
+          <div>
+            <div class="project-badge-bar">
+              <span class="project-cat" style="color: #d4af37; background: rgba(212, 175, 55, 0.12); border-color: rgba(212, 175, 55, 0.35);">Photography Studio Platform</span>
+              <span class="project-speed-tag">⚡ Live Demo Available</span>
+            </div>
+            <h3 class="project-title">LUMINA Studio: Commercial & Editorial Photography Showcase</h3>
+            <p class="project-summary">
+              High-end luxury digital showcase engineered for photographers, creative directors, and visual studios. Features category filtering (Editorial, Executive, Commercial, Coastal Weddings), full-screen interactive lightbox proofing, commission package pricing, and smooth client inquiry booking.
+            </p>
+
+            <div class="project-metrics">
+              <div class="card-metric">
+                <div class="card-metric-val">8K</div>
+                <div class="card-metric-lbl">Visual Resolution</div>
+              </div>
+              <div class="card-metric">
+                <div class="card-metric-val">4-in-1</div>
+                <div class="card-metric-lbl">Category Filters</div>
+              </div>
+            </div>
+
+            <div class="project-tech">
+              <span class="tech-tag">Interactive Lightbox</span>
+              <span class="tech-tag">Dynamic Category Filter</span>
+              <span class="tech-tag">Package Pricing Table</span>
+              <span class="tech-tag">Luxury Obsidian Gold UI</span>
+              <span class="tech-tag">Mobile Responsive</span>
+            </div>
+          </div>
+
+          <div class="project-links">
+            <a href="photography/" target="_blank" class="card-btn card-btn-primary" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(245, 158, 11, 0.25)); border-color: rgba(212, 175, 55, 0.5); color: #fef08a;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <span>Launch Live App</span>
+            </a>
+            <button type="button" class="card-btn card-btn-secondary btn-view-arch" data-project="visioncraft">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <span>View Specs</span>
             </button>
           </div>
         </div>

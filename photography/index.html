@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMINA Visuals | Commercial & Editorial Photography Studio</title>
+  <meta name="description" content="Award-winning visual production, editorial fashion, executive portraits, and commercial advertising photography studio.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-mark">L</div>
+        <span class="logo-text">LUMINA <span class="text-gold">STUDIO</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#gallery" class="nav-link active">Gallery</a></li>
+        <li><a href="#services" class="nav-link">Packages</a></li>
+        <li><a href="#about" class="nav-link">Vision</a></li>
+        <li><a href="#contact" class="nav-link">Inquire</a></li>
+      </ul>
+
+      <a href="#contact" class="nav-cta">
+        <span>Book Session</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span>✨ Visual Direction & Editorial Production</span>
+      </div>
+      <h1 class="hero-title font-serif">
+        Capturing Moments With <span class="text-gradient-gold">Cinematic Precision</span> & Emotion.
+      </h1>
+      <p class="hero-desc">
+        High-concept editorial modeling, luxury lifestyle, commercial product staging, and Forbes-caliber executive portraits crafted for visionaries and iconic brands.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#gallery" class="btn-primary">
+          <span>Explore Selected Works</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+        </a>
+        <a href="#contact" class="btn-secondary">Inquire For Commissions</a>
+      </div>
+
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-num">240+</div>
+          <div class="stat-label">Editorial Campaigns</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98.8%</div>
+          <div class="stat-label">Client Retention</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">48h</div>
+          <div class="stat-label">Digital Proof Delivery</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">8K</div>
+          <div class="stat-label">Ultra-High Resolution</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Works</button>
+        <button class="filter-btn" data-filter="editorial">Fashion & Editorial</button>
+        <button class="filter-btn" data-filter="portrait">Executive Portraits</button>
+        <button class="filter-btn" data-filter="commercial">Commercial & Lifestyle</button>
+        <button class="filter-btn" data-filter="hospitality">Hospitality & Wedding</button>
+      </div>
+
+      <!-- Photo Grid -->
+      <div class="photo-grid" id="photoGrid">
+
+        <!-- Photo 1: Wedding & Couple -->
+        <div class="photo-card" data-category="hospitality" data-src="assets/wedding_coastal.jpg" data-title="Coastal Golden Hour Wedding" data-desc="35mm film aesthetic, romantic coastal cliffs with ethereal sunset backlight.">
+          <div class="photo-img-wrap">
+            <img src="assets/wedding_coastal.jpg" alt="Coastal Golden Hour Wedding" loading="lazy">
+          </div>
+          <div class="photo-overlay">
+            <span class="photo-tag">Wedding & Romance</span>
+            <h3 class="photo-title">Coastal Golden Hour Wedding</h3>
+            <p class="photo-desc">Romantic ocean cliffside portrait with custom lace bridal styling and warm cinematic sunset flare.</p>
+            <div class="photo-meta">
+              <span>📷 Leica 50mm f/1.2</span>
+              <span>⚡ Natural Golden Hour</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 2: Haute Couture Fashion Model -->
+        <div class="photo-card" data-category="editorial" data-src="assets/fashion_editorial.jpg" data-title="Haute Couture Autumn Lookbook" data-desc="Sculptural knitwear lookbook illuminated with studio softbox and rim accent lighting.">
+          <div class="photo-img-wrap">
+            <img src="assets/fashion_editorial.jpg" alt="Haute Couture Fashion Lookbook" loading="lazy">
+          </div>
+          <div class="photo-overlay">
+            <span class="photo-tag">Haute Couture</span>
+            <h3 class="photo-title">Haute Couture Autumn Lookbook</h3>
+            <p class="photo-desc">Editorial lookbook styling with natural micro-texture, tactile knit fabrics, and studio rim lighting.</p>
+            <div class="photo-meta">
+              <span>📷 Hasselblad 80mm</span>
+              <span>⚡ Studio Octabox</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 3: Forbes Executive Portrait -->
+        <div class="photo-card" data-category="portrait" data-src="assets/executive_portrait.jpg" data-title="Founder Thought Leadership" data-desc="Tailored executive portraiture engineered for Forbes, Inc., and keynote speaker profiles.">
+          <div class="photo-img-wrap">
+            <img src="assets/executive_portrait.jpg" alt="Founder Executive Portrait" loading="lazy">
+          </div>
+          <div class="photo-overlay">
+            <span class="photo-tag">Executive Portrait</span>
+            <h3 class="photo-title">Founder Thought Leadership</h3>
+            <p class="photo-desc">Commanding, trustworthy presence with genuine catchlights, tailored suiting, and warm architectural bokeh.</p>
+            <div class="photo-meta">
+              <span>📷 85mm f/1.4 Art</span>
+              <span>⚡ Volumetric Backlight</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 4: Commercial Cosmetics Ad -->
+        <div class="photo-card" data-category="commercial" data-src="assets/commercial_product.jpg" data-title="Botanical Serum Commercial Staging" data-desc="Hyper-crisp glass caustics, water droplets, and dramatic luxury e-commerce staging.">
+          <div class="photo-img-wrap">
+            <img src="assets/commercial_product.jpg" alt="Commercial Product Staging" loading="lazy">
+          </div>
+          <div class="photo-overlay">
+            <span class="photo-tag">Commercial Ad</span>
+            <h3 class="photo-title">Botanical Serum Staging</h3>
+            <p class="photo-desc">Commercial cosmetics advertising with crystalline glass reflections and dew droplets.</p>
+            <div class="photo-meta">
+              <span>📷 100mm Macro f/2.8</span>
+              <span>⚡ Precision Fresnel</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 5: Luxury Hospitality & Oceanfront Suite -->
+        <div class="photo-card" data-category="hospitality" data-src="assets/hospitality_ad.jpg" data-title="Santorini Oceanfront Villa Suite" data-desc="Architectural resort interiors with Scandinavian timber and Mediterranean golden hour ambiance.">
+          <div class="photo-img-wrap">
+            <img src="assets/hospitality_ad.jpg" alt="Luxury Hospitality Resort Interior" loading="lazy">
+          </div>
+          <div class="photo-overlay">
+            <span class="photo-tag">Architecture & Spaces</span>
+            <h3 class="photo-title">Santorini Oceanfront Suite</h3>
+            <p class="photo-desc">High-end boutique hospitality interior blending clean Scandinavian lines with coastal luxury.</p>
+            <div class="photo-meta">
+              <span>📷 24mm Tilt-Shift</span>
+              <span>⚡ Ambient Sunlight</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 6: Cafe & Food Lifestyle -->
+        <div class="photo-card" data-category="commercial" data-src="assets/cafe_food_lifestyle.jpg" data-title="Artisan Microfoam & Berry Patisserie" data-desc="Viral 'Post Before You Eat' social media lifestyle photography for boutique cafes and bakeries.">
+          <div class="photo-img-wrap">
+            <img src="assets/cafe_food_lifestyle.jpg" alt="Artisan Cafe Latte Food Lifestyle" loading="lazy">
+          </div>
+          <div class="photo-overlay">
+            <span class="photo-tag">Cafe & Food Trend</span>
+            <h3 class="photo-title">Artisan Latte & Patisserie</h3>
+            <p class="photo-desc">Microfoam rosetta art and glistening berry pastry table shot tailored for high Instagram viral reach.</p>
+            <div class="photo-meta">
+              <span>📷 35mm f/1.8</span>
+              <span>⚡ Sunlit Window Light</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 7: Pro Retouched Social Selfie -->
+        <div class="photo-card" data-category="portrait" data-src="assets/social_selfie.jpg" data-title="Authentic Creator Social Portrait" data-desc="Natural golden-hour smartphone perspective with pore-level fidelity and zero artificial smoothing.">
+          <div class="photo-img-wrap">
+            <img src="assets/social_selfie.jpg" alt="Authentic Creator Social Portrait" loading="lazy">
+          </div>
+          <div class="photo-overlay">
+            <span class="photo-tag">Personal Brand</span>
+            <h3 class="photo-title">Authentic Creator Portrait</h3>
+            <p class="photo-desc">Casual, charming social portrait with authentic skin texture and sunlit loft bokeh.</p>
+            <div class="photo-meta">
+              <span>📷 Natural Front Angle</span>
+              <span>⚡ Golden Hour Loft</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing & Service Packages -->
+  <section class="pricing-section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Commission Rates</span>
+        <h2 class="section-title font-serif">Tailored <span class="text-gradient-gold">Photography Packages</span></h2>
+        <p style="color: var(--text-muted); margin-top: 10px;">
+          From high-velocity commercial visual sprints to full editorial lookbook campaigns and private sessions.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Package 1: Social & Personal Brand -->
+        <div class="pricing-card">
+          <h3 class="pricing-name">Social & Personal Brand</h3>
+          <p class="pricing-desc">Ideal for creators, foodies, cafe owners, and founders elevating their social feeds.</p>
+          <div class="pricing-price">$120 <span>/ sprint</span></div>
+          <ul class="pricing-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 5 Retouched High-Res Images</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Instagram/TikTok Crop Ratios</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 24-Hour Digital Delivery</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Commercial Use License</li>
+          </ul>
+          <a href="#contact" class="pricing-btn pricing-btn-outline">Select Package</a>
+        </div>
+
+        <!-- Package 2: Commercial & Editorial Lookbook (Featured) -->
+        <div class="pricing-card featured">
+          <div class="featured-pill">MOST POPULAR</div>
+          <h3 class="pricing-name">Commercial Lookbook Pro</h3>
+          <p class="pricing-desc">Complete visual campaign for fashion apparel, boutique hotels, and luxury brands.</p>
+          <div class="pricing-price">$290 <span>/ campaign</span></div>
+          <ul class="pricing-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 15 Studio-Grade Editorial Assets</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Print-Ready 8K TIFF + WebP Export</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Creative Direction & Moodboard</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited Worldwide Ad Rights</li>
+          </ul>
+          <a href="#contact" class="pricing-btn pricing-btn-primary">Book Lookbook Sprint</a>
+        </div>
+
+        <!-- Package 3: Executive & Bespoke Commission -->
+        <div class="pricing-card">
+          <h3 class="pricing-name">Executive & Private Session</h3>
+          <p class="pricing-desc">Tailored Forbes-style portraits, high-end weddings, and architectural documentation.</p>
+          <div class="pricing-price">$450 <span>/ bespoke</span></div>
+          <ul class="pricing-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Full Day Visual Production</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 30 Master Retouched Photographs</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Private Online Client Proofing Vault</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Colorist & Stylist Review</li>
+          </ul>
+          <a href="#contact" class="pricing-btn pricing-btn-outline">Inquire For Dates</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-close" id="lightboxClose">&times;</div>
+    <div class="lightbox-content">
+      <img src="" alt="" class="lightbox-img" id="lightboxImg">
+      <div class="lightbox-caption">
+        <h4 id="lightboxTitle"></h4>
+        <p id="lightboxDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer & Contact CTA -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <h3 class="font-serif" style="font-size: 1.8rem; margin-bottom: 8px;">Let's Create Visuals That Move People.</h3>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Currently accepting commissions for Q4 & early 2027.</p>
+      
+      <div class="footer-links">
+        <a href="mailto:michaeljayo.diaz@gmail.com">michaeljayo.diaz@gmail.com</a>
+        <span>•</span>
+        <a href="../">Back to Main Portfolio</a>
+        <span>•</span>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+      </div>
+
+      <p>&copy; 2026 LUMINA STUDIO by Michael Jay Diaz. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
