@@ -773,8 +773,8 @@ ${detectedFeatures.map(f => `- **${f}**`).join('\n')}
         </ul>
       `
     },
-    sheinvogue: {
-      title: "SHEIN VOGUE: Fast-Fashion E-Commerce Architecture",
+    glamourlabel: {
+      title: "GLAMOUR THE LABEL: Modern Fashion E-Commerce Architecture",
       subtitle: "24+ Female Apparel Catalog, Flash Sales, Slide-out Bag & Multi-Currency",
       diagram:
 `[Shopper Explores 24+ Female Fashion Styles]
@@ -805,7 +805,7 @@ ${detectedFeatures.map(f => `- **${f}**`).join('\n')}
         </ul>
         <div style="margin-top: 14px;">
           <a href="clothing/" target="_blank" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: #fa2c19;">
-            <span>🛍️ Launch Live SHEIN VOGUE Storefront</span>
+            <span>🛍️ Launch Live GLAMOUR Storefront</span>
           </a>
         </div>
       `

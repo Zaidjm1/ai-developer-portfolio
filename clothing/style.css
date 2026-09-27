@@ -1,14 +1,14 @@
 /* ==========================================================================
-   SHEIN VOGUE / GLAMOUR - E-COMMERCE STYLESHEET
+   GLAMOUR THE LABEL - E-COMMERCE STYLESHEET
    Signature Fast-Fashion Aesthetic: High Contrast, Urgency Badges, Sleek Interactions
    ========================================================================== */
 
 :root {
   --primary: #111111;
   --primary-light: #222222;
-  --shein-red: #fa2c19;
-  --shein-red-hover: #e0200e;
-  --shein-coral: #ff5722;
+  --brand-red: #fa2c19;
+  --brand-red-hover: #e0200e;
+  --brand-coral: #ff5722;
   --accent-gold: #ffb703;
   --bg-light: #f7f7f8;
   --bg-card: #ffffff;
@@ -111,7 +111,7 @@ input, select {
 }
 
 .ticker-badge {
-  background: var(--shein-red);
+  background: var(--brand-red);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 800;
@@ -210,7 +210,7 @@ input, select {
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 4px;
-  color: var(--shein-red);
+  color: var(--brand-red);
   margin-top: -2px;
 }
 
@@ -266,12 +266,12 @@ input, select {
 }
 
 .sale-nav {
-  color: var(--shein-red) !important;
+  color: var(--brand-red) !important;
   font-weight: 700;
 }
 
 .sale-nav::after {
-  background: var(--shein-red) !important;
+  background: var(--brand-red) !important;
 }
 
 /* Header Actions */
@@ -363,7 +363,7 @@ input, select {
   position: absolute;
   top: 4px;
   right: 4px;
-  background: var(--shein-red);
+  background: var(--brand-red);
   color: #fff;
   font-size: 0.68rem;
   font-weight: 800;
@@ -458,12 +458,12 @@ input, select {
 }
 
 .btn-primary {
-  background: var(--shein-red);
+  background: var(--brand-red);
   color: #ffffff;
 }
 
 .btn-primary:hover {
-  background: var(--shein-red-hover);
+  background: var(--brand-red-hover);
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(250, 44, 25, 0.4);
 }
@@ -540,7 +540,7 @@ input, select {
 }
 
 .float-discount {
-  background: var(--shein-red);
+  background: var(--brand-red);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 800;
@@ -557,7 +557,7 @@ input, select {
 
 .float-price {
   font-weight: 800;
-  color: var(--shein-red);
+  color: var(--brand-red);
   font-size: 0.95rem;
 }
 
@@ -626,7 +626,7 @@ input, select {
 }
 
 .coupon-ticket:hover {
-  border-color: var(--shein-red);
+  border-color: var(--brand-red);
   background: #fff1ed;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(250, 44, 25, 0.15);
@@ -635,7 +635,7 @@ input, select {
 .coupon-amount {
   font-weight: 900;
   font-size: 1.05rem;
-  color: var(--shein-red);
+  color: var(--brand-red);
   line-height: 1;
 }
 
@@ -657,7 +657,7 @@ input, select {
 }
 
 .claim-btn {
-  background: var(--shein-red);
+  background: var(--brand-red);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 700;
@@ -746,16 +746,16 @@ input, select {
 }
 
 .sale-pill {
-  color: var(--shein-red) !important;
+  color: var(--brand-red) !important;
   border-color: #ffd4cb;
   background: #fff8f6;
   font-weight: 700;
 }
 
 .sale-pill.active {
-  background: var(--shein-red) !important;
+  background: var(--brand-red) !important;
   color: #fff !important;
-  border-color: var(--shein-red) !important;
+  border-color: var(--brand-red) !important;
 }
 
 .sort-controls {
@@ -807,7 +807,7 @@ input, select {
 }
 
 /* ==========================================================================
-   PRODUCT CARD (SIGNATURE SHEIN STYLE)
+   PRODUCT CARD (SIGNATURE APPAREL STYLE)
    ========================================================================== */
 
 .product-card {
@@ -865,7 +865,7 @@ input, select {
 }
 
 .badge-tag.flash {
-  background: var(--shein-red);
+  background: var(--brand-red);
 }
 
 .badge-tag.hot {
@@ -900,12 +900,12 @@ input, select {
 
 .card-wishlist-btn:hover {
   background: #fff;
-  color: var(--shein-red);
+  color: var(--brand-red);
   transform: scale(1.1);
 }
 
 .card-wishlist-btn.active {
-  color: var(--shein-red);
+  color: var(--brand-red);
   background: #fff;
 }
 
@@ -940,7 +940,7 @@ input, select {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Quick Add Size Bar (SHEIN Signature Hover Action) */
+/* Quick Add Size Bar (Fashion Boutique Signature Hover Action) */
 .card-quick-add-sizes {
   position: absolute;
   bottom: 0;
@@ -1003,7 +1003,7 @@ input, select {
 }
 
 .card-title:hover {
-  color: var(--shein-red);
+  color: var(--brand-red);
 }
 
 .card-pricing {
@@ -1016,7 +1016,7 @@ input, select {
 .sale-price {
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--shein-red);
+  color: var(--brand-red);
 }
 
 .original-price {
@@ -1028,7 +1028,7 @@ input, select {
 .discount-tag {
   font-size: 0.68rem;
   font-weight: 800;
-  color: var(--shein-red);
+  color: var(--brand-red);
   background: #ffebe8;
   padding: 1px 4px;
   border-radius: 2px;
@@ -1111,7 +1111,7 @@ input, select {
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 2px;
-  color: var(--shein-red);
+  color: var(--brand-red);
   text-transform: uppercase;
 }
 
@@ -1206,7 +1206,7 @@ input, select {
 .social-item-tag {
   font-size: 0.74rem;
   font-weight: 700;
-  color: var(--shein-red);
+  color: var(--brand-red);
   background: #fff5f3;
   padding: 4px 8px;
   border-radius: 4px;
@@ -1290,7 +1290,7 @@ input, select {
 }
 
 .footer-logo span {
-  color: var(--shein-red);
+  color: var(--brand-red);
   font-size: 0.9rem;
   letter-spacing: 3px;
   font-weight: 700;
@@ -1468,7 +1468,7 @@ input, select {
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--shein-red), var(--shein-coral));
+  background: linear-gradient(90deg, var(--brand-red), var(--brand-coral));
   border-radius: 3px;
   transition: width 0.3s ease;
 }
@@ -1528,7 +1528,7 @@ input, select {
 
 .cart-price-sale {
   font-weight: 800;
-  color: var(--shein-red);
+  color: var(--brand-red);
   font-size: 0.95rem;
 }
 
@@ -1575,7 +1575,7 @@ input, select {
 }
 
 .remove-item-btn:hover {
-  color: var(--shein-red);
+  color: var(--brand-red);
 }
 
 /* Empty State */
@@ -1669,7 +1669,7 @@ input, select {
 }
 
 .discount-row {
-  color: var(--shein-red) !important;
+  color: var(--brand-red) !important;
   font-weight: 700;
 }
 
@@ -1683,7 +1683,7 @@ input, select {
 }
 
 .btn-checkout {
-  background: var(--shein-red);
+  background: var(--brand-red);
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 800;
@@ -1698,7 +1698,7 @@ input, select {
 }
 
 .btn-checkout:hover {
-  background: var(--shein-red-hover);
+  background: var(--brand-red-hover);
   transform: translateY(-2px);
 }
 
@@ -1792,7 +1792,7 @@ input, select {
 .qv-badge {
   font-size: 0.72rem;
   font-weight: 800;
-  color: var(--shein-red);
+  color: var(--brand-red);
   margin-bottom: 6px;
   text-transform: uppercase;
 }
@@ -1814,7 +1814,7 @@ input, select {
 .qv-pricing .sale {
   font-size: 1.45rem;
   font-weight: 900;
-  color: var(--shein-red);
+  color: var(--brand-red);
 }
 
 .qv-pricing .orig {
@@ -1868,7 +1868,7 @@ input, select {
 }
 
 .qv-add-btn {
-  background: var(--shein-red);
+  background: var(--brand-red);
   color: #fff;
   font-size: 0.95rem;
   font-weight: 800;
@@ -1879,7 +1879,7 @@ input, select {
 }
 
 .qv-add-btn:hover {
-  background: var(--shein-red-hover);
+  background: var(--brand-red-hover);
 }
 
 .qv-perks-list {
@@ -1922,7 +1922,7 @@ input, select {
 
 .checkout-logo span {
   font-size: 0.85rem;
-  color: var(--shein-red);
+  color: var(--brand-red);
   letter-spacing: 2px;
 }
 
@@ -2005,7 +2005,7 @@ input, select {
 }
 
 .discount-color {
-  color: var(--shein-red);
+  color: var(--brand-red);
 }
 
 .free-text {
@@ -2023,7 +2023,7 @@ input, select {
 
 .btn-order {
   width: 100%;
-  background: var(--shein-red);
+  background: var(--brand-red);
   color: #fff;
   font-size: 1rem;
   font-weight: 800;
@@ -2037,7 +2037,7 @@ input, select {
 }
 
 .btn-order:hover {
-  background: var(--shein-red-hover);
+  background: var(--brand-red-hover);
 }
 
 /* Order Success State */
@@ -2064,7 +2064,7 @@ input, select {
 }
 
 .order-id strong {
-  color: var(--shein-red);
+  color: var(--brand-red);
 }
 
 .success-msg {
@@ -2181,7 +2181,7 @@ input, select {
 }
 
 .floating-portfolio-pill:hover {
-  background: var(--shein-red);
+  background: var(--brand-red);
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(250, 44, 25, 0.4);
 }

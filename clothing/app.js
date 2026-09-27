@@ -1,5 +1,5 @@
 /**
- * SHEIN VOGUE / GLAMOUR - E-Commerce App Logic
+ * GLAMOUR THE LABEL - E-Commerce App Logic
  * 24 Female Clothing Catalog, Multi-Currency, Filter/Sort, Cart Drawer, Wishlist & Checkout
  */
 
@@ -435,8 +435,8 @@ let activeSort = "trending";
 let searchQuery = "";
 
 // Cart state loaded from localStorage
-let cart = JSON.parse(localStorage.getItem("shein_cart") || "[]");
-let wishlist = JSON.parse(localStorage.getItem("shein_wishlist") || "[]");
+let cart = JSON.parse(localStorage.getItem("glamour_cart") || "[]");
+let wishlist = JSON.parse(localStorage.getItem("glamour_wishlist") || "[]");
 
 // Coupon state
 let activeCoupon = null; // e.g. { code: 'GLAM20', type: 'percent', value: 20 }
@@ -584,7 +584,7 @@ function renderProducts() {
             👁️ Quick View
           </button>
 
-          <!-- Quick Add Size Bar (SHEIN signature hover) -->
+          <!-- Quick Add Size Bar (Fast-fashion hover) -->
           <div class="card-quick-add-sizes">
             <span style="color:#bbb; font-size:0.68rem; margin-right:4px;">ADD:</span>
             ${product.sizes.map(size => `
@@ -818,7 +818,7 @@ function removeCartItem(index) {
 }
 
 function saveCart() {
-  localStorage.setItem("shein_cart", JSON.stringify(cart));
+  localStorage.setItem("glamour_cart", JSON.stringify(cart));
 }
 
 function updateCartUI() {
@@ -974,7 +974,7 @@ function applyEnteredCoupon() {
   const input = document.getElementById("couponInput");
   if (!input) return;
   const code = input.value.trim().toUpperCase();
-  if (code === "GLAM20" || code === "SHEIN20") {
+  if (code === "GLAM20" || code === "GLAMOUR20") {
     claimCoupon("GLAM20", 20, "percent");
     input.value = "";
   } else if (code === "SAVE10") {
@@ -1011,7 +1011,7 @@ function toggleWishlist(productId, event) {
     showToast("Saved to wishlist ❤️");
   }
 
-  localStorage.setItem("shein_wishlist", JSON.stringify(wishlist));
+  localStorage.setItem("glamour_wishlist", JSON.stringify(wishlist));
   updateWishlistUI();
   renderProducts(); // refresh heart icon state
 }
@@ -1223,7 +1223,7 @@ function handlePlaceOrder(event) {
     if (successState) successState.classList.remove("hidden");
 
     // Random order reference
-    const randomRef = `#SH-${Math.floor(1000000 + Math.random() * 9000000)}`;
+    const randomRef = `#GL-${Math.floor(1000000 + Math.random() * 9000000)}`;
     if (refEl) refEl.textContent = randomRef;
 
     // Reset button
