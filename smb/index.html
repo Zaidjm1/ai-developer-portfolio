@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexSMB — High-Converting Industry Website Platform</title>
+  <meta name="description" content="Turnkey high-converting websites designed specifically for real-world small & medium businesses. Featuring 24/7 AI Receptionist, interactive cost calculator, and 60-second online booking by Michael Jay Diaz.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-industry="wellness">
+
+  <!-- Top Developer Meta Bar & Industry Switcher -->
+  <aside class="dev-meta-bar">
+    <div class="meta-container">
+      <div class="meta-left">
+        <a href="http://localhost:8088" class="back-link" title="Return to Michael Jay Diaz Portfolio">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>MJ Portfolio</span>
+        </a>
+        <span class="meta-divider">|</span>
+        <span class="meta-title">SMB Web Platform · Designed by <strong>Michael Jay Diaz</strong></span>
+      </div>
+
+      <!-- Industry Switcher Pill Selector -->
+      <div class="industry-switcher">
+        <span class="switcher-label">Preview Live Industry:</span>
+        <button type="button" class="ind-btn active" data-industry="wellness">
+          <span>🩺 Dental & Aesthetic Clinic</span>
+        </button>
+        <button type="button" class="ind-btn" data-industry="contractor">
+          <span>🔧 Home Services & HVAC</span>
+        </button>
+        <button type="button" class="ind-btn" data-industry="legal">
+          <span>⚖️ Boutique Legal Advisory</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Emergency Dispatch Notice Bar (Contractor mode only) -->
+  <div class="emergency-bar hidden" id="emergency-bar">
+    <div class="emergency-inner">
+      <span class="alert-pulse"></span>
+      <strong>24/7 EMERGENCY DISPATCH AVAILABLE:</strong>
+      <span>Burst pipes, gas leaks, or heating outage? Guaranteed technician arrival in under 60 minutes.</span>
+      <a href="tel:5558903400" class="emergency-call-btn">🚨 Call Now: (555) 890-3400</a>
+    </div>
+  </div>
+
+  <!-- Main Business Navigation Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-logo-icon" id="brand-icon">✨</div>
+        <div>
+          <span class="brand-name" id="brand-name">Lumina Dental & Aesthetics</span>
+          <span class="brand-tagline" id="brand-tagline">Modern Gentle Dentistry & Cosmetic Wellness</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#services">Treatments & Services</a>
+        <a href="#results">Results & Gallery</a>
+        <a href="#team">Our Doctors</a>
+        <a href="#calculator">Price Estimator</a>
+        <a href="#reviews">Patient Reviews</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="header-phone">
+          <span class="phone-label" id="phone-label">Call or Text</span>
+          <a href="tel:5552348900" class="phone-link" id="business-phone">(555) 234-8900</a>
+        </div>
+        <button type="button" class="btn btn-primary" id="header-book-btn">Book Appointment</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Real High-Resolution Photography -->
+  <section class="hero-section">
+    <div class="hero-wrapper">
+      <div class="hero-text-col">
+        <div class="hero-status-pill" id="hero-badge">
+          <span class="pulse-dot"></span>
+          <span id="hero-badge-text">Accepting New Patients · Same-Day Appointments Available</span>
+        </div>
+
+        <h1 class="hero-heading" id="hero-title">
+          World-Class Dental Care in a Calming Spa Environment
+        </h1>
+        <p class="hero-subheading" id="hero-description">
+          Gentle, anxiety-free cosmetic and restorative dentistry with state-of-the-art 3D imaging. Transparent pricing, accepted insurance, and zero judgment.
+        </p>
+
+        <div class="hero-cta-group">
+          <button type="button" class="btn btn-primary btn-lg" id="hero-book-btn">
+            <span id="hero-book-label">Book Online in 60s</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <a href="#calculator" class="btn btn-secondary btn-lg" id="hero-calc-btn">
+            Calculate Instant Estimate
+          </a>
+        </div>
+
+        <!-- Social Proof Trust Strip -->
+        <div class="hero-social-proof">
+          <div class="stars-badge">
+            <span class="stars-gold">★★★★★</span>
+            <strong id="rating-score">4.9 / 5.0</strong>
+            <span class="review-count" id="review-count">on Google (520+ verified reviews)</span>
+          </div>
+          <div class="proof-sep"></div>
+          <div class="insurance-badge" id="insurance-badge">
+            🛡️ In-Network with Delta Dental, MetLife, Cigna, Guardian
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Photography Visual Hero Container -->
+      <div class="hero-media-col">
+        <div class="hero-image-card">
+          <img src="assets/dental_hero.jpg" alt="Business Service Showcase" id="hero-image" class="hero-main-photo">
+          
+          <!-- Floating Interactive Card -->
+          <div class="floating-hero-card" id="floating-hero-card">
+            <div class="floating-card-header">
+              <span class="live-indicator">● 24/7 AI Concierge Online</span>
+              <span class="reply-speed">Avg. reply: 2s</span>
+            </div>
+            <h4 id="floating-card-title">Ask Pricing & Insurance Instantly</h4>
+            <p id="floating-card-desc">Our smart receptionist answers questions and verifies insurance 24 hours a day.</p>
+            <div class="floating-quick-chips" id="hero-quick-chips">
+              <button class="quick-chip" onclick="window.smbChat.openAndAsk('What are your business hours?')">⏰ Hours & Location</button>
+              <button class="quick-chip" onclick="window.smbChat.openAndAsk('Do you accept dental insurance?')">💳 Insurance Accepted</button>
+              <button class="quick-chip" onclick="window.smbChat.openAndAsk('How much is teeth whitening?')">💵 Teeth Whitening Cost</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Accreditation & Trust Logos Banner -->
+  <section class="trust-banner">
+    <div class="trust-container">
+      <span class="trust-label" id="trust-label">Accreditations & Certifications:</span>
+      <div class="trust-badges-row" id="trust-badges-row">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Services & Treatments Section -->
+  <section class="services-section" id="services">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <span class="section-eyebrow" id="services-eyebrow">Signature Offerings</span>
+        <h2 class="section-title" id="services-heading">Premier Treatments with Upfront Pricing</h2>
+        <p class="section-subtitle" id="services-sub">From routine checkups to full smile makeovers, our board-certified team delivers precision results.</p>
+      </div>
+
+      <div class="services-grid" id="services-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Results, Gallery & Case Studies -->
+  <section class="results-section" id="results">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <span class="section-eyebrow" id="results-eyebrow">Real Transformations</span>
+        <h2 class="section-title" id="results-heading">Proven Results Our Clients Love</h2>
+        <p class="section-subtitle" id="results-sub">Explore before & after smile transformations and real verified case studies.</p>
+      </div>
+
+      <div class="results-grid" id="results-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet the Team / Certified Experts -->
+  <section class="team-section" id="team">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <span class="section-eyebrow" id="team-eyebrow">Expert Leadership</span>
+        <h2 class="section-title" id="team-heading">Meet Your Dedicated Providers</h2>
+        <p class="section-subtitle" id="team-sub">Compassionate experts with top-tier institutional training and decades of combined experience.</p>
+      </div>
+
+      <div class="team-grid" id="team-grid">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Instant Price Quote Calculator -->
+  <section class="calculator-section" id="calculator">
+    <div class="section-container">
+      <div class="calc-panel">
+        <div class="calc-header">
+          <span class="calc-tag">Transparent Pricing</span>
+          <h2 id="calc-title">Instant Treatment Cost Estimator</h2>
+          <p id="calc-subtitle">Select the treatments or repairs you need to calculate your transparent investment with zero surprise fees.</p>
+        </div>
+
+        <div class="calc-grid">
+          <div class="calc-options-col" id="calc-controls">
+            <!-- Dynamic checkboxes -->
+          </div>
+
+          <div class="calc-summary-col">
+            <div class="summary-card">
+              <span class="summary-label">Estimated Investment</span>
+              <div class="summary-price" id="calc-total-display">$0</div>
+              <p class="summary-guarantee" id="calc-note">Includes complete 3D digital imaging, consultation, and personalized treatment plan.</p>
+
+              <div class="summary-breakdown" id="calc-line-items">
+                <!-- Line items inserted dynamically -->
+              </div>
+
+              <button type="button" class="btn btn-primary btn-block btn-lg" id="calc-book-btn">
+                Lock in This Estimate & Book
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Patient Reviews & Social Proof -->
+  <section class="reviews-section" id="reviews">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <span class="section-eyebrow">Google Reviews</span>
+        <h2>Verified Client Feedback</h2>
+      </div>
+
+      <div class="reviews-grid" id="reviews-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Conversion Section -->
+  <footer class="site-footer">
+    <div class="section-container">
+      <div class="footer-cta-card">
+        <h2 id="footer-cta-title">Ready for Your First Visit?</h2>
+        <p id="footer-cta-sub">Reserve your appointment online in under 60 seconds with instant calendar sync.</p>
+        <button type="button" class="btn btn-primary btn-lg" onclick="document.getElementById('header-book-btn').click()">
+          Schedule Your Consultation Now
+        </button>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div class="footer-clinic-info">
+          <strong class="footer-brand-name" id="footer-brand">Lumina Dental & Aesthetics</strong>
+          <p id="footer-address">450 Grand Avenue, Suite 300 · San Francisco, CA · (555) 234-8900</p>
+          <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">Hours: Mon-Fri 8:00 AM - 7:00 PM · Sat 9:00 AM - 4:00 PM</p>
+        </div>
+
+        <div class="footer-developer-badge">
+          <span>This sample SMB site demonstrates the turnkey development speed of:</span>
+          <strong>Michael Jay Diaz (MJ) · AI-Assisted Full-Stack Developer</strong>
+          <div style="margin-top: 8px;">
+            <a href="http://localhost:8088" class="footer-portfolio-link">Explore More in MJ Portfolio →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Online Booking Modal -->
+  <div class="modal-backdrop hidden" id="booking-modal">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" id="close-modal-btn">&times;</button>
+      
+      <div class="modal-header">
+        <h3 id="modal-biz-name">Schedule Your Visit</h3>
+        <p>Complete this quick 60-second form to reserve your time slot.</p>
+      </div>
+
+      <form id="booking-form" class="booking-form">
+        <div class="form-group">
+          <label>Select Service / Treatment:</label>
+          <select id="book-service-select" class="form-control" required></select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Preferred Date:</label>
+            <input type="date" id="book-date" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Preferred Time:</label>
+            <select id="book-time" class="form-control" required>
+              <option value="9:00 AM">9:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="1:30 PM">1:30 PM</option>
+              <option value="3:45 PM">3:45 PM</option>
+              <option value="5:15 PM">5:15 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name:</label>
+            <input type="text" id="book-name" class="form-control" placeholder="Jane Doe" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number (for SMS confirmation):</label>
+            <input type="tel" id="book-phone" class="form-control" placeholder="(555) 000-0000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address:</label>
+          <input type="email" id="book-email" class="form-control" placeholder="jane@example.com" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submit-booking-btn">
+          Confirm Appointment & Sync Calendar
+        </button>
+      </form>
+
+      <!-- Confirmation Card -->
+      <div class="booking-confirmation hidden" id="booking-confirmation">
+        <div class="conf-icon">🎉</div>
+        <h4>Appointment Confirmed!</h4>
+        <p id="conf-msg">We've saved your slot and sent a calendar invite.</p>
+        <div class="conf-details" id="conf-details"></div>
+        <button type="button" class="btn btn-secondary btn-block" id="conf-done-btn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating 24/7 AI Receptionist / Concierge Widget -->
+  <div class="chat-widget-container">
+    <div class="chat-window hidden" id="chat-window">
+      <div class="chat-header">
+        <div class="agent-info">
+          <div class="agent-avatar" id="agent-avatar">👩‍⚕️</div>
+          <div>
+            <div class="agent-name" id="agent-name">Ava · 24/7 Patient Concierge</div>
+            <div class="agent-status">● Online · Typically replies in seconds</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="chat-demo-pill" id="chat-demo-pill">5/5 Free Demo Chats</span>
+          <button type="button" class="chat-close-btn" id="chat-close-btn">&times;</button>
+        </div>
+      </div>
+
+      <div class="chat-messages" id="chat-messages">
+        <div class="bot-bubble">
+          <p id="chat-greeting">👋 Hi there! I'm Ava, the 24/7 concierge for Lumina Dental Clinic. How can I help you today? Ask about pricing, insurance, treatments, or scheduling a visit!</p>
+        </div>
+      </div>
+
+      <!-- Quick Prompt Chips -->
+      <div class="chat-quick-chips" id="chat-quick-chips">
+        <!-- Injected dynamically -->
+      </div>
+
+      <!-- Chat Input Form -->
+      <form class="chat-input-row" id="chat-form">
+        <input type="text" id="chat-input" placeholder="Type a message (e.g. 'Do you take Delta Dental?')..." autocomplete="off">
+        <button type="submit" class="chat-send-btn" id="chat-send-btn" aria-label="Send Message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Floating Trigger Bubble -->
+    <button type="button" class="floating-chat-trigger" id="chat-trigger-btn" aria-label="Open 24/7 AI Receptionist">
+      <div class="trigger-ping"></div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span class="trigger-lbl" id="chat-trigger-lbl">Ask AI Receptionist</span>
+    </button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

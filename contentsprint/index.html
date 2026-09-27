@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ContentSprint AI — Autonomous Marketing & Ad Campaign Engine</title>
+  <meta name="description" content="Generate high-converting multi-channel ad copy, LinkedIn carousels, and visual ad prompts in seconds. Built by Michael Jay Diaz (MJ).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-bottom"></div>
+
+  <!-- Header Navigation Bar -->
+  <header class="studio-header">
+    <div class="header-container">
+      <div class="brand-group">
+        <a href="http://localhost:8088" class="back-portfolio-btn" title="Back to Michael Jay Diaz Portfolio">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>MJ Portfolio</span>
+        </a>
+        <div class="divider"></div>
+        <div class="brand-info">
+          <div class="brand-icon">🚀</div>
+          <div>
+            <span class="brand-title">ContentSprint <span class="gradient-text">AI</span></span>
+            <span class="brand-sub">Autonomous Marketing & Multi-Channel Ad Studio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-meta">
+        <div class="quota-pill" id="demo-quota-pill">
+          <span>Demo Runs: <strong id="quota-count">5</strong>/5</span>
+        </div>
+        <div class="status-pill">
+          <span class="pulse-dot"></span>
+          <span>Gemini AI Engine Active</span>
+        </div>
+        <span class="author-tag">Built by <strong>Michael Jay Diaz</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Studio Workspace Grid -->
+  <main class="studio-main">
+    <div class="studio-grid">
+      
+      <!-- LEFT PANEL: CAMPAIGN BRIEF & INPUTS -->
+      <section class="panel left-panel">
+        <div class="panel-header">
+          <div class="panel-num">01</div>
+          <div>
+            <h2>Campaign Brief</h2>
+            <p>Input your offer details or test a 1-click industry preset</p>
+          </div>
+        </div>
+
+        <!-- 1-Click Demonstration Presets -->
+        <div class="presets-wrapper">
+          <span class="field-label">1-Click Demonstration Presets (Zero-Token Cache)</span>
+          <div class="presets-row">
+            <button type="button" class="preset-btn active" data-preset="saas">
+              <span class="p-icon">💻</span>
+              <div class="p-text">
+                <strong>PulseSync SaaS</strong>
+                <span>B2B Analytics & Stripe</span>
+              </div>
+            </button>
+
+            <button type="button" class="preset-btn" data-preset="dental">
+              <span class="p-icon">✨</span>
+              <div class="p-text">
+                <strong>Lumina Dental</strong>
+                <span>Cosmetic Teeth Whitening</span>
+              </div>
+            </button>
+
+            <button type="button" class="preset-btn" data-preset="hvac">
+              <span class="p-icon">❄️</span>
+              <div class="p-text">
+                <strong>ProCraft HVAC</strong>
+                <span>Heat Pump Tax Credits</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Input Form -->
+        <form class="brief-form" id="campaign-form">
+          <div class="form-group">
+            <label for="input-product-name">Product / Service Name:</label>
+            <input type="text" id="input-product-name" class="form-control" placeholder="e.g. PulseSync Analytics" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-audience">Target Buyer Persona:</label>
+            <input type="text" id="input-audience" class="form-control" placeholder="e.g. B2B SaaS Founders, Busy Homeowners, Dental Patients..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-value-prop">Core Value Proposition & Differentiators:</label>
+            <textarea id="input-value-prop" class="form-control textarea" placeholder="What makes your offer unique? Pain points solved, speed, ROI, or guarantees..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="input-tone">Brand Voice & Copywriting Angle:</label>
+            <select id="input-tone" class="form-control">
+              <option value="High Energy & Direct Response">🔥 High Energy & Direct Response (Pain-Agitate-Solve)</option>
+              <option value="Prestigious, Premium & Authoritative">🏛️ Prestigious, Premium & Authoritative (Institutional Trust)</option>
+              <option value="Witty, Bold & Pattern-Interrupting">⚡ Witty, Bold & Pattern-Interrupting (Viral Hooks)</option>
+              <option value="Empathetic, Friendly & Educational">🌿 Empathetic, Friendly & Educational (Gentle Guidance)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="generate-btn" id="generate-btn">
+            <span class="spinner hidden" id="gen-spinner"></span>
+            <span id="gen-btn-label">⚡ Generate Multi-Channel Campaign Kit</span>
+          </button>
+        </form>
+
+        <div class="quota-warning-card hidden" id="quota-warning-card">
+          <h4>🔒 Demo Limit Reached</h4>
+          <p>You've used all 5 free live campaign runs. Presets remain fully available. Ready to integrate ContentSprint into your marketing agency?</p>
+          <a href="mailto:michaeljayo.diaz@gmail.com?subject=ContentSprint%20AI%20Integration" class="contact-btn">Contact Michael Jay Diaz</a>
+        </div>
+      </section>
+
+      <!-- RIGHT PANEL: MULTI-CHANNEL GENERATED OUTPUTS -->
+      <section class="panel right-panel">
+        <div class="panel-header">
+          <div class="panel-num highlight">02</div>
+          <div>
+            <h2>Generated Campaign Kit</h2>
+            <p id="campaign-title-label">Ready for deployment across Meta, Google, TikTok & LinkedIn</p>
+          </div>
+
+          <div class="header-tools">
+            <button type="button" class="tool-btn" id="btn-copy-all" title="Copy Complete Kit">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy Kit</span>
+            </button>
+            <button type="button" class="tool-btn" id="btn-download-kit" title="Download Markdown Kit">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download .MD</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Channel Navigation Tabs -->
+        <div class="channel-tabs">
+          <button type="button" class="channel-tab active" data-tab="meta">
+            <span>📱 Meta / IG Feed Ad</span>
+          </button>
+          <button type="button" class="channel-tab" data-tab="google">
+            <span>🔍 Google Search Ad</span>
+          </button>
+          <button type="button" class="channel-tab" data-tab="tiktok">
+            <span>🎬 TikTok / Reels Script</span>
+          </button>
+          <button type="button" class="channel-tab" data-tab="linkedin">
+            <span>📑 LinkedIn Carousel</span>
+          </button>
+          <button type="button" class="channel-tab" data-tab="visual">
+            <span>🎨 Visual Ad Mockup</span>
+          </button>
+        </div>
+
+        <!-- TAB 1: META / INSTAGRAM FEED AD -->
+        <div class="tab-pane active" id="tab-meta">
+          <div class="ad-mockup-wrapper">
+            <div class="feed-ad-card">
+              <div class="feed-ad-header">
+                <div class="feed-avatar" id="feed-avatar">⚡</div>
+                <div>
+                  <strong class="feed-page-name" id="feed-brand-name">PulseSync</strong>
+                  <span class="feed-sponsored">Sponsored · Paid Advertisement</span>
+                </div>
+              </div>
+
+              <div class="feed-ad-body">
+                <p id="meta-primary-text">Stop losing high-value SaaS customers to unmonitored checkout errors. PulseSync detects churn signals 3x earlier and alerts your team in Slack with one-click winback campaigns.</p>
+              </div>
+
+              <div class="feed-ad-image-box">
+                <div class="image-box-inner" id="feed-visual-banner">
+                  <span class="badge-tag">AI Growth Engine</span>
+                  <h3 id="feed-banner-headline">Stop Churn Before It Costs You</h3>
+                  <p id="feed-banner-sub">Real-Time Stripe Telemetry & Automated Winback</p>
+                </div>
+              </div>
+
+              <div class="feed-ad-footer">
+                <div>
+                  <span class="feed-domain">pulsesync.io</span>
+                  <strong class="feed-headline" id="meta-headline">Cut Churn by 40% in 14 Days</strong>
+                </div>
+                <button type="button" class="feed-cta-btn" id="meta-cta-btn">Learn More</button>
+              </div>
+            </div>
+
+            <div class="ad-creative-notes">
+              <strong>💡 Creative Direction & Visual Concept:</strong>
+              <p id="meta-visual-concept">High-contrast dashboard visualization showing red churn alerts turning green after automated trigger fires. Fast-paced, clean interface.</p>
+              <button type="button" class="copy-sub-btn" id="copy-meta-text-btn">Copy Ad Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: GOOGLE SEARCH ADS -->
+        <div class="tab-pane" id="tab-google">
+          <div class="google-serp-preview">
+            <div class="serp-header">
+              <span class="serp-badge">Sponsored</span>
+              <span class="serp-url">https://www.pulsesync.io › saas-analytics</span>
+            </div>
+            <h3 class="serp-headline" id="google-headlines-preview">
+              PulseSync SaaS Analytics | Cut Churn by 40% | Start Free 14-Day Trial
+            </h3>
+            <p class="serp-description" id="google-desc-preview">
+              Real-time Stripe billing telemetry, automated churn alerts, and conversion funnel graphs. Built for high-growth SaaS founders. No code setup.
+            </p>
+
+            <div class="serp-breakdown-table">
+              <h4>Responsive Search Ad (RSA) Components:</h4>
+              <div class="serp-item">
+                <span class="s-label">Headline 1:</span>
+                <strong id="rsa-h1">PulseSync SaaS Analytics</strong>
+              </div>
+              <div class="serp-item">
+                <span class="s-label">Headline 2:</span>
+                <strong id="rsa-h2">Cut Churn by 40%</strong>
+              </div>
+              <div class="serp-item">
+                <span class="s-label">Headline 3:</span>
+                <strong id="rsa-h3">Start Free 14-Day Trial</strong>
+              </div>
+              <div class="serp-item">
+                <span class="s-label">Description 1:</span>
+                <span id="rsa-d1">Real-time Stripe billing telemetry and automated customer winback workflows.</span>
+              </div>
+              <div class="serp-item">
+                <span class="s-label">Description 2:</span>
+                <span id="rsa-d2">Instant setup in under 5 minutes. Trusted by 500+ modern software founders.</span>
+              </div>
+            </div>
+
+            <button type="button" class="copy-sub-btn" id="copy-google-btn">Copy Google Search Ad</button>
+          </div>
+        </div>
+
+        <!-- TAB 3: TIKTOK / REELS SCRIPT -->
+        <div class="tab-pane" id="tab-tiktok">
+          <div class="script-card">
+            <div class="script-section">
+              <div class="timestamp-tag red">0:00 – 0:03 | PATTERN INTERRUPT HOOK</div>
+              <p class="script-instruction" id="tt-hook">Visual: Rapid pan to computer screen with red cancellations. Spoken: "If your SaaS is losing more than 3 customers a week, stop scrolling—you're making this silent mistake."</p>
+            </div>
+
+            <div class="script-section">
+              <div class="timestamp-tag blue">0:03 – 0:20 | THE AGITATION & DISCOVERY</div>
+              <div class="script-body-list" id="tt-body-points">
+                <div>1. Most founders check churn at the end of the month when it's already too late.</div>
+                <div>2. Failed payments account for 40% of all lost revenue without anyone noticing.</div>
+                <div>3. Here's how PulseSync automatically catches and recovers them in real-time.</div>
+              </div>
+            </div>
+
+            <div class="script-section">
+              <div class="timestamp-tag green">0:20 – 0:30 | CALL TO ACTION</div>
+              <p class="script-instruction" id="tt-cta">"Click the link below to run a free churn audit on your Stripe account in under 60 seconds."</p>
+            </div>
+
+            <button type="button" class="copy-sub-btn" id="copy-tiktok-btn">Copy Video Script</button>
+          </div>
+        </div>
+
+        <!-- TAB 4: LINKEDIN CAROUSEL DECK -->
+        <div class="tab-pane" id="tab-linkedin">
+          <div class="carousel-studio">
+            <div class="carousel-viewer">
+              <div class="carousel-slide-box" id="carousel-slide-display">
+                <span class="slide-tag" id="slide-tag-label">SLIDE 1 OF 5 · THE HOOK</span>
+                <h3 id="slide-title-display">Why 90% of SaaS Startups Die from Silent Churn</h3>
+                <p id="slide-body-display">It's not product-market fit. It's the silent revenue leaks happening right under your nose in your payment gateway.</p>
+                <div class="slide-footer-meta">
+                  <span id="slide-author">PulseSync Growth Notes</span>
+                  <span>Swipe →</span>
+                </div>
+              </div>
+
+              <div class="carousel-controls">
+                <button type="button" class="c-nav-btn" id="prev-slide-btn">← Previous Slide</button>
+                <span class="slide-indicator" id="slide-indicator">1 / 5</span>
+                <button type="button" class="c-nav-btn" id="next-slide-btn">Next Slide →</button>
+              </div>
+            </div>
+
+            <button type="button" class="copy-sub-btn" id="copy-carousel-btn">Copy Full 5-Slide Carousel Deck</button>
+          </div>
+        </div>
+
+        <!-- TAB 5: VISUAL AD MOCKUP & PROMPT -->
+        <div class="tab-pane" id="tab-visual">
+          <div class="visual-studio-card">
+            <h4>Live Visual Ad Creative Preview:</h4>
+            <div class="creative-banner" id="creative-banner-preview">
+              <div class="banner-badge">PROPRIETARY WORKFLOW</div>
+              <h2 id="banner-hero-text">AUTOMATE YOUR REVENUE RETENTION</h2>
+              <p id="banner-sub-text">Catch 40% more churn signals before customers cancel.</p>
+              <button class="banner-cta" id="banner-cta-button">Claim Free Audit</button>
+            </div>
+
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <strong>Midjourney / Flux AI Generative Image Prompt:</strong>
+                <button type="button" class="copy-tiny-btn" id="copy-mj-prompt-btn">Copy Prompt</button>
+              </div>
+              <pre class="prompt-code" id="midjourney-prompt-display">Futuristic glowing neon glass dashboard displaying real-time financial telemetry, volumetric purple and cyan lighting, isometric clean 3D render, minimalist architectural aesthetics --ar 16:9 --v 6.0</pre>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <script src="app.js?v=2.3"></script>
+</body>
+</html>

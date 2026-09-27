@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocuSense AI — Intelligent Financial Document & Invoice Automation</title>
+  <meta name="description" content="AI-Powered Document Intelligence & Invoice Automation Suite built by Michael Jay Diaz (MJ). Extracts structured JSON, checks math anomalies, and syncs to ERP.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+
+  <!-- Navigation Bar -->
+  <header class="app-header">
+    <div class="nav-container">
+      <div class="brand-group">
+        <a href="http://localhost:8088" class="back-portfolio-btn" title="Back to MJ Portfolio">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>MJ Portfolio</span>
+        </a>
+        <div class="brand-divider"></div>
+        <div class="brand-logo">
+          <div class="logo-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div>
+            <span class="logo-title">DocuSense <span class="gradient-text">AI</span></span>
+            <span class="logo-sub">Financial Intelligence & Invoice Pipeline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-status">
+        <div class="demo-credit-pill" id="demo-credit-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Demo Scans: <strong id="credit-count">3</strong>/3</span>
+        </div>
+        <div class="status-pill active">
+          <span class="pulse-dot"></span>
+          <span id="model-indicator">Gemini Multi-Modal Vision Active</span>
+        </div>
+        <span class="dev-tag">Built by <strong>Michael Jay Diaz</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-main">
+    <div class="workspace-grid">
+      
+      <!-- LEFT PANEL: INGESTION & DOCUMENT VIEWER -->
+      <section class="panel left-panel">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <span class="step-num">01</span>
+            <div>
+              <h2>Document Ingestion</h2>
+              <p>Select a business invoice preset or upload custom document</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quota Alert Box (shown when 0 credits left) -->
+        <div class="quota-alert-box hidden" id="quota-alert-box">
+          <div class="quota-alert-title">🔒 Demo Limit Reached (0 Scans Remaining)</div>
+          <p>You have tested the 3 free live custom scans. Presets remain fully interactive with zero-cost cached intelligence. Ready to integrate an unlimited AI document pipeline into your business?</p>
+          <a href="mailto:michaeljayo.diaz@gmail.com?subject=Inquiry:%20DocuSense%20AI%20Custom%20Invoice%20Pipeline" class="btn-quota-contact">
+            ✉️ Contact Michael Jay Diaz
+          </a>
+        </div>
+
+        <!-- Presets Selection Bar -->
+        <div class="presets-section">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+            <span class="section-label" style="margin-bottom: 0;">1-Click Demonstration Invoices</span>
+            <span class="demo-badge-hint">⚡ Presets: Free Instant Demo Cache</span>
+          </div>
+          <div class="presets-grid">
+            <button type="button" class="preset-card active" data-preset="cloud">
+              <div class="preset-icon cloud">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+              </div>
+              <div class="preset-info">
+                <strong>Apex Cloud Cluster</strong>
+                <span>AWS/GCP Style Bill · $2,384.50</span>
+              </div>
+            </button>
+
+            <button type="button" class="preset-card" data-preset="anomaly">
+              <div class="preset-icon warning">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="preset-info">
+                <strong>OmniTech Hardware</strong>
+                <span>Has Math Mismatch Flag · $6,120</span>
+              </div>
+            </button>
+
+            <button type="button" class="preset-card" data-preset="freelance">
+              <div class="preset-icon dev">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <div class="preset-info">
+                <strong>MJ Development Sprint</strong>
+                <span>SaaS MVP & AI Pipeline · $4,850</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom Upload & Raw Input Tabs -->
+        <div class="input-tabs">
+          <button type="button" class="tab-btn active" data-tab="preview">Document Preview</button>
+          <button type="button" class="tab-btn" data-tab="upload">Upload Custom File</button>
+          <button type="button" class="tab-btn" data-tab="text">Paste Raw Text</button>
+        </div>
+
+        <!-- Tab 1: Preview View -->
+        <div class="tab-content active" id="tab-preview">
+          <div class="doc-preview-wrapper" id="preview-container">
+            <div class="document-sheet" id="document-sheet">
+              <!-- Rendered document simulation will appear here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Upload View -->
+        <div class="tab-content" id="tab-upload">
+          <div class="drop-zone" id="drop-zone">
+            <input type="file" id="file-input" accept="image/png, image/jpeg, image/webp" hidden>
+            <div class="drop-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <h3>Drop your receipt or invoice here</h3>
+            <p>Supports PNG, JPG, or WEBP invoice photos & scanned receipts</p>
+            <button type="button" class="browse-btn" onclick="document.getElementById('file-input').click()">Browse Files</button>
+          </div>
+        </div>
+
+        <!-- Tab 3: Text View -->
+        <div class="tab-content" id="tab-text">
+          <div class="text-input-wrapper">
+            <textarea id="raw-doc-text" placeholder="Paste invoice text, line items, or OCR output here..."></textarea>
+          </div>
+        </div>
+
+        <!-- Primary Action Trigger -->
+        <div class="action-footer">
+          <button type="button" class="extract-btn" id="run-extract-btn">
+            <span class="btn-spinner hidden" id="extract-spinner"></span>
+            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span id="extract-btn-label">Run DocuSense AI Extraction & Audit</span>
+          </button>
+        </div>
+      </section>
+
+
+      <!-- RIGHT PANEL: LIVE INTELLIGENCE DASHBOARD -->
+      <section class="panel right-panel">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <span class="step-num highlight">02</span>
+            <div>
+              <h2>Extracted Financial Intelligence</h2>
+              <p>Real-time line items, automated audits, and schema mapping</p>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button type="button" class="view-toggle-btn active" id="btn-view-visual">Dashboard</button>
+            <button type="button" class="view-toggle-btn" id="btn-view-json">JSON Schema</button>
+          </div>
+        </div>
+
+        <!-- DASHBOARD VIEW -->
+        <div class="dashboard-scrollable" id="dashboard-view">
+          
+          <!-- Audit & Anomaly Banner -->
+          <div class="audit-banner" id="audit-banner">
+            <div class="audit-status" id="audit-status-badge">
+              <span class="audit-icon" id="audit-icon"></span>
+              <span class="audit-label" id="audit-label">Awaiting Extraction</span>
+            </div>
+            <div class="audit-meta">
+              <span class="category-pill" id="expense-category">Category: Unclassified</span>
+              <span class="deductible-pill" id="deductible-status">Deductible: --</span>
+            </div>
+          </div>
+
+          <!-- Executive Summary -->
+          <div class="summary-card" id="summary-card">
+            <h4>Executive AI Summary</h4>
+            <p id="summary-text">Select an invoice preset on the left or upload your own document, then click "Run DocuSense AI Extraction & Audit" to generate real-time structured intelligence.</p>
+          </div>
+
+          <!-- Anomaly Flags List -->
+          <div class="flags-container hidden" id="flags-container">
+            <h4>Audit Findings & Anomaly Detection</h4>
+            <div class="flags-list" id="flags-list"></div>
+          </div>
+
+          <!-- Top-Level Financial KPI Metrics -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span class="metric-title">Grand Total</span>
+              <span class="metric-val highlight" id="kpi-total">$0.00</span>
+              <span class="metric-sub" id="kpi-currency">USD</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-title">Subtotal</span>
+              <span class="metric-val" id="kpi-subtotal">$0.00</span>
+              <span class="metric-sub" id="kpi-tax">Tax: $0.00 (0%)</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-title">Payment Terms</span>
+              <span class="metric-val" id="kpi-terms">--</span>
+              <span class="metric-sub" id="kpi-due">Due: --</span>
+            </div>
+          </div>
+
+          <!-- Vendor & Invoice Info Grid -->
+          <div class="info-split-grid">
+            <div class="info-card">
+              <div class="info-card-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Vendor Details</span>
+              </div>
+              <div class="info-row">
+                <span class="lbl">Name:</span>
+                <strong id="vendor-name">--</strong>
+              </div>
+              <div class="info-row">
+                <span class="lbl">Tax ID / VAT:</span>
+                <span id="vendor-tax-id">--</span>
+              </div>
+              <div class="info-row">
+                <span class="lbl">Address:</span>
+                <span id="vendor-address">--</span>
+              </div>
+              <div class="info-row">
+                <span class="lbl">Contact:</span>
+                <span id="vendor-contact">--</span>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>Invoice Metadata</span>
+              </div>
+              <div class="info-row">
+                <span class="lbl">Invoice Number:</span>
+                <strong id="meta-inv-num">--</strong>
+              </div>
+              <div class="info-row">
+                <span class="lbl">Issue Date:</span>
+                <span id="meta-issue-date">--</span>
+              </div>
+              <div class="info-row">
+                <span class="lbl">Due Date:</span>
+                <span id="meta-due-date">--</span>
+              </div>
+              <div class="info-row">
+                <span class="lbl">PO Number:</span>
+                <span id="meta-po-num">--</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Structured Line Items Table -->
+          <div class="table-card">
+            <div class="table-card-header">
+              <h4>Parsed Line Items (<span id="line-items-count">0</span> items)</h4>
+              <span class="table-hint">Verified via Gemini Vision OCR</span>
+            </div>
+            <div class="table-responsive">
+              <table class="items-table" id="items-table">
+                <thead>
+                  <tr>
+                    <th>Item Description</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th class="text-right">Total</th>
+                  </tr>
+                </thead>
+                <tbody id="items-tbody">
+                  <tr>
+                    <td colspan="4" class="empty-state">No document processed yet. Click 'Run DocuSense Extraction' to parse line items.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Automation & Export Action Buttons -->
+          <div class="export-actions-card">
+            <h4>Workflow Automation Triggers</h4>
+            <p>Instantly dispatch extracted financial data to ERP, accounting systems, or CSV files:</p>
+            <div class="export-buttons-group">
+              <button type="button" class="export-btn" id="btn-export-json">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download JSON</span>
+              </button>
+              <button type="button" class="export-btn" id="btn-export-csv">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+                <span>Export CSV</span>
+              </button>
+              <button type="button" class="export-btn webhook-btn" id="btn-sync-webhook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span>Simulate Webhook Sync (ERP / QuickBooks)</span>
+              </button>
+            </div>
+            
+            <!-- Webhook Toast Notification -->
+            <div class="webhook-receipt hidden" id="webhook-receipt">
+              <div class="receipt-icon">✅</div>
+              <div class="receipt-body">
+                <strong id="receipt-msg">Webhook Dispatched Successfully</strong>
+                <span id="receipt-details">TXN-ID: ...</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- JSON RAW CODE VIEW (TOGGLEABLE) -->
+        <div class="json-view-container hidden" id="json-view">
+          <div class="json-header">
+            <span>Structured Data Output (schema.org/Invoice compatible)</span>
+            <button type="button" class="copy-json-btn" id="btn-copy-json">Copy JSON</button>
+          </div>
+          <pre class="json-code" id="json-code-display">// Parsed JSON schema will appear here after extraction.</pre>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
