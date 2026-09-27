@@ -1,6 +1,7 @@
-// Filter Functionality
+// Category Filtering
 const filterBtns = document.querySelectorAll('.filter-btn');
-const photoCards = document.querySelectorAll('.photo-card');
+const collageItems = document.querySelectorAll('.collage-item');
+const itemCountEl = document.getElementById('itemCount');
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -8,50 +9,57 @@ filterBtns.forEach(btn => {
     btn.classList.add('active');
 
     const filter = btn.getAttribute('data-filter');
+    let visibleCount = 0;
 
-    photoCards.forEach(card => {
-      const category = card.getAttribute('data-category');
+    collageItems.forEach(item => {
+      const category = item.getAttribute('data-category');
       if (filter === 'all' || category === filter) {
-        card.style.display = 'block';
+        item.style.display = 'block';
+        visibleCount++;
         setTimeout(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
         }, 50);
       } else {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(10px)';
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(12px)';
         setTimeout(() => {
-          card.style.display = 'none';
+          item.style.display = 'none';
         }, 300);
       }
     });
+
+    itemCountEl.textContent = `SHOWING ${visibleCount} PLATE${visibleCount === 1 ? '' : 'S'}`;
   });
 });
 
-// Lightbox Functionality
-const lightbox = document.getElementById('lightbox');
+// Fullscreen Lightbox
+const lightbox = document.getElementById('lightboxModal');
 const lightboxImg = document.getElementById('lightboxImg');
 const lightboxTitle = document.getElementById('lightboxTitle');
 const lightboxDesc = document.getElementById('lightboxDesc');
+const lightboxSpecs = document.getElementById('lightboxSpecs');
 const lightboxClose = document.getElementById('lightboxClose');
 
-photoCards.forEach(card => {
-  card.addEventListener('click', () => {
-    const src = card.getAttribute('data-src');
-    const title = card.getAttribute('data-title');
-    const desc = card.getAttribute('data-desc');
+collageItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const src = item.getAttribute('data-src');
+    const title = item.getAttribute('data-title');
+    const desc = item.getAttribute('data-desc');
+    const specs = item.getAttribute('data-specs');
 
     lightboxImg.src = src;
     lightboxTitle.textContent = title;
     lightboxDesc.textContent = desc;
+    lightboxSpecs.innerHTML = specs || '';
 
-    lightbox.classList.add('open');
+    lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   });
 });
 
 function closeLightbox() {
-  lightbox.classList.remove('open');
+  lightbox.classList.remove('active');
   document.body.style.overflow = '';
 }
 
@@ -64,7 +72,7 @@ lightbox.addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+  if (e.key === 'Escape' && lightbox.classList.contains('active')) {
     closeLightbox();
   }
 });

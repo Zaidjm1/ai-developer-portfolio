@@ -3,295 +3,280 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LUMINA Visuals | Commercial & Editorial Photography Studio</title>
-  <meta name="description" content="Award-winning visual production, editorial fashion, executive portraits, and commercial advertising photography studio.">
+  <title>MICHAEL JAY DIAZ — Visual Anthology & Photography Showcase</title>
+  <meta name="description" content="A curated visual anthology and fine-art photography showcase capturing landscapes, human narratives, architecture, and quiet moments.">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎞️</text></svg>">
 </head>
 <body>
-  <div class="ambient-glow"></div>
 
-  <!-- Navigation -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="brand-logo">
-        <div class="logo-mark">L</div>
-        <span class="logo-text">LUMINA <span class="text-gold">STUDIO</span></span>
-      </a>
+  <!-- Minimalist Editorial Header -->
+  <header class="site-header">
+    <a href="#" class="brand-title">
+      <h1>MICHAEL JAY DIAZ</h1>
+      <span>VISUAL ARCHIVE &bull; SELECTED WORKS</span>
+    </a>
 
-      <ul class="nav-links">
-        <li><a href="#gallery" class="nav-link active">Gallery</a></li>
-        <li><a href="#services" class="nav-link">Packages</a></li>
-        <li><a href="#about" class="nav-link">Vision</a></li>
-        <li><a href="#contact" class="nav-link">Inquire</a></li>
-      </ul>
-
-      <a href="#contact" class="nav-cta">
-        <span>Book Session</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
-      </a>
-    </div>
+    <ul class="nav-menu">
+      <li><a href="#gallery" class="active">Selected Works</a></li>
+      <li><a href="../#projects">Other Projects</a></li>
+      <li><a href="mailto:michaeljayo.diaz@gmail.com">Contact</a></li>
+    </ul>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-badge">
-        <span>✨ Visual Direction & Editorial Production</span>
-      </div>
-      <h1 class="hero-title font-serif">
-        Capturing Moments With <span class="text-gradient-gold">Cinematic Precision</span> & Emotion.
-      </h1>
-      <p class="hero-desc">
-        High-concept editorial modeling, luxury lifestyle, commercial product staging, and Forbes-caliber executive portraits crafted for visionaries and iconic brands.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#gallery" class="btn-primary">
-          <span>Explore Selected Works</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
-        </a>
-        <a href="#contact" class="btn-secondary">Inquire For Commissions</a>
-      </div>
-
-      <div class="stats-strip">
-        <div class="stat-item">
-          <div class="stat-num">240+</div>
-          <div class="stat-label">Editorial Campaigns</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">98.8%</div>
-          <div class="stat-label">Client Retention</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">48h</div>
-          <div class="stat-label">Digital Proof Delivery</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">8K</div>
-          <div class="stat-label">Ultra-High Resolution</div>
-        </div>
-      </div>
+  <!-- Curated Category Bar -->
+  <div class="curation-bar" id="gallery">
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all">All Plates (10)</button>
+      <button class="filter-btn" data-filter="landscape">Nature & Landscapes</button>
+      <button class="filter-btn" data-filter="portrait">Portraits & Human Spirit</button>
+      <button class="filter-btn" data-filter="architecture">Architecture & Spaces</button>
+      <button class="filter-btn" data-filter="editorial">Fine Art & Still Life</button>
     </div>
-  </section>
 
-  <!-- Gallery Section -->
-  <section class="gallery-section" id="gallery">
-    <div class="container">
-      
-      <!-- Filter Bar -->
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All Works</button>
-        <button class="filter-btn" data-filter="editorial">Fashion & Editorial</button>
-        <button class="filter-btn" data-filter="portrait">Executive Portraits</button>
-        <button class="filter-btn" data-filter="commercial">Commercial & Lifestyle</button>
-        <button class="filter-btn" data-filter="hospitality">Hospitality & Wedding</button>
-      </div>
-
-      <!-- Photo Grid -->
-      <div class="photo-grid" id="photoGrid">
-
-        <!-- Photo 1: Wedding & Couple -->
-        <div class="photo-card" data-category="hospitality" data-src="assets/wedding_coastal.jpg" data-title="Coastal Golden Hour Wedding" data-desc="35mm film aesthetic, romantic coastal cliffs with ethereal sunset backlight.">
-          <div class="photo-img-wrap">
-            <img src="assets/wedding_coastal.jpg" alt="Coastal Golden Hour Wedding" loading="lazy">
-          </div>
-          <div class="photo-overlay">
-            <span class="photo-tag">Wedding & Romance</span>
-            <h3 class="photo-title">Coastal Golden Hour Wedding</h3>
-            <p class="photo-desc">Romantic ocean cliffside portrait with custom lace bridal styling and warm cinematic sunset flare.</p>
-            <div class="photo-meta">
-              <span>📷 Leica 50mm f/1.2</span>
-              <span>⚡ Natural Golden Hour</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 2: Haute Couture Fashion Model -->
-        <div class="photo-card" data-category="editorial" data-src="assets/fashion_editorial.jpg" data-title="Haute Couture Autumn Lookbook" data-desc="Sculptural knitwear lookbook illuminated with studio softbox and rim accent lighting.">
-          <div class="photo-img-wrap">
-            <img src="assets/fashion_editorial.jpg" alt="Haute Couture Fashion Lookbook" loading="lazy">
-          </div>
-          <div class="photo-overlay">
-            <span class="photo-tag">Haute Couture</span>
-            <h3 class="photo-title">Haute Couture Autumn Lookbook</h3>
-            <p class="photo-desc">Editorial lookbook styling with natural micro-texture, tactile knit fabrics, and studio rim lighting.</p>
-            <div class="photo-meta">
-              <span>📷 Hasselblad 80mm</span>
-              <span>⚡ Studio Octabox</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 3: Forbes Executive Portrait -->
-        <div class="photo-card" data-category="portrait" data-src="assets/executive_portrait.jpg" data-title="Founder Thought Leadership" data-desc="Tailored executive portraiture engineered for Forbes, Inc., and keynote speaker profiles.">
-          <div class="photo-img-wrap">
-            <img src="assets/executive_portrait.jpg" alt="Founder Executive Portrait" loading="lazy">
-          </div>
-          <div class="photo-overlay">
-            <span class="photo-tag">Executive Portrait</span>
-            <h3 class="photo-title">Founder Thought Leadership</h3>
-            <p class="photo-desc">Commanding, trustworthy presence with genuine catchlights, tailored suiting, and warm architectural bokeh.</p>
-            <div class="photo-meta">
-              <span>📷 85mm f/1.4 Art</span>
-              <span>⚡ Volumetric Backlight</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 4: Commercial Cosmetics Ad -->
-        <div class="photo-card" data-category="commercial" data-src="assets/commercial_product.jpg" data-title="Botanical Serum Commercial Staging" data-desc="Hyper-crisp glass caustics, water droplets, and dramatic luxury e-commerce staging.">
-          <div class="photo-img-wrap">
-            <img src="assets/commercial_product.jpg" alt="Commercial Product Staging" loading="lazy">
-          </div>
-          <div class="photo-overlay">
-            <span class="photo-tag">Commercial Ad</span>
-            <h3 class="photo-title">Botanical Serum Staging</h3>
-            <p class="photo-desc">Commercial cosmetics advertising with crystalline glass reflections and dew droplets.</p>
-            <div class="photo-meta">
-              <span>📷 100mm Macro f/2.8</span>
-              <span>⚡ Precision Fresnel</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 5: Luxury Hospitality & Oceanfront Suite -->
-        <div class="photo-card" data-category="hospitality" data-src="assets/hospitality_ad.jpg" data-title="Santorini Oceanfront Villa Suite" data-desc="Architectural resort interiors with Scandinavian timber and Mediterranean golden hour ambiance.">
-          <div class="photo-img-wrap">
-            <img src="assets/hospitality_ad.jpg" alt="Luxury Hospitality Resort Interior" loading="lazy">
-          </div>
-          <div class="photo-overlay">
-            <span class="photo-tag">Architecture & Spaces</span>
-            <h3 class="photo-title">Santorini Oceanfront Suite</h3>
-            <p class="photo-desc">High-end boutique hospitality interior blending clean Scandinavian lines with coastal luxury.</p>
-            <div class="photo-meta">
-              <span>📷 24mm Tilt-Shift</span>
-              <span>⚡ Ambient Sunlight</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 6: Cafe & Food Lifestyle -->
-        <div class="photo-card" data-category="commercial" data-src="assets/cafe_food_lifestyle.jpg" data-title="Artisan Microfoam & Berry Patisserie" data-desc="Viral 'Post Before You Eat' social media lifestyle photography for boutique cafes and bakeries.">
-          <div class="photo-img-wrap">
-            <img src="assets/cafe_food_lifestyle.jpg" alt="Artisan Cafe Latte Food Lifestyle" loading="lazy">
-          </div>
-          <div class="photo-overlay">
-            <span class="photo-tag">Cafe & Food Trend</span>
-            <h3 class="photo-title">Artisan Latte & Patisserie</h3>
-            <p class="photo-desc">Microfoam rosetta art and glistening berry pastry table shot tailored for high Instagram viral reach.</p>
-            <div class="photo-meta">
-              <span>📷 35mm f/1.8</span>
-              <span>⚡ Sunlit Window Light</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 7: Pro Retouched Social Selfie -->
-        <div class="photo-card" data-category="portrait" data-src="assets/social_selfie.jpg" data-title="Authentic Creator Social Portrait" data-desc="Natural golden-hour smartphone perspective with pore-level fidelity and zero artificial smoothing.">
-          <div class="photo-img-wrap">
-            <img src="assets/social_selfie.jpg" alt="Authentic Creator Social Portrait" loading="lazy">
-          </div>
-          <div class="photo-overlay">
-            <span class="photo-tag">Personal Brand</span>
-            <h3 class="photo-title">Authentic Creator Portrait</h3>
-            <p class="photo-desc">Casual, charming social portrait with authentic skin texture and sunlit loft bokeh.</p>
-            <div class="photo-meta">
-              <span>📷 Natural Front Angle</span>
-              <span>⚡ Golden Hour Loft</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <div class="gallery-count" id="itemCount">
+      SHOWING 10 PLATES
     </div>
-  </section>
+  </div>
 
-  <!-- Pricing & Service Packages -->
-  <section class="pricing-section" id="services">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">Commission Rates</span>
-        <h2 class="section-title font-serif">Tailored <span class="text-gradient-gold">Photography Packages</span></h2>
-        <p style="color: var(--text-muted); margin-top: 10px;">
-          From high-velocity commercial visual sprints to full editorial lookbook campaigns and private sessions.
-        </p>
-      </div>
+  <!-- Squarespace-style Collage / Masonry Showcase -->
+  <main class="masonry-container">
+    <div class="masonry-grid" id="masonryGrid">
 
-      <div class="pricing-grid">
-        <!-- Package 1: Social & Personal Brand -->
-        <div class="pricing-card">
-          <h3 class="pricing-name">Social & Personal Brand</h3>
-          <p class="pricing-desc">Ideal for creators, foodies, cafe owners, and founders elevating their social feeds.</p>
-          <div class="pricing-price">$120 <span>/ sprint</span></div>
-          <ul class="pricing-features">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 5 Retouched High-Res Images</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Instagram/TikTok Crop Ratios</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 24-Hour Digital Delivery</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Commercial Use License</li>
-          </ul>
-          <a href="#contact" class="pricing-btn pricing-btn-outline">Select Package</a>
+      <!-- Item 1: Alpine Sunrise -->
+      <article class="collage-item" data-category="landscape" 
+               data-src="assets/misty_mountain.jpg" 
+               data-title="Alpine Solitude at First Light" 
+               data-desc="Deep fog rolling across Bernese Oberland peaks during early autumn dawn. Captured as sunbeams pierce through high cirrus clouds, illuminating pine valleys below."
+               data-specs="Hasselblad 50mm &bull; f/8.0 &bull; 1/250s &bull; ISO 64">
+        <div class="collage-media">
+          <img src="assets/misty_mountain.jpg" alt="Alpine sunrise landscape" loading="lazy">
         </div>
-
-        <!-- Package 2: Commercial & Editorial Lookbook (Featured) -->
-        <div class="pricing-card featured">
-          <div class="featured-pill">MOST POPULAR</div>
-          <h3 class="pricing-name">Commercial Lookbook Pro</h3>
-          <p class="pricing-desc">Complete visual campaign for fashion apparel, boutique hotels, and luxury brands.</p>
-          <div class="pricing-price">$290 <span>/ campaign</span></div>
-          <ul class="pricing-features">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 15 Studio-Grade Editorial Assets</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Print-Ready 8K TIFF + WebP Export</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Creative Direction & Moodboard</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited Worldwide Ad Rights</li>
-          </ul>
-          <a href="#contact" class="pricing-btn pricing-btn-primary">Book Lookbook Sprint</a>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>Alpine Solitude at First Light</h3>
+            <p>Bernese Oberland valleys submerged under heavy morning inversion fog.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Landscape</span>
+            <div class="shot-details">50mm &bull; f/8.0</div>
+          </div>
         </div>
+      </article>
 
-        <!-- Package 3: Executive & Bespoke Commission -->
-        <div class="pricing-card">
-          <h3 class="pricing-name">Executive & Private Session</h3>
-          <p class="pricing-desc">Tailored Forbes-style portraits, high-end weddings, and architectural documentation.</p>
-          <div class="pricing-price">$450 <span>/ bespoke</span></div>
-          <ul class="pricing-features">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Full Day Visual Production</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 30 Master Retouched Photographs</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Private Online Client Proofing Vault</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Colorist & Stylist Review</li>
-          </ul>
-          <a href="#contact" class="pricing-btn pricing-btn-outline">Inquire For Dates</a>
+      <!-- Item 2: Scandinavian Pavilion -->
+      <article class="collage-item" data-category="architecture" 
+               data-src="assets/minimal_architecture.jpg" 
+               data-title="Pavilion Over Still Water" 
+               data-desc="Cast-in-place concrete and warm vertical oak slats harmonize with a glassy obsidian reflecting pool on the Norwegian archipelago."
+               data-specs="24mm Tilt-Shift &bull; f/11 &bull; 0.5s &bull; ISO 100">
+        <div class="collage-media">
+          <img src="assets/minimal_architecture.jpg" alt="Minimalist Scandinavian Pavilion Architecture" loading="lazy">
         </div>
-      </div>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>Pavilion Over Still Water</h3>
+            <p>Modern coastal sanctuary framed by coastal pine forests and granite bedrock.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Architecture</span>
+            <div class="shot-details">24mm TS &bull; f/11</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 3: Street Jazz Musician (B&W) -->
+      <article class="collage-item" data-category="portrait" 
+               data-src="assets/street_jazz_bw.jpg" 
+               data-title="The Soul of Royal Street" 
+               data-desc="Spontaneous portrait of street saxophonist Marcus outside Preservation Hall in New Orleans. Captured on classic high-grain tri-X monochrome film profile."
+               data-specs="Leica M11 &bull; 35mm Summilux &bull; f/2.0 &bull; 1/500s">
+        <div class="collage-media">
+          <img src="assets/street_jazz_bw.jpg" alt="Black and white street jazz musician portrait" loading="lazy">
+        </div>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>The Soul of Royal Street</h3>
+            <p>Candid street rhythm captured under warm gas streetlamps in New Orleans.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Portrait</span>
+            <div class="shot-details">35mm &bull; Monochrome</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 4: Icelandic Horses -->
+      <article class="collage-item" data-category="landscape" 
+               data-src="assets/iceland_horses.jpg" 
+               data-title="Wind-Swept Highlands" 
+               data-desc="Two Icelandic horses seeking quiet shelter amid black basalt ash fields and mossy volcanic foothills beneath brooding North Atlantic skies."
+               data-specs="85mm f/1.4 &bull; f/2.8 &bull; 1/800s &bull; ISO 200">
+        <div class="collage-media">
+          <img src="assets/iceland_horses.jpg" alt="Two wild Icelandic horses in volcanic highlands" loading="lazy">
+        </div>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>Wind-Swept Highlands</h3>
+            <p>Quiet companionship across the desolate black sand desert of Vik.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Wildlife</span>
+            <div class="shot-details">85mm &bull; f/2.8</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 5: Coastal Wedding Golden Hour -->
+      <article class="collage-item" data-category="portrait" 
+               data-src="assets/wedding_coastal.jpg" 
+               data-title="Ethereal Pacific Vows" 
+               data-desc="Big Sur coastal cliffs bathed in warm Pacific sunset flare, with a delicate French lace veil caught in the ocean breeze."
+               data-specs="50mm f/1.2 &bull; f/1.6 &bull; 1/2000s &bull; Natural Light">
+        <div class="collage-media">
+          <img src="assets/wedding_coastal.jpg" alt="Coastal wedding couple at golden hour" loading="lazy">
+        </div>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>Ethereal Pacific Vows</h3>
+            <p>Golden hour intimacy atop the wind-swept coastal bluffs of Big Sur.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Editorial</span>
+            <div class="shot-details">50mm &bull; f/1.6</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 6: Haute Couture Editorial -->
+      <article class="collage-item" data-category="editorial" 
+               data-src="assets/fashion_editorial.jpg" 
+               data-title="Tactile Autumn Lookbook" 
+               data-desc="High-concept studio study on raw wool textures, architectural collar drapery, and soft directional feather lighting."
+               data-specs="Medium Format 80mm &bull; f/5.6 &bull; Studio Octa">
+        <div class="collage-media">
+          <img src="assets/fashion_editorial.jpg" alt="Haute couture autumn knitwear fashion editorial" loading="lazy">
+        </div>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>Tactile Autumn Lookbook</h3>
+            <p>Exploration of volumetric knit silhouettes and soft directional rim illumination.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Fashion</span>
+            <div class="shot-details">80mm &bull; Studio Strobe</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 7: Executive Thought Leadership -->
+      <article class="collage-item" data-category="portrait" 
+               data-src="assets/executive_portrait.jpg" 
+               data-title="The Quiet Strategist" 
+               data-desc="Commanding personal branding portrait emphasizing warmth, depth, and focused presence against sunlit architectural glass."
+               data-specs="85mm f/1.4 &bull; f/2.0 &bull; Ambient Daylight">
+        <div class="collage-media">
+          <img src="assets/executive_portrait.jpg" alt="Founder and executive personal branding portrait" loading="lazy">
+        </div>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>The Quiet Strategist</h3>
+            <p>Tailored portraiture highlighting authentic eye catchlights and calm authority.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Portrait</span>
+            <div class="shot-details">85mm &bull; f/2.0</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 8: Botanical Cosmetics Still Life -->
+      <article class="collage-item" data-category="editorial" 
+               data-src="assets/commercial_product.jpg" 
+               data-title="Flora & Amber Glass" 
+               data-desc="Macro product study featuring hand-poured botanical tinctures with hyper-crisp optical glass caustics and fresh mist beads."
+               data-specs="100mm Macro &bull; f/11 &bull; 1/160s &bull; Focus Stacked">
+        <div class="collage-media">
+          <img src="assets/commercial_product.jpg" alt="Botanical amber glass cosmetic product staging" loading="lazy">
+        </div>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>Flora & Amber Glass</h3>
+            <p>Macro clarity capturing refracted light caustics and fine condensation beads.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Still Life</span>
+            <div class="shot-details">100mm Macro &bull; f/11</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 9: Santorini Sunset Suite -->
+      <article class="collage-item" data-category="architecture" 
+               data-src="assets/hospitality_ad.jpg" 
+               data-title="Santorini Caldera Haven" 
+               data-desc="Warm bleached timber, stone textures, and linen drapery catching the last amber rays over the Aegean caldera."
+               data-specs="16-35mm &bull; f/8.0 &bull; Golden Hour Interior">
+        <div class="collage-media">
+          <img src="assets/hospitality_ad.jpg" alt="Santorini oceanfront luxury suite interior" loading="lazy">
+        </div>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>Santorini Caldera Haven</h3>
+            <p>Seamless blend of Cycladic whitewash, natural linen, and twilight coastal sea.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Architecture</span>
+            <div class="shot-details">20mm &bull; Natural Light</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 10: Morning Patisserie & Coffee -->
+      <article class="collage-item" data-category="editorial" 
+               data-src="assets/cafe_food_lifestyle.jpg" 
+               data-title="Morning Ritual" 
+               data-desc="Silky microfoam latte art paired with a fresh berry layered mille-feuille on marble, bathed in soft morning window light."
+               data-specs="35mm f/1.8 &bull; f/2.2 &bull; 1/400s &bull; Window Softbox">
+        <div class="collage-media">
+          <img src="assets/cafe_food_lifestyle.jpg" alt="Artisan latte and berry pastry morning lifestyle" loading="lazy">
+        </div>
+        <div class="collage-info">
+          <div class="info-text">
+            <h3>Morning Ritual</h3>
+            <p>An ode to slow mornings, microfoam texture, and golden pastry layers.</p>
+          </div>
+          <div class="info-meta">
+            <span class="category-badge">Still Life</span>
+            <div class="shot-details">35mm &bull; f/2.2</div>
+          </div>
+        </div>
+      </article>
+
     </div>
-  </section>
+  </main>
 
-  <!-- Interactive Lightbox Modal -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-close" id="lightboxClose">&times;</div>
-    <div class="lightbox-content">
+  <!-- Fullscreen Minimalist Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <button class="lightbox-close-btn" id="lightboxClose" aria-label="Close modal">&times;</button>
+    <div class="lightbox-wrapper">
       <img src="" alt="" class="lightbox-img" id="lightboxImg">
-      <div class="lightbox-caption">
-        <h4 id="lightboxTitle"></h4>
+      <div class="lightbox-details">
+        <h2 id="lightboxTitle"></h2>
         <p id="lightboxDesc"></p>
+        <div class="specs-line" id="lightboxSpecs"></div>
       </div>
     </div>
   </div>
 
-  <!-- Footer & Contact CTA -->
-  <footer class="footer" id="contact">
-    <div class="container">
-      <h3 class="font-serif" style="font-size: 1.8rem; margin-bottom: 8px;">Let's Create Visuals That Move People.</h3>
-      <p style="color: var(--text-muted); margin-bottom: 24px;">Currently accepting commissions for Q4 & early 2027.</p>
-      
-      <div class="footer-links">
-        <a href="mailto:michaeljayo.diaz@gmail.com">michaeljayo.diaz@gmail.com</a>
-        <span>•</span>
-        <a href="../">Back to Main Portfolio</a>
-        <span>•</span>
-        <a href="https://instagram.com" target="_blank">Instagram</a>
-      </div>
-
-      <p>&copy; 2026 LUMINA STUDIO by Michael Jay Diaz. All Rights Reserved.</p>
+  <!-- Minimal Footer -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <p>&copy; 2026 Michael Jay Diaz &bull; Fine-Art Photography & Visual Direction Archive.</p>
+    </div>
+    <div class="footer-right">
+      <a href="../">Main Portfolio</a>
+      <a href="mailto:michaeljayo.diaz@gmail.com">michaeljayo.diaz@gmail.com</a>
     </div>
   </footer>
 
