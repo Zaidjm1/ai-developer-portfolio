@@ -253,6 +253,12 @@
         <!-- Right: Active Ticket Details & Diagnostic Workspace -->
         <div class="tech-detail-col">
           <div class="card detail-card" id="tech-detail-card">
+            <!-- Archived / Resolved Alert Banner (shown when inspecting a resolved ticket) -->
+            <div id="archived-banner" style="display: none; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); color: #34d399; font-size: 0.74rem; font-family: var(--font-mono); padding: 8px 12px; border-radius: var(--radius-sm); margin-bottom: 4px; align-items: center; justify-content: space-between;">
+              <span>✅ <strong>RESOLVED INCIDENT:</strong> Removed from active dispatch queue. Retained in IT Admin Master Audit.</span>
+              <button type="button" class="btn-text-preset" onclick="window.switchRole('admin')" style="font-size: 0.68rem; padding: 2px 8px;">View in Admin →</button>
+            </div>
+
             <div class="detail-header" id="detail-header">
               <div class="dh-top">
                 <span class="t-key" id="det-key">IT-1041</span>
@@ -338,6 +344,28 @@
             </div>
 
           </div>
+
+          <!-- Empty Queue Detail Placeholder (shown when all tickets resolved) -->
+          <div class="card detail-card empty-detail-card" id="tech-empty-state" style="display: none; text-align: center; padding: 48px 24px; align-items: center; justify-content: center; min-height: 480px;">
+            <div style="font-size: 3rem; margin-bottom: 12px;">🎉</div>
+            <h3 style="font-size: 1.3rem; font-weight: 800; color: #34d399; margin-bottom: 8px;">IT Dispatch Queue Is Clear!</h3>
+            <p style="font-size: 0.84rem; color: var(--text-muted); max-width: 440px; line-height: 1.5; margin-bottom: 24px;">
+              All active workplace incidents have been marked as resolved and removed from this queue. Full incident history, technician audit notes, and SLA compliance metrics remain viewable in the <strong>IT Admin Command Center</strong>.
+            </p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn-primary-action" id="btn-empty-go-admin">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>View Resolved in IT Admin</span>
+              </button>
+              <button type="button" class="btn-text-preset" id="btn-empty-new-ticket">
+                <span>+ Report New Incident</span>
+              </button>
+              <button type="button" class="btn-text-preset" id="btn-empty-reset-demo" style="border-color: rgba(255,255,255,0.15);">
+                <span>🔄 Reset Demo Tickets</span>
+              </button>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -352,11 +380,14 @@
       <div class="admin-kpi-grid">
         <div class="kpi-card">
           <div class="kpi-top">
-            <span class="kpi-lbl">Total Tickets (This Month)</span>
+            <span class="kpi-lbl">Total Incidents (Audit Log)</span>
             <span class="kpi-icon">📋</span>
           </div>
-          <div class="kpi-val" id="admin-total-tickets">684</div>
-          <div class="kpi-sub text-emerald">+12% faster turnaround vs last month</div>
+          <div class="kpi-val" id="admin-total-tickets">4</div>
+          <div class="kpi-sub" id="admin-kpi-sub">
+            <span class="text-emerald" id="admin-resolved-count">0 Resolved</span> • 
+            <span class="text-amber" id="admin-active-count">4 Active</span>
+          </div>
         </div>
 
         <div class="kpi-card">
@@ -484,10 +515,15 @@
             <h2 class="card-title">Enterprise IT Ticket Master Audit Log</h2>
             <p class="card-sub">Real-time status of all tickets across Floor 1–5.</p>
           </div>
-          <button type="button" class="btn-export-csv" id="btn-export-csv">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            <span>Export CSV Audit</span>
-          </button>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" class="btn-text-preset" id="btn-admin-reset-demo" style="font-size: 0.72rem; padding: 5px 12px; border-color: rgba(255,255,255,0.15);">
+              <span>🔄 Reset Demo Incidents</span>
+            </button>
+            <button type="button" class="btn-export-csv" id="btn-export-csv">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Export CSV Audit</span>
+            </button>
+          </div>
         </div>
         <div class="audit-table-wrap">
           <table class="audit-table" id="audit-table">

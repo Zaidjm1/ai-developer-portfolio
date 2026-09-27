@@ -806,11 +806,22 @@ body {
   padding-right: 4px;
 }
 
+.queue-empty-box {
+  background: rgba(10, 15, 27, 0.6);
+  border: 1px dashed rgba(52, 211, 153, 0.35);
+  border-radius: var(--radius-sm);
+}
+
 /* DETAIL COL */
 .detail-card {
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+.empty-detail-card {
+  background: linear-gradient(180deg, rgba(13, 19, 33, 0.95), rgba(7, 10, 18, 0.95));
+  border: 1px dashed rgba(52, 211, 153, 0.35);
 }
 
 .detail-header {

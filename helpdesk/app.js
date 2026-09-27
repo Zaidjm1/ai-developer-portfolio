@@ -115,12 +115,18 @@ document.addEventListener('DOMContentLoaded', () => {
   function loadTickets() {
     try {
       const stored = localStorage.getItem('pulsedesk_tickets');
-      if (stored) return JSON.parse(stored);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const sanitized = parsed.filter(t => t && t.id && t.subject);
+          if (sanitized.length > 0) return sanitized;
+        }
+      }
     } catch (e) {
       console.warn('LocalStorage unavailable, using initial tickets');
     }
     saveTickets(INITIAL_TICKETS);
-    return INITIAL_TICKETS;
+    return JSON.parse(JSON.stringify(INITIAL_TICKETS));
   }
 
   function saveTickets(tickets) {
@@ -167,6 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const techQueueList = document.getElementById('tech-queue-list');
   const qFilterButtons = document.querySelectorAll('.q-filter-btn');
   const qCountAll = document.getElementById('q-count-all');
+  const techDetailCard = document.getElementById('tech-detail-card');
+  const techEmptyState = document.getElementById('tech-empty-state');
+  const archivedBanner = document.getElementById('archived-banner');
   const detKey = document.getElementById('det-key');
   const detUrgency = document.getElementById('det-urgency');
   const detStatus = document.getElementById('det-status');
@@ -238,7 +247,21 @@ document.addEventListener('DOMContentLoaded', () => {
       viewHeading.textContent = 'IT Technician Workstation: Active Incident Queue & Diagnostics';
       viewDesc.textContent = 'Manage open workplace tickets, inspect hardware asset tags, run network diagnostics, and communicate resolutions directly with employees.';
       renderTechQueue();
-      selectTechTicket(selectedTicketId);
+
+      const activeTickets = tickets.filter(t => t && t.id && t.status !== 'Resolved');
+      const isCurrentActive = activeTickets.some(t => t.id === selectedTicketId);
+
+      if (isCurrentActive) {
+        selectTechTicket(selectedTicketId);
+      } else if (selectedTicketId && tickets.some(t => t.id === selectedTicketId)) {
+        // Specifically inspecting an archived ticket (e.g. from Admin Inspect)
+        selectTechTicket(selectedTicketId);
+      } else if (activeTickets.length > 0) {
+        selectedTicketId = activeTickets[0].id;
+        selectTechTicket(selectedTicketId);
+      } else {
+        renderTechEmptyState();
+      }
     } else if (role === 'admin') {
       roleBadge.textContent = 'VIEWING AS: IT ADMINISTRATOR (ELENA ROSTOVA — VP ENTERPRISE IT)';
       viewHeading.textContent = 'IT Operations Command Center: Analytics, SLA Telemetry & Staff Load';
@@ -248,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateHeaderCounts();
   }
+  window.switchRole = switchRole;
 
   /**
    * 2. EMPLOYEE PORTAL LOGIC
@@ -434,15 +458,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderTechQueue() {
     techQueueList.innerHTML = '';
-    const filtered = tickets.filter(t => {
+    
+    // STRICT RULE: Only active (non-resolved) valid tickets appear in the IT Dispatch Queue!
+    const activeTickets = tickets.filter(t => t && t.id && t.subject && t.status !== 'Resolved');
+    
+    // Update queue count badge to show active tickets only
+    qCountAll.textContent = activeTickets.length;
+
+    // Filter by category
+    const filtered = activeTickets.filter(t => {
       if (activeQueueFilter === 'all') return true;
       return t.category === activeQueueFilter;
     });
 
-    qCountAll.textContent = tickets.length;
+    if (activeTickets.length === 0) {
+      techQueueList.innerHTML = `
+        <div class="queue-empty-box" style="padding: 28px 16px; text-align: center; color: var(--text-dim);">
+          <div style="font-size: 2rem; margin-bottom: 6px;">🎉</div>
+          <div style="font-weight: 700; color: #34d399; font-size: 0.9rem; margin-bottom: 4px;">Queue Clear — All Incidents Resolved</div>
+          <div style="font-size: 0.74rem; line-height: 1.4; color: var(--text-muted); margin-bottom: 12px;">All workplace incidents have been marked as resolved and removed from the active queue. Master records remain viewable in IT Admin.</div>
+          <button type="button" class="btn-text-preset" onclick="window.switchRole('admin')" style="font-size: 0.7rem; padding: 4px 10px;">Open IT Admin Audit View →</button>
+        </div>
+      `;
+      return;
+    }
 
     if (filtered.length === 0) {
-      techQueueList.innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-dim);">No tickets matching filter.</div>';
+      techQueueList.innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-dim); font-size: 0.8rem;">No active tickets in this category.</div>';
       return;
     }
 
@@ -456,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="tc-top">
           <div class="tc-key-group">
             <span class="t-key">${t.id}</span>
-            <span class="t-badge ${badgeClass}">${t.urgencyLabel}</span>
+            <span class="t-badge ${badgeClass}">${t.urgencyLabel || 'NORMAL'}</span>
           </div>
           <span class="t-status ${statusClass}">${t.status}</span>
         </div>
@@ -477,11 +519,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function selectTechTicket(id) {
-    selectedTicketId = id;
-    const t = tickets.find(item => item.id === id);
-    if (!t) return;
+    const t = tickets.find(item => item && item.id === id);
+    if (!t) {
+      const activeTickets = tickets.filter(item => item && item.id && item.status !== 'Resolved');
+      if (activeTickets.length > 0) {
+        selectTechTicket(activeTickets[0].id);
+      } else {
+        renderTechEmptyState();
+      }
+      return;
+    }
 
-    // Highlight selected card in queue list
+    selectedTicketId = id;
+
+    // Show detail card, hide empty state
+    if (techDetailCard) techDetailCard.style.display = 'flex';
+    if (techEmptyState) techEmptyState.style.display = 'none';
+
+    // Highlight selected card in queue list (if present)
     const cards = techQueueList.querySelectorAll('.ticket-card');
     cards.forEach(c => {
       const keySpan = c.querySelector('.t-key');
@@ -494,7 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Populate detail card
     detKey.textContent = t.id;
-    detUrgency.textContent = t.urgencyLabel;
+    detUrgency.textContent = t.urgencyLabel || 'NORMAL';
     detUrgency.className = `t-badge ${t.urgency === 'emergency' ? 'badge-emergency' : (t.urgency === 'high' ? 'badge-high' : 'badge-med')}`;
     
     detStatus.textContent = t.status.toUpperCase();
@@ -513,11 +568,34 @@ document.addEventListener('DOMContentLoaded', () => {
     techUpdateStatus.value = t.status;
     techAssignee.value = t.assignee || 'Marcus Vance (Tier-2 IT)';
 
+    // Archived banner & Quick Resolve button handling
+    if (archivedBanner) {
+      if (t.status === 'Resolved') {
+        archivedBanner.style.display = 'flex';
+        btnQuickResolve.disabled = true;
+        btnQuickResolve.innerHTML = '<span>Ticket Already Resolved</span>';
+        btnQuickResolve.style.opacity = '0.55';
+        btnQuickResolve.style.cursor = 'not-allowed';
+      } else {
+        archivedBanner.style.display = 'none';
+        btnQuickResolve.disabled = false;
+        btnQuickResolve.innerHTML = '<span>Mark Resolved &amp; Close</span>';
+        btnQuickResolve.style.opacity = '1';
+        btnQuickResolve.style.cursor = 'pointer';
+      }
+    }
+
     // Render activity thread
     renderActivityThread(t);
 
     // Hide any previous diagnostic box
     diagOutputBox.style.display = 'none';
+  }
+
+  function renderTechEmptyState() {
+    selectedTicketId = null;
+    if (techDetailCard) techDetailCard.style.display = 'none';
+    if (techEmptyState) techEmptyState.style.display = 'flex';
   }
 
   function renderActivityThread(ticket) {
@@ -589,7 +667,7 @@ Registered User: ${t ? t.employee : 'Sarah Jenkins'}`;
 
   // Save updates & add note
   btnSaveTicket.addEventListener('click', () => {
-    const t = tickets.find(item => item.id === selectedTicketId);
+    const t = tickets.find(item => item && item.id === selectedTicketId);
     if (!t) return;
 
     const newStatus = techUpdateStatus.value;
@@ -610,30 +688,52 @@ Registered User: ${t ? t.employee : 'Sarah Jenkins'}`;
     }
 
     saveTickets(tickets);
-    showToast(`Updated ticket ${t.id} successfully!`);
-    renderTechQueue();
-    selectTechTicket(t.id);
     updateHeaderCounts();
+
+    if (newStatus === 'Resolved') {
+      showToast(`Ticket ${t.id} marked as Resolved! Removed from Dispatch Queue and retained in IT Admin.`);
+      renderTechQueue();
+      // Auto-select next active ticket or display queue clear state
+      const remaining = tickets.filter(item => item && item.id && item.status !== 'Resolved');
+      if (remaining.length > 0) {
+        selectedTicketId = remaining[0].id;
+        selectTechTicket(selectedTicketId);
+      } else {
+        renderTechEmptyState();
+      }
+    } else {
+      showToast(`Updated ticket ${t.id} successfully!`);
+      renderTechQueue();
+      selectTechTicket(t.id);
+    }
   });
 
   // 1-Click Quick Resolve
   btnQuickResolve.addEventListener('click', () => {
-    const t = tickets.find(item => item.id === selectedTicketId);
-    if (!t) return;
+    const t = tickets.find(item => item && item.id === selectedTicketId);
+    if (!t || t.status === 'Resolved') return;
 
     t.status = 'Resolved';
     if (!t.activities) t.activities = [];
     t.activities.push({
       author: 'Marcus Vance (Tier-2 IT)',
       time: 'Just now',
-      text: 'Verified onsite at user desk. Replaced Thunderbolt cable and updated dock firmware. DisplayLink handshake restored. Ticket resolved.'
+      text: 'Verified onsite at user desk. Replaced hardware and restored normal operation. Marked Resolved and archived to Master IT Audit Log.'
     });
 
     saveTickets(tickets);
-    showToast(`Ticket ${t.id} marked as Resolved and closed!`);
-    renderTechQueue();
-    selectTechTicket(t.id);
+    showToast(`Ticket ${t.id} marked as Resolved! Removed from Dispatch Queue and viewable in IT Admin.`);
     updateHeaderCounts();
+    renderTechQueue();
+
+    // Auto-select next active ticket or display clear state
+    const remaining = tickets.filter(item => item && item.id && item.status !== 'Resolved');
+    if (remaining.length > 0) {
+      selectedTicketId = remaining[0].id;
+      selectTechTicket(selectedTicketId);
+    } else {
+      renderTechEmptyState();
+    }
   });
 
   /**
@@ -641,24 +741,39 @@ Registered User: ${t ? t.employee : 'Sarah Jenkins'}`;
    */
   function renderAdminDashboard() {
     adminAuditTbody.innerHTML = '';
-    adminTotalTickets.textContent = tickets.length;
+    
+    // Dynamic KPI statistics
+    const totalCount = tickets.length;
+    const resolvedCount = tickets.filter(t => t && t.status === 'Resolved').length;
+    const activeCount = totalCount - resolvedCount;
 
+    if (adminTotalTickets) adminTotalTickets.textContent = totalCount;
+    const adminResolvedCountEl = document.getElementById('admin-resolved-count');
+    const adminActiveCountEl = document.getElementById('admin-active-count');
+    if (adminResolvedCountEl) adminResolvedCountEl.textContent = `${resolvedCount} Resolved`;
+    if (adminActiveCountEl) adminActiveCountEl.textContent = `${activeCount} Active`;
+
+    // Render all tickets (both active and resolved) in master audit log
     tickets.forEach(t => {
+      if (!t || !t.id) return;
       const tr = document.createElement('tr');
       const badgeClass = t.urgency === 'emergency' ? 'badge-emergency' : (t.urgency === 'high' ? 'badge-high' : (t.urgency === 'medium' ? 'badge-med' : 'badge-low'));
       const statusClass = t.status === 'Resolved' ? 'status-resolved' : (t.status === 'In Progress' ? 'status-progress' : (t.status === 'Waiting on Parts' ? 'status-waiting' : 'status-open'));
 
+      const empDisplay = t.employee ? t.employee.split('(')[0].trim() : 'Unknown';
+      const assigneeDisplay = t.assignee ? t.assignee.split('(')[0].trim() : 'Unassigned';
+
       tr.innerHTML = `
         <td><strong class="t-key">${t.id}</strong></td>
         <td>
-          <div><strong>${escapeHtml(t.employee.split('(')[0].trim())}</strong></div>
-          <small style="color: var(--text-dim);">${escapeHtml(t.desk)}</small>
+          <div><strong>${escapeHtml(empDisplay)}</strong></div>
+          <small style="color: var(--text-dim);">${escapeHtml(t.desk || '')}</small>
         </td>
-        <td>${escapeHtml(t.categoryName)}</td>
-        <td><div style="max-width: 280px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(t.subject)}</div></td>
-        <td><span class="t-badge ${badgeClass}">${t.urgencyLabel.split(' ')[0]}</span></td>
+        <td>${escapeHtml(t.categoryName || 'General IT')}</td>
+        <td><div style="max-width: 280px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(t.subject || '')}</div></td>
+        <td><span class="t-badge ${badgeClass}">${(t.urgencyLabel || 'NORMAL').split(' ')[0]}</span></td>
         <td><span class="t-status ${statusClass}">${t.status}</span></td>
-        <td><span style="color: #38bdf8;">${escapeHtml(t.assignee.split('(')[0].trim())}</span></td>
+        <td><span style="color: #38bdf8;">${escapeHtml(assigneeDisplay)}</span></td>
         <td>
           <button type="button" class="btn-text-preset" style="padding: 3px 8px; font-size: 0.68rem;" onclick="window.viewTicketInTech('${t.id}')">Inspect</button>
         </td>
@@ -674,11 +789,51 @@ Registered User: ${t ? t.employee : 'Sarah Jenkins'}`;
     switchRole('tech');
   };
 
+  // Reset Demo Tickets Helper
+  function resetDemoTickets() {
+    tickets = JSON.parse(JSON.stringify(INITIAL_TICKETS));
+    saveTickets(tickets);
+    selectedTicketId = 'IT-1041';
+    showToast('Reset demo tickets! Restored initial workplace incidents.');
+    updateHeaderCounts();
+    if (currentRole === 'tech') {
+      renderTechQueue();
+      selectTechTicket(selectedTicketId);
+    } else if (currentRole === 'admin') {
+      renderAdminDashboard();
+    } else {
+      renderEmployeeTickets();
+    }
+  }
+  window.resetDemoTickets = resetDemoTickets;
+
+  // Empty state buttons
+  const btnEmptyGoAdmin = document.getElementById('btn-empty-go-admin');
+  if (btnEmptyGoAdmin) {
+    btnEmptyGoAdmin.addEventListener('click', () => switchRole('admin'));
+  }
+
+  const btnEmptyNewTicket = document.getElementById('btn-empty-new-ticket');
+  if (btnEmptyNewTicket) {
+    btnEmptyNewTicket.addEventListener('click', () => switchRole('employee'));
+  }
+
+  const btnEmptyResetDemo = document.getElementById('btn-empty-reset-demo');
+  if (btnEmptyResetDemo) {
+    btnEmptyResetDemo.addEventListener('click', resetDemoTickets);
+  }
+
+  const btnAdminResetDemo = document.getElementById('btn-admin-reset-demo');
+  if (btnAdminResetDemo) {
+    btnAdminResetDemo.addEventListener('click', resetDemoTickets);
+  }
+
   // Export CSV Audit simulation
   btnExportCsv.addEventListener('click', () => {
     let csv = 'Ticket ID,Employee,Desk,Asset Tag,Category,Urgency,Status,Assignee,Created At,Subject\n';
     tickets.forEach(t => {
-      csv += `"${t.id}","${t.employee}","${t.desk}","${t.assetTag}","${t.categoryName}","${t.urgency}","${t.status}","${t.assignee}","${t.createdAt}","${t.subject.replace(/"/g, '""')}"\n`;
+      if (!t || !t.id) return;
+      csv += `"${t.id}","${t.employee || ''}","${t.desk || ''}","${t.assetTag || ''}","${t.categoryName || ''}","${t.urgency || ''}","${t.status || ''}","${t.assignee || ''}","${t.createdAt || ''}","${(t.subject || '').replace(/"/g, '""')}"\n`;
     });
 
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -696,7 +851,7 @@ Registered User: ${t ? t.employee : 'Sarah Jenkins'}`;
    * Helper: Header counters
    */
   function updateHeaderCounts() {
-    const activeCount = tickets.filter(t => t.status !== 'Resolved').length;
+    const activeCount = tickets.filter(t => t && t.id && t.status !== 'Resolved').length;
     activeQueueCount.textContent = `${activeCount} Active ${activeCount === 1 ? 'Ticket' : 'Tickets'}`;
   }
 
