@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoResolve AI — Autonomous Support Ticket Triage & SLA Routing Pipeline</title>
+  <meta name="description" content="Production-grade AI ticket triage and SLA routing pipeline for modern workplaces. Ingests customer support inquiries, scores urgency and sentiment, generates policy-grounded replies, and dispatches Jira & Slack webhooks in real-time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top Navigation & Metrics Bar -->
+  <header class="app-header">
+    <div class="header-left">
+      <a href="../" class="back-link" title="Return to Michael Jay Diaz Portfolio">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span>MJ Portfolio</span>
+      </a>
+      <div class="brand-divider"></div>
+      <div class="brand-group">
+        <div class="brand-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+        </div>
+        <div>
+          <div class="brand-title">AutoResolve <span class="brand-ai">AI</span></div>
+          <div class="brand-sub">Autonomous SLA Ticket Triage & Incident Router</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-center">
+      <div class="live-status-pill">
+        <span class="pulse-dot"></span>
+        <span>Workplace Automation Active</span>
+      </div>
+      <div class="sla-metric-tag">
+        <span class="sla-lbl">SLA Compliance:</span>
+        <span class="sla-val">99.98%</span>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div class="sys-metrics">
+        <div class="sys-chip">
+          <span class="sys-chip-num" id="stat-triaged">1,482</span>
+          <span class="sys-chip-lbl">Triaged Today</span>
+        </div>
+        <div class="sys-chip">
+          <span class="sys-chip-num" id="stat-speed">3.8s</span>
+          <span class="sys-chip-lbl">Avg Response</span>
+        </div>
+      </div>
+      <a href="https://github.com/Zaidjm1/ai-developer-portfolio" target="_blank" class="github-badge" title="View Source on GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Workspace Subheader / Automation Context -->
+  <div class="workspace-banner">
+    <div class="container banner-inner">
+      <div class="banner-text">
+        <span class="badge-role">Enterprise Operations Demo</span>
+        <h1>Automated Workplace Triage: Resolving Customer & Team Requests 10x Faster</h1>
+        <p>
+          Simulates how modern tech companies eliminate manual ticket queues. Ingests raw customer support inquiries, scores urgency and sentiment, identifies root-cause policy rules, drafts human-quality empathetic replies, and triggers real-time <strong>Slack alerts</strong> and <strong>Jira tickets</strong>.
+        </p>
+      </div>
+      <div class="banner-chips">
+        <span class="b-chip">⚡ Gemini NLP Classifier</span>
+        <span class="b-chip">🛡️ SLA Policy Guard</span>
+        <span class="b-chip">💬 Slack Webhook Simulator</span>
+        <span class="b-chip">📋 Jira Service Desk Sync</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Dual-Column Command Dashboard -->
+  <main class="dashboard-container">
+    
+    <!-- LEFT PANEL: Ticket Ingestion & Configuration -->
+    <section class="panel-left" aria-label="Ticket Input">
+      <div class="panel-header">
+        <div class="panel-step-badge">STAGE 1</div>
+        <div>
+          <h2 class="panel-title">Inbound Support Ticket Ingestion</h2>
+          <p class="panel-desc">Select an enterprise scenario preset or type/paste a custom ticket to trigger automation.</p>
+        </div>
+      </div>
+
+      <!-- 1-Click Demonstration Presets -->
+      <div class="presets-section">
+        <div class="presets-label-bar">
+          <span class="presets-label">⚡ 1-Click Realistic Enterprise Presets:</span>
+          <span class="presets-sub">Zero-latency simulation</span>
+        </div>
+        <div class="presets-grid">
+          <button type="button" class="preset-card active" data-preset="payment_outage">
+            <div class="preset-top">
+              <span class="preset-tag tag-p1">P1 Critical</span>
+              <span class="preset-tier">Enterprise Platinum</span>
+            </div>
+            <div class="preset-name">Stripe 500 Webhook Failure During Flash Sale</div>
+            <div class="preset-meta">Churn Threat • 15m SLA</div>
+          </button>
+
+          <button type="button" class="preset-card" data-preset="billing_dispute">
+            <div class="preset-top">
+              <span class="preset-tag tag-p2">P2 High</span>
+              <span class="preset-tier">Growth Tier</span>
+            </div>
+            <div class="preset-name">Duplicate Annual Seat Renewal Charge & Refund Request</div>
+            <div class="preset-meta">Billing Ops • 2h SLA</div>
+          </button>
+
+          <button type="button" class="preset-card" data-preset="sso_failure">
+            <div class="preset-top">
+              <span class="preset-tag tag-p2">P2 High</span>
+              <span class="preset-tier">Enterprise Gold</span>
+            </div>
+            <div class="preset-name">Okta SAML 2.0 Certificate Expiration Lockout</div>
+            <div class="preset-meta">IT Security • 1h SLA</div>
+          </button>
+
+          <button type="button" class="preset-card" data-preset="feature_request">
+            <div class="preset-top">
+              <span class="preset-tag tag-p4">P4 Low</span>
+              <span class="preset-tier">Free Tier</span>
+            </div>
+            <div class="preset-name">Inquiry: Dark Mode & Bi-Directional Notion Sync</div>
+            <div class="preset-meta">Product Feedback • 24h SLA</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Ticket Ingestion Form -->
+      <form id="ticket-form" class="ticket-form" onsubmit="return false;">
+        <div class="form-row form-row-3">
+          <div class="input-group">
+            <label for="ticket-id" class="input-lbl">Ticket ID</label>
+            <input type="text" id="ticket-id" class="input-control" value="TICK-2026-9042" readonly>
+          </div>
+          <div class="input-group">
+            <label for="customer-name" class="input-lbl">Customer / Company</label>
+            <input type="text" id="customer-name" class="input-control" value="Alex Rivera (Acme Global E-Commerce)" required>
+          </div>
+          <div class="input-group">
+            <label for="account-tier" class="input-lbl">SLA Account Tier</label>
+            <select id="account-tier" class="input-control">
+              <option value="enterprise_platinum" selected>💎 Enterprise Platinum (15m SLA)</option>
+              <option value="enterprise_gold">🥇 Enterprise Gold (1h SLA)</option>
+              <option value="growth">🚀 Growth SaaS (4h SLA)</option>
+              <option value="standard">🌱 Standard / Starter (24h SLA)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row form-row-2">
+          <div class="input-group">
+            <label for="inbound-channel" class="input-lbl">Ingestion Channel</label>
+            <select id="inbound-channel" class="input-control">
+              <option value="zendesk">🎧 Zendesk Webhook API</option>
+              <option value="email">✉️ Inbound Email (billing@ diazmj.com)</option>
+              <option value="intercom">💬 Intercom Executive Chat</option>
+              <option value="pagerduty">🚨 PagerDuty Escalation Trigger</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="ticket-subject" class="input-lbl">Subject Line</label>
+            <input type="text" id="ticket-subject" class="input-control" value="URGENT: Stripe checkout 500 error losing thousands during active promotion" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="lbl-flex">
+            <label for="ticket-body" class="input-lbl">Inbound Customer Message Body</label>
+            <span class="char-counter"><span id="body-char-count">248</span> chars</span>
+          </div>
+          <textarea id="ticket-body" class="input-control textarea-control" rows="5" required>Hi team, our checkout page has been throwing 500 Internal Server errors for the last 18 minutes on all Stripe webhook calls. Customers are blowing up our support chat unable to place orders during our anniversary sale. We are losing thousands of dollars every 5 minutes. If this isn't fixed immediately, we will be forced to dispute the latest annual invoice and migrate our infrastructure elsewhere. Please escalate this now.</textarea>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="form-action-bar">
+          <button type="button" id="btn-run-triage" class="btn-run-triage">
+            <div class="btn-shine"></div>
+            <svg class="run-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span id="btn-run-text">Run Autonomous Triage & Routing</span>
+          </button>
+          <button type="button" id="btn-reset-form" class="btn-secondary-action" title="Clear inputs">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+            <span>Reset</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- RIGHT PANEL: Automated Intelligence, Reply & Webhook Dispatches -->
+    <section class="panel-right" aria-label="Triage Output">
+      
+      <!-- Live Stepper Pipeline Animation -->
+      <div class="stepper-bar" id="stepper-bar">
+        <div class="step-item step-done" data-step="1">
+          <div class="step-circle"><span class="step-num">1</span></div>
+          <span class="step-label">Ingested</span>
+        </div>
+        <div class="step-line active"></div>
+        <div class="step-item step-done" data-step="2">
+          <div class="step-circle"><span class="step-num">2</span></div>
+          <span class="step-label">NLP Sentiment</span>
+        </div>
+        <div class="step-line active"></div>
+        <div class="step-item step-done" data-step="3">
+          <div class="step-circle"><span class="step-num">3</span></div>
+          <span class="step-label">Policy Rules</span>
+        </div>
+        <div class="step-line active"></div>
+        <div class="step-item step-done" data-step="4">
+          <div class="step-circle"><span class="step-num">4</span></div>
+          <span class="step-label">Auto-Reply</span>
+        </div>
+        <div class="step-line active"></div>
+        <div class="step-item step-done" data-step="5">
+          <div class="step-circle"><span class="step-num">5</span></div>
+          <span class="step-label">Webhooks</span>
+        </div>
+      </div>
+
+      <!-- Triage Classification Results Matrix -->
+      <div class="triage-matrix-card">
+        <div class="matrix-top">
+          <div class="matrix-title-group">
+            <span class="matrix-badge">TRIAGE DECISION ENGINE</span>
+            <h3 class="matrix-title" id="triage-headline">P1 Incident Escalated: Payment Gateway Outage</h3>
+          </div>
+          <div class="matrix-sla-badge" id="sla-badge">
+            <span class="sla-fire">🚨</span>
+            <span id="sla-badge-text">P1 CRITICAL • 15m SLA</span>
+          </div>
+        </div>
+
+        <div class="matrix-metrics-grid">
+          <div class="m-card">
+            <div class="m-lbl">Detected Sentiment</div>
+            <div class="m-val val-negative" id="val-sentiment">Critical Distress (-0.92)</div>
+            <div class="m-sub">Urgency Multiplier: High</div>
+          </div>
+          <div class="m-card">
+            <div class="m-lbl">Primary Category</div>
+            <div class="m-val" id="val-category">Payment & Billing Gateway</div>
+            <div class="m-sub" id="val-subcategory">Sub-intent: Webhook 500 Error</div>
+          </div>
+          <div class="m-card">
+            <div class="m-lbl">Churn Risk Factor</div>
+            <div class="m-val val-risk" id="val-churn">94% High Churn Risk</div>
+            <div class="m-sub">Retention Strategy Triggered</div>
+          </div>
+          <div class="m-card">
+            <div class="m-lbl">Escalation Destination</div>
+            <div class="m-val val-team" id="val-routing">DevOps On-Call + Lead AE</div>
+            <div class="m-sub" id="val-channel">#devops-fire-drill &amp; Jira INC</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Autonomous Customer Response Generation -->
+      <div class="resolution-box">
+        <div class="res-header">
+          <div class="res-title-group">
+            <span class="res-icon">🤖</span>
+            <div>
+              <div class="res-title">Autonomous Customer De-escalation &amp; Status Draft</div>
+              <div class="res-meta" id="res-meta">Calibrated Tone: Empathetic, Authoritative, Urgent • Formatted for Zendesk / Email</div>
+            </div>
+          </div>
+          <button type="button" id="btn-copy-reply" class="btn-copy" title="Copy response to clipboard">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span id="copy-reply-text">Copy Reply</span>
+          </button>
+        </div>
+        <div class="res-content-wrapper">
+          <div class="res-content" id="res-content" contenteditable="true">
+Dear Alex,
+
+Thank you for alerting us immediately. I completely understand how critical this anniversary sale is for Acme Global, and I am treating this payment gateway issue as our highest priority incident (Incident Key: **INC-9042**).
+
+Our senior infrastructure engineers have been paged into an active war room to diagnose the Stripe webhook 500 response codes. We have also placed a temporary retry buffer on incoming checkout payloads to prevent transaction drops.
+
+Here is your immediate operational update:
+• **Assigned Incident Commander:** Dev Lead (PagerDuty ID: #4491)
+• **SLA Target:** Preliminary root-cause update within 15 minutes (by 21:20 UTC)
+• **Live War Room Status:** https://status.diazmj.com/incidents/INC-9042
+• **Direct Escalation:** I have also notified your dedicated account executive (Sarah Lin) so we can monitor checkout telemetry together.
+
+We will provide another update the second the webhook handler is stabilized. You have our full commitment to restoring 100% throughput immediately.
+
+Sincerely,
+Michael Jay Diaz — Executive Support & Infrastructure Ops
+AutoResolve AI Enterprise Incident Response
+          </div>
+        </div>
+      </div>
+
+      <!-- Outbound Automation Dispatches (Slack, Jira, Webhook Payload) -->
+      <div class="dispatch-tabs-wrapper">
+        <div class="dispatch-tabs-header">
+          <span class="dispatch-header-title">⚡ Autonomous Multi-Channel Dispatches:</span>
+          <div class="dispatch-nav">
+            <button type="button" class="tab-btn active" data-tab="slack">
+              <span class="tab-icon">💬</span> Slack Alert
+            </button>
+            <button type="button" class="tab-btn" data-tab="jira">
+              <span class="tab-icon">📋</span> Jira Ticket
+            </button>
+            <button type="button" class="tab-btn" data-tab="json">
+              <span class="tab-icon">{ }</span> Webhook JSON
+            </button>
+          </div>
+        </div>
+
+        <div class="dispatch-tab-body">
+          <!-- Tab 1: Simulated Slack Message -->
+          <div class="tab-pane active" id="tab-slack">
+            <div class="slack-mockup">
+              <div class="slack-top">
+                <span class="slack-hash">#</span>
+                <span class="slack-channel-name" id="slack-channel">prod-incidents-p1</span>
+                <span class="slack-subtext">| PagerDuty Bot • 42 members online</span>
+              </div>
+              <div class="slack-msg-body">
+                <div class="slack-avatar">🤖</div>
+                <div class="slack-msg-content">
+                  <div class="slack-msg-author">
+                    <span class="author-name">AutoResolve Bot</span>
+                    <span class="bot-tag">APP</span>
+                    <span class="slack-timestamp">Just now</span>
+                  </div>
+                  <div class="slack-card-attachment p1-border" id="slack-attachment">
+                    <div class="slack-att-title" id="slack-att-title">🚨 P1 INCIDENT DETECTED: Stripe 500 Webhook Failure During Flash Sale</div>
+                    <div class="slack-att-desc" id="slack-att-desc">Customer **Alex Rivera (Acme Global E-Commerce)** reports checkout 500 errors for 18m. High churn risk ($48,000 ARR). Enterprise Platinum 15m SLA initiated.</div>
+                    <div class="slack-fields-grid" id="slack-fields">
+                      <div class="slack-f-item">
+                        <span class="f-lbl">Severity:</span>
+                        <span class="f-val text-red">P1 - CRITICAL</span>
+                      </div>
+                      <div class="slack-f-item">
+                        <span class="f-lbl">SLA Deadline:</span>
+                        <span class="f-val">15 Minutes (21:20 UTC)</span>
+                      </div>
+                      <div class="slack-f-item">
+                        <span class="f-lbl">Assigned:</span>
+                        <span class="f-val">@oncall-devops @sarah-ae</span>
+                      </div>
+                      <div class="slack-f-item">
+                        <span class="f-lbl">Jira Reference:</span>
+                        <span class="f-val text-cyan">INC-9042</span>
+                      </div>
+                    </div>
+                    <div class="slack-actions-row">
+                      <button type="button" class="slack-btn slack-btn-primary" onclick="alert('Simulated: Acknowledged on Slack by @oncall-devops')">Acknowledge P1 Incident</button>
+                      <button type="button" class="slack-btn" onclick="alert('Simulated: Zoom War Room launched and bridged to Slack')">Launch War Room</button>
+                      <button type="button" class="slack-btn" onclick="alert('Simulated: Customer status page updated to Investigating')">Update Status Page</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Simulated Jira Service Desk Ticket -->
+          <div class="tab-pane" id="tab-jira">
+            <div class="jira-mockup">
+              <div class="jira-header">
+                <div class="jira-key-group">
+                  <span class="jira-icon">🎯</span>
+                  <span class="jira-key" id="jira-key">INC-9042</span>
+                  <span class="jira-summary" id="jira-summary">Stripe 500 Webhook Failure During Flash Sale</span>
+                </div>
+                <div class="jira-status-pill" id="jira-status">IN PROGRESS</div>
+              </div>
+              <div class="jira-details-grid" id="jira-details">
+                <div class="j-col">
+                  <div class="j-row"><span class="j-lbl">Issue Type:</span><span class="j-val">🚨 Incident</span></div>
+                  <div class="j-row"><span class="j-lbl">Priority:</span><span class="j-val text-red" id="jira-priority">Highest (P1)</span></div>
+                  <div class="j-row"><span class="j-lbl">Components:</span><span class="j-val" id="jira-component">Payment-Gateway, Webhook-Ingress</span></div>
+                  <div class="j-row"><span class="j-lbl">Reporter:</span><span class="j-val">AutoResolve Ingestion Bot</span></div>
+                </div>
+                <div class="j-col">
+                  <div class="j-row"><span class="j-lbl">Assignee:</span><span class="j-val" id="jira-assignee">DevOps On-Call Team</span></div>
+                  <div class="j-row"><span class="j-lbl">Customer:</span><span class="j-val" id="jira-customer">Acme Global E-Commerce</span></div>
+                  <div class="j-row"><span class="j-lbl">SLA Time to First Action:</span><span class="j-val text-emerald">12m remaining</span></div>
+                  <div class="j-row"><span class="j-lbl">Automation Rule:</span><span class="j-val">Rule #14: High-Value Churn Guard</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Raw JSON Webhook Payload -->
+          <div class="tab-pane" id="tab-json">
+            <div class="code-box-header">
+              <span class="code-lbl">OUTBOUND JSON PAYLOAD (REST API / WEBHOOK)</span>
+              <button type="button" id="btn-copy-json" class="btn-copy-sm">Copy JSON</button>
+            </div>
+            <pre class="json-code-block"><code id="raw-json-output">{
+  "event": "autoresolve.ticket.triaged",
+  "ticket_id": "TICK-2026-9042",
+  "timestamp": "2026-09-27T21:45:00Z",
+  "sla_tier": "enterprise_platinum",
+  "classification": {
+    "priority": "P1_CRITICAL",
+    "category": "PAYMENT_GATEWAY_OUTAGE",
+    "sub_category": "STRIPE_WEBHOOK_500",
+    "sentiment_score": -0.92,
+    "churn_risk_probability": 0.94,
+    "sla_window_minutes": 15
+  },
+  "escalation": {
+    "destination": "devops_oncall",
+    "slack_channel": "#prod-incidents-p1",
+    "jira_issue_key": "INC-9042",
+    "pagerduty_service_id": "P39281-PAYMENTS"
+  },
+  "customer": {
+    "name": "Alex Rivera",
+    "account": "Acme Global E-Commerce",
+    "arr_usd": 48000
+  },
+  "autonomous_resolution": {
+    "auto_reply_drafted": true,
+    "status_page_linked": true,
+    "retry_buffer_activated": true
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast" role="alert" aria-live="assertive">
+    <div class="toast-icon">✓</div>
+    <div class="toast-text" id="toast-text">Triage completed successfully!</div>
+  </div>
+
+  <footer class="app-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <strong>AutoResolve AI</strong> — Built by <strong>Michael Jay Diaz</strong>. Demonstrating modern Human + AI workplace automation pipelines.
+      </div>
+      <div class="footer-links">
+        <a href="../#projects">View Shipped Projects</a>
+        <a href="../#services">Explore Services</a>
+        <a href="../#contact">Contact &amp; Hire</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

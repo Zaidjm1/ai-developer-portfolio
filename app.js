@@ -681,10 +681,40 @@ ${detectedFeatures.map(f => `- **${f}**`).join('\n')}
           <li><strong>Enterprise-Ready Webhooks</strong>: Simulates real-time push to QuickBooks, Slack, and accounting databases.</li>
         </ul>
         <div style="margin-top: 14px;">
-          <a href="http://localhost:8090" target="_blank" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-            <span>🚀 Launch Live DocuSense AI App (Port 8090)</span>
+          <a href="docusense/" target="_blank" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+            <span>🚀 Launch Live DocuSense AI App</span>
           </a>
         </div>
+      `
+    },
+    autoresolve: {
+      title: "AutoResolve AI: Autonomous Support Ticket Triage & SLA Router",
+      subtitle: "Multi-Channel Ingestion, NLP Sentiment Scoring, Policy Checks & Webhook Dispatches",
+      diagram:
+`[Inbound Support Inquiries (Zendesk API / Email / Intercom Webhooks)]
+        │
+        ▼
+[NLP Sentiment & Urgency Scoring Engine (Gemini Pro NLP)]
+  ├── Calculates Negative Sentiment & Customer Churn Probability
+  └── Determines SLA Window (P1 Critical 15m vs P4 Low 24h)
+        │
+        ▼
+[Policy Rule Engine & Knowledge Retrieval]
+  ├── Validates Refund & Downsizing Grace Periods (§4.2 SLA)
+  └── Retrieves Technical Diagnostic Playbooks (SAML X.509 / Stripe 500)
+        │
+        ▼
+[Autonomous Response Synthesizer & Multi-Channel Dispatch]
+  ├── Drafts Human-Quality Empathetic Resolution Email
+  ├── Pushes Priority Alert to Slack (#prod-incidents / #billing)
+  └── Creates & Assigns Jira Service Desk Incident (INC Key)`,
+      details: `
+        <h4 style="color: var(--accent-cyan); margin-bottom: 8px;">Human + AI Synergy Highlights:</h4>
+        <ul style="padding-left: 20px; margin-bottom: 12px;">
+          <li><strong>Zero Customer Dropoff</strong>: High-churn complaints receive an empathetic, policy-grounded resolution in seconds rather than sitting in a 24-hour queue.</li>
+          <li><strong>Automated War Room Escalation</strong>: Real-time Slack webhooks and Jira tickets ensure on-call engineers are paged before the customer disputes a charge.</li>
+          <li><strong>Interactive Sandbox</strong>: Explore live presets or test custom tickets directly in the <a href="autoresolve/" target="_blank" style="color: #38bdf8;">AutoResolve AI Dashboard</a>.</li>
+        </ul>
       `
     },
     visioncraft: {
